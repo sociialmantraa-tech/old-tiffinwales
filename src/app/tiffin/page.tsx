@@ -34,21 +34,25 @@ export default function TiffinPage() {
 
   return (
     <div style={{ background: '#fffaf5', width: '100%', maxWidth: '100vw', overflowX: 'hidden' }}>
-      {/* Rich Saffron-Cream Header Banner */}
+      {/* Rich Saffron-Cream Header Banner with Indian Culinary Spice Pattern */}
       <div style={{
-        background: 'radial-gradient(circle at 50% 0%, rgba(255, 100, 19, 0.12) 0%, transparent 60%), linear-gradient(145deg, #fff4e8 0%, #ffebd9 50%, #fff8f2 100%)',
-        padding: '50px 0 40px 0',
-        borderBottom: '1.5px solid #f0e1d2',
+        backgroundImage: 'linear-gradient(180deg, rgba(255, 248, 240, 0.82) 0%, rgba(255, 237, 218, 0.92) 100%), url(/tiffin-banner-pattern.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        padding: '52px 0 42px 0',
+        borderBottom: '1.5px solid #fed7aa',
+        boxShadow: '0 6px 24px rgba(255, 100, 19, 0.05)',
         textAlign: 'center',
-        marginBottom: '10px'
+        marginBottom: '10px',
+        position: 'relative'
       }}>
         <div className="tw-container">
-          <div className="section-tag" style={{ background: '#fff0e6', borderColor: '#fed7aa' }}>
+          <div className="section-tag" style={{ background: 'rgba(255, 255, 255, 0.9)', borderColor: '#fed7aa', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)' }}>
             <Sparkles size={13} />
             <span>Boston &amp; Cambridge Meal Subscriptions</span>
           </div>
           <h1 className="section-title">Authentic Indian Tiffin Plans</h1>
-          <p className="section-subtitle" style={{ maxWidth: '680px', margin: '0 auto' }}>
+          <p className="section-subtitle" style={{ maxWidth: '680px', margin: '0 auto', color: '#4b5563' }}>
             Select the meal plan that fits your schedule. Freshly cooked with mom&apos;s kitchen recipes, 
             authentic whole spices, and daily delivery across Cambridge &amp; Greater Boston.
           </p>
