@@ -576,13 +576,47 @@
     grid-template-columns: 1fr;
   }
   .planExplainerBanner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding: 12px 14px;
+    margin-bottom: 24px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    border-radius: 16px;
+  }
+  .planExplainerBanner::-webkit-scrollbar {
+    display: none;
+  }
+  .explainerItem {
+    flex: 0 0 80%;
+    max-width: 280px;
+    min-width: 240px;
+    scroll-snap-align: center;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid #fed7aa;
+    gap: 10px;
+  }
+  .explainerIcon {
+    font-size: 1.5rem;
+  }
+  .explainerItem strong {
+    font-size: 0.82rem;
+  }
+  .explainerItem p {
+    font-size: 0.72rem;
+    line-height: 1.3;
   }
   .explainerDivider {
-    width: 100%;
-    height: 1px;
+    display: none;
   }
 }
 
