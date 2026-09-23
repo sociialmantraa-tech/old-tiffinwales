@@ -89,33 +89,27 @@ export const Footer = () => {
           </h4>
           <ul className={styles.linkList}>
             <li>
-              <Link href="/product/5-days-meal">
+              <Link href="/tiffin">
                 <ChevronRight size={13} className={styles.linkArrow} />
-                <span>5 Days Meal Plan</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/product/7-days-meal">
-                <ChevronRight size={13} className={styles.linkArrow} />
-                <span>7 Days Full Week Plan</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/product/20-days-meal">
-                <ChevronRight size={13} className={styles.linkArrow} />
-                <span>20 Days Monthly Plan</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/product/1-day-meal">
-                <ChevronRight size={13} className={styles.linkArrow} />
-                <span>Single Day Trial Tiffin</span>
+                <span>Veg Meal Plans</span>
               </Link>
             </li>
             <li>
               <Link href="/tiffin">
                 <ChevronRight size={13} className={styles.linkArrow} />
-                <span>View All Meal Plans →</span>
+                <span>Non-Veg Meal Plans</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/tiffin">
+                <ChevronRight size={13} className={styles.linkArrow} />
+                <span>Veg &amp; Non-Veg Mix</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/tiffin">
+                <ChevronRight size={13} className={styles.linkArrow} />
+                <span>All Meal Plans</span>
               </Link>
             </li>
           </ul>
