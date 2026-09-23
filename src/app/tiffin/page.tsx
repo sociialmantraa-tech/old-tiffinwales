@@ -33,7 +33,7 @@ export default function TiffinPage() {
   ];
 
   return (
-    <div style={{ background: '#fffaf5' }}>
+    <div style={{ background: '#fffaf5', width: '100%', maxWidth: '100vw', overflowX: 'hidden' }}>
       {/* Rich Saffron-Cream Header Banner */}
       <div style={{
         background: 'radial-gradient(circle at 50% 0%, rgba(255, 100, 19, 0.12) 0%, transparent 60%), linear-gradient(145deg, #fff4e8 0%, #ffebd9 50%, #fff8f2 100%)',
@@ -59,15 +59,16 @@ export default function TiffinPage() {
       <MealPlansSection hideHeader={true} hideSubDetails={true} showAll={true} />
 
       {/* Comparison Table Section */}
-      <section className="tw-section" style={{ background: 'linear-gradient(180deg, #fef4eb 0%, #fae6d3 100%)', borderTop: '1.5px solid #f0e1d2', borderBottom: '1.5px solid #f0e1d2' }}>
-        <div className="tw-container">
+      <section className="tw-section" style={{ background: 'linear-gradient(180deg, #fef4eb 0%, #fae6d3 100%)', borderTop: '1.5px solid #f0e1d2', borderBottom: '1.5px solid #f0e1d2', overflowX: 'hidden' }}>
+        <div className="tw-container" style={{ width: '100%', maxWidth: '100%', boxSizing: 'border-box' }}>
           <div className="section-header">
             <h2 className="section-title">Compare Tiffin Plans</h2>
             <p className="section-subtitle">Find the exact right frequency for your routine.</p>
           </div>
 
-          <div style={{ overflowX: 'auto' }}>
+          <div style={{ width: '100%', overflowX: 'auto', WebkitOverflowScrolling: 'touch', paddingBottom: '8px' }}>
             <table style={{
+              minWidth: '600px',
               width: '100%',
               borderCollapse: 'separate',
               borderSpacing: '0',
@@ -79,48 +80,48 @@ export default function TiffinPage() {
             }}>
               <thead>
                 <tr style={{ background: '#151515', color: '#ffffff', textAlign: 'left' }}>
-                  <th style={{ padding: '16px 20px', fontSize: '0.88rem', fontWeight: 800 }}>Plan Feature</th>
-                  <th style={{ padding: '16px 20px', fontSize: '0.88rem', fontWeight: 800 }}>Daily Tiffin (1 Day)</th>
-                  <th style={{ padding: '16px 20px', fontSize: '0.88rem', fontWeight: 800 }}>4 Days Pack</th>
-                  <th style={{ padding: '16px 20px', fontSize: '0.88rem', fontWeight: 800, background: 'var(--tw-orange)' }}>⭐ 5 Days Plan (Flagship)</th>
-                  <th style={{ padding: '16px 20px', fontSize: '0.88rem', fontWeight: 800 }}>7 Days Full Week</th>
+                  <th style={{ padding: '14px 16px', fontSize: '0.84rem', fontWeight: 800 }}>Plan Feature</th>
+                  <th style={{ padding: '14px 16px', fontSize: '0.84rem', fontWeight: 800 }}>Daily Tiffin (1 Day)</th>
+                  <th style={{ padding: '14px 16px', fontSize: '0.84rem', fontWeight: 800 }}>4 Days Pack</th>
+                  <th style={{ padding: '14px 16px', fontSize: '0.84rem', fontWeight: 800, background: 'var(--tw-orange)' }}>⭐ 5 Days Plan</th>
+                  <th style={{ padding: '14px 16px', fontSize: '0.84rem', fontWeight: 800 }}>7 Days Full Week</th>
                 </tr>
               </thead>
               <tbody>
                 <tr style={{ borderBottom: '1px solid #f2e2d5' }}>
-                  <td style={{ padding: '14px 20px', fontWeight: 700 }}>Total Price</td>
-                  <td style={{ padding: '14px 20px' }}>$14.99</td>
-                  <td style={{ padding: '14px 20px' }}>$59.96</td>
-                  <td style={{ padding: '14px 20px', fontWeight: 800, color: 'var(--tw-orange)' }}>$74.95</td>
-                  <td style={{ padding: '14px 20px', fontWeight: 800 }}>$104.93</td>
+                  <td style={{ padding: '12px 16px', fontWeight: 700, fontSize: '0.84rem' }}>Total Price</td>
+                  <td style={{ padding: '12px 16px', fontSize: '0.84rem' }}>$14.99</td>
+                  <td style={{ padding: '12px 16px', fontSize: '0.84rem' }}>$59.96</td>
+                  <td style={{ padding: '12px 16px', fontWeight: 800, color: 'var(--tw-orange)', fontSize: '0.84rem' }}>$74.95</td>
+                  <td style={{ padding: '12px 16px', fontWeight: 800, fontSize: '0.84rem' }}>$104.93</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid #f2e2d5' }}>
-                  <td style={{ padding: '14px 20px', fontWeight: 700 }}>Effective Cost / Meal</td>
-                  <td style={{ padding: '14px 20px' }}>$14.99</td>
-                  <td style={{ padding: '14px 20px' }}>$14.99 / meal</td>
-                  <td style={{ padding: '14px 20px', fontWeight: 800, color: 'var(--tw-orange)' }}>$14.99 / meal</td>
-                  <td style={{ padding: '14px 20px', fontWeight: 800 }}>$14.99 / meal</td>
+                  <td style={{ padding: '12px 16px', fontWeight: 700, fontSize: '0.84rem' }}>Effective Cost / Meal</td>
+                  <td style={{ padding: '12px 16px', fontSize: '0.84rem' }}>$14.99</td>
+                  <td style={{ padding: '12px 16px', fontSize: '0.84rem' }}>$14.99 / meal</td>
+                  <td style={{ padding: '12px 16px', fontWeight: 800, color: 'var(--tw-orange)', fontSize: '0.84rem' }}>$14.99 / meal</td>
+                  <td style={{ padding: '12px 16px', fontWeight: 800, fontSize: '0.84rem' }}>$14.99 / meal</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid #f2e2d5' }}>
-                  <td style={{ padding: '14px 20px', fontWeight: 700 }}>Delivery Fee Advantage</td>
-                  <td style={{ padding: '14px 20px' }}>Standard</td>
-                  <td style={{ padding: '14px 20px' }}>Bulk Rate</td>
-                  <td style={{ padding: '14px 20px', fontWeight: 800, color: 'var(--tw-orange)' }}>1 Delivery Fee Only</td>
-                  <td style={{ padding: '14px 20px', fontWeight: 800 }}>Bulk Rate</td>
+                  <td style={{ padding: '12px 16px', fontWeight: 700, fontSize: '0.84rem' }}>Delivery Fee</td>
+                  <td style={{ padding: '12px 16px', fontSize: '0.84rem' }}>Standard</td>
+                  <td style={{ padding: '12px 16px', fontSize: '0.84rem' }}>Bulk Rate</td>
+                  <td style={{ padding: '12px 16px', fontWeight: 800, color: 'var(--tw-orange)', fontSize: '0.84rem' }}>1 Delivery Fee Only</td>
+                  <td style={{ padding: '12px 16px', fontWeight: 800, fontSize: '0.84rem' }}>Bulk Rate</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid #f2e2d5' }}>
-                  <td style={{ padding: '14px 20px', fontWeight: 700 }}>Bread Options</td>
-                  <td style={{ padding: '14px 20px' }}>Naan or 2 Rotis</td>
-                  <td style={{ padding: '14px 20px' }}>Naan or 2 Rotis</td>
-                  <td style={{ padding: '14px 20px' }}>Naan or 2 Rotis</td>
-                  <td style={{ padding: '14px 20px' }}>Naan or 2 Rotis</td>
+                  <td style={{ padding: '12px 16px', fontWeight: 700, fontSize: '0.84rem' }}>Bread Options</td>
+                  <td style={{ padding: '12px 16px', fontSize: '0.84rem' }}>Naan or 2 Rotis</td>
+                  <td style={{ padding: '12px 16px', fontSize: '0.84rem' }}>Naan or 2 Rotis</td>
+                  <td style={{ padding: '12px 16px', fontSize: '0.84rem' }}>Naan or 2 Rotis</td>
+                  <td style={{ padding: '12px 16px', fontSize: '0.84rem' }}>Naan or 2 Rotis</td>
                 </tr>
                 <tr>
-                  <td style={{ padding: '14px 20px', fontWeight: 700 }}>Remaining Days Tracker</td>
-                  <td style={{ padding: '14px 20px' }}>Daily Order</td>
-                  <td style={{ padding: '14px 20px', color: 'var(--tw-veg)', fontWeight: 800 }}>✓ Live on Top &amp; Account</td>
-                  <td style={{ padding: '14px 20px', color: 'var(--tw-veg)', fontWeight: 800 }}>✓ Live on Top &amp; Account</td>
-                  <td style={{ padding: '14px 20px', color: 'var(--tw-veg)', fontWeight: 800 }}>✓ Live on Top &amp; Account</td>
+                  <td style={{ padding: '12px 16px', fontWeight: 700, fontSize: '0.84rem' }}>Remaining Days Tracker</td>
+                  <td style={{ padding: '12px 16px', fontSize: '0.84rem' }}>Daily Order</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--tw-veg)', fontWeight: 800, fontSize: '0.84rem' }}>✓ Live on Account</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--tw-veg)', fontWeight: 800, fontSize: '0.84rem' }}>✓ Live on Account</td>
+                  <td style={{ padding: '12px 16px', color: 'var(--tw-veg)', fontWeight: 800, fontSize: '0.84rem' }}>✓ Live on Account</td>
                 </tr>
               </tbody>
             </table>
