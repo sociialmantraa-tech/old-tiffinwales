@@ -39,10 +39,10 @@ export default function CheckoutPage() {
     zipCode: '02138',
     deliveryMode: initialMode as 'delivery' | 'pickup',
     paymentMethod: 'card',
-    cardName: 'Tiffin Member',
-    cardNumber: '4532 8492 1092 8491',
-    cardExpiry: '08/28',
-    cardCvc: '482',
+    cardName: '',
+    cardNumber: '',
+    cardExpiry: '',
+    cardCvc: '',
     notes: 'Please buzz Apt 4B or leave at front lobby.'
   });
 
@@ -87,6 +87,9 @@ export default function CheckoutPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const cleanCardDigits = formData.cardNumber.replace(/\s/g, '');
+    const last4 = cleanCardDigits.length >= 4 ? cleanCardDigits.slice(-4) : '8491';
+
     setTimeout(() => {
       // Check if any meal plan was purchased
       const mealPlanItem = cart.find(i => i.isMealPlan);
@@ -95,7 +98,7 @@ export default function CheckoutPage() {
         activateDemoPlan(days, mealPlanItem.name);
       }
 
-      // Save order to history
+      // Save order to history with MASKED card reference only (zero raw card details stored)
       const newOrder = {
         id: `ord_${Date.now()}`,
         orderNumber: `#TW-${Math.floor(1000 + Math.random() * 9000)}`,
@@ -119,10 +122,12 @@ export default function CheckoutPage() {
         total: grandTotal,
         deliveryAddress: `${formData.address}${formData.apartment ? ` ${formData.apartment}` : ''}, ${formData.city}, ${formData.state} ${formData.zipCode}`,
         deliveryTiming: formData.deliveryMode === 'pickup' ? 'Free In-Store Pickup (1001 Mass Ave)' : 'Scheduled Daily Delivery',
-        paymentMethod: 'Paid via Card (WordPress SSL)'
+        paymentMethod: `Paid via Card ending in •••• ${last4} (SSL Encrypted)`
       };
       addOrder(newOrder);
 
+      // Wipe sensitive in-memory inputs
+      setFormData(prev => ({ ...prev, cardNumber: '', cardCvc: '', cardExpiry: '' }));
       clearCart();
       setIsSubmitting(false);
       setOrderSuccess(true);
@@ -394,6 +399,8 @@ export default function CheckoutPage() {
                       type="text"
                       name="cardName"
                       required
+                      autoComplete="cc-name"
+                      spellCheck={false}
                       value={formData.cardName}
                       onChange={handleChange}
                       placeholder="Name as printed on card"
@@ -409,10 +416,13 @@ export default function CheckoutPage() {
                         type="text"
                         name="cardNumber"
                         required
+                        autoComplete="cc-number"
+                        inputMode="numeric"
+                        spellCheck={false}
                         maxLength={19}
                         value={formData.cardNumber}
                         onChange={handleCardNumberChange}
-                        placeholder="4532 •••• •••• ••••"
+                        placeholder="•••• •••• •••• ••••"
                         className={styles.textInputWithIcon}
                       />
                       <Lock size={15} className={styles.cardLockIcon} />
@@ -426,6 +436,9 @@ export default function CheckoutPage() {
                         type="text"
                         name="cardExpiry"
                         required
+                        autoComplete="cc-exp"
+                        inputMode="numeric"
+                        spellCheck={false}
                         maxLength={5}
                         value={formData.cardExpiry}
                         onChange={handleExpiryChange}
@@ -439,10 +452,13 @@ export default function CheckoutPage() {
                         type="password"
                         name="cardCvc"
                         required
+                        autoComplete="cc-csc"
+                        inputMode="numeric"
+                        spellCheck={false}
                         maxLength={4}
                         value={formData.cardCvc}
                         onChange={handleChange}
-                        placeholder="CVC (3 or 4 digits)"
+                        placeholder="•••"
                         className={styles.textInput}
                       />
                     </div>
