@@ -22,7 +22,8 @@ import {
   LayoutDashboard,
   Utensils,
   Flame,
-  Receipt
+  Receipt,
+  Info
 } from 'lucide-react';
 import styles from './Navbar.module.css';
 
@@ -60,6 +61,7 @@ export const Navbar = () => {
       ]
     },
     { name: 'WEEKLY MENU', href: '/#weekly-menu', icon: CalendarDays },
+    { name: 'ABOUT US', href: '/about', icon: Info },
     { 
       name: 'ACCOUNT', 
       href: '/account', 
@@ -70,7 +72,6 @@ export const Navbar = () => {
         { name: 'Contact Us', href: '/contact', icon: PhoneCall },
       ]
     },
-    { name: 'ABOUT', href: '/about', icon: Heart },
   ];
 
   return (
