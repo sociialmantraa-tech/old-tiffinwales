@@ -299,3 +299,23 @@
 .viewCartLink:hover {
   color: var(--tw-orange);
 }
+
+@media (max-width: 768px) {
+  .overlay {
+    bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+  }
+  
+  .drawer {
+    max-width: 100%;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .header {
+    padding: 16px 20px;
+  }
+
+  .footer {
+    padding: 16px 20px;
+  }
+}
+

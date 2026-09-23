@@ -9,9 +9,7 @@ import styles from './BottomNav.module.css';
 
 export const BottomNav = () => {
   const pathname = usePathname();
-  const { cartCount, setIsCartOpen, subscription } = useCart();
-
-
+  const { cartCount, isCartOpen, setIsCartOpen, subscription } = useCart();
 
   return (
     <nav className={styles.bottomNav} aria-label="Mobile Navigation">
@@ -52,8 +50,8 @@ export const BottomNav = () => {
         {/* 4. Cart Action Button */}
         <button
           type="button"
-          onClick={() => setIsCartOpen(true)}
-          className={`${styles.navItem} ${styles.cartItem}`}
+          onClick={() => setIsCartOpen(!isCartOpen)}
+          className={`${styles.navItem} ${styles.cartItem} ${isCartOpen || pathname === '/cart' ? styles.active : ''}`}
           aria-label="View Cart"
         >
           <div className={styles.iconWrapper}>
