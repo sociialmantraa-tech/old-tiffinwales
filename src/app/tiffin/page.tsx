@@ -11,23 +11,23 @@ export const metadata = {
 export default function TiffinPage() {
   const faqs = [
     {
-      q: 'How does the 5-Day Meal Plan work?',
+      q: 'How does the 5-Day Plan work?',
       a: 'Our 5-Day plan is our most popular flagship option. You receive a hot, freshly cooked meal box every day from Monday to Friday with zero cooking chores. You only pay one single delivery fee or enjoy free store pickup.'
     },
     {
-      q: 'Can I track my remaining subscription days?',
+      q: 'Can I track remaining meal days?',
       a: 'Yes! Your remaining days are shown right on the top notification bar across every page, as well as on your dedicated Account page (/account), where you can also skip dates or pause your schedule.'
     },
     {
-      q: 'Can I switch between Vegetarian and Non-Vegetarian?',
+      q: 'Can I switch between Veg & Non-Veg?',
       a: 'Absolutely. We offer pure Vegetarian, Non-Vegetarian, and combo packages. You can also pick your spice level (Mild, Medium, or Hot) and bread preference (Naan or 2 Rotis).'
     },
     {
-      q: 'What time are tiffin meals delivered?',
+      q: 'What time are tiffins delivered?',
       a: 'Lunch deliveries arrive between 11:45 AM and 1:15 PM, and dinner deliveries arrive between 5:30 PM and 7:30 PM, packed in thermal insulated food-safe containers ready to enjoy.'
     },
     {
-      q: 'Can I pause my subscription if I travel?',
+      q: 'Can I pause or skip when traveling?',
       a: 'Yes! Simply click "Pause Subscription" or "Skip Next Meal" in your account dashboard or message our kitchen team on WhatsApp. Your unused meal days are safely stored for whenever you return.'
     }
   ];

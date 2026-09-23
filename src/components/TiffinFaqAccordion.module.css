@@ -118,26 +118,31 @@
 
 @media (max-width: 600px) {
   .faqQuestionBtn {
-    padding: 13px 14px;
-    gap: 10px;
+    padding: 11px 12px;
+    gap: 8px;
   }
 
   .faqQuestionText {
-    font-size: 0.88rem;
+    font-size: 0.78rem;
+    font-weight: 750;
     line-height: 1.35;
+    flex: 1;
+    min-width: 0;
   }
 
   .iconCircle {
-    width: 26px;
-    height: 26px;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
   }
 
   .faqAnswerPanel {
-    padding: 0 14px 14px 14px;
+    padding: 0 12px 12px 12px;
+    padding-top: 10px;
   }
 
   .faqAnswerText {
-    font-size: 0.84rem;
-    line-height: 1.55;
+    font-size: 0.76rem;
+    line-height: 1.5;
   }
 }
