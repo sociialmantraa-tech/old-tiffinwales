@@ -1,6 +1,7 @@
 import React from 'react';
 import { MealPlansSection } from '@/components/MealPlansSection';
-import { Sparkles, HelpCircle } from 'lucide-react';
+import { TiffinFaqAccordion } from '@/components/TiffinFaqAccordion';
+import { Sparkles } from 'lucide-react';
 
 export const metadata = {
   title: 'Indian Tiffin Meal Plans | 5 Days & Monthly Subscriptions | Tiffin Wales Boston & Cambridge',
@@ -127,40 +128,8 @@ export default function TiffinPage() {
         </div>
       </section>
 
-      {/* FAQs */}
-      <section className="tw-section" style={{ background: 'linear-gradient(180deg, #fffaf5 0%, #fff2e6 100%)', borderTop: '1.5px solid #f0e1d2' }}>
-        <div className="tw-container" style={{ maxWidth: '820px' }}>
-          <div className="section-header">
-            <div className="section-tag">
-              <HelpCircle size={13} />
-              <span>Questions &amp; Answers</span>
-            </div>
-            <h2 className="section-title">Frequently Asked Questions</h2>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                style={{
-                  background: '#ffffff',
-                  borderRadius: 'var(--radius-md)',
-                  padding: '24px',
-                  border: '1.5px solid #fed7aa',
-                  boxShadow: '0 4px 14px rgba(255, 100, 19, 0.04)'
-                }}
-              >
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--tw-dark)', marginBottom: '8px' }}>
-                  {faq.q}
-                </h3>
-                <p style={{ fontSize: '0.92rem', color: '#4b5563', lineHeight: '1.6' }}>
-                  {faq.a}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Interactive Collapsible FAQs */}
+      <TiffinFaqAccordion faqs={faqs} />
     </div>
   );
 }
