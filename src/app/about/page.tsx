@@ -128,10 +128,10 @@ export default function AboutPage() {
               <p className={styles.heroSubtitle}>
                 Bringing Fresh Homemade Indian Meals to Boston, Cambridge &amp; Massachusetts.
               </p>
-              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+              <div className={styles.heroBtnsRow}>
                 <Link href="/tiffin" className="btn-primary">
                   <span>Explore Meal Plans</span>
-                  <ArrowRight size={18} />
+                  <ArrowRight size={16} />
                 </Link>
                 <Link href="/menu" className="btn-outline">
                   <span>View A La Carte Menu</span>

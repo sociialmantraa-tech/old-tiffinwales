@@ -543,69 +543,206 @@
   transform: translateY(-2px);
 }
 
+.heroBtnsRow {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 @media (max-width: 960px) {
   .heroGrid,
   .storyGrid,
   .missionVisionGrid {
     grid-template-columns: 1fr;
   }
-  .featuresGrid,
-  .testimonialsGrid {
-    grid-template-columns: 1fr;
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
   .processGrid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
   .citiesGrid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
   }
   .statsGrid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
 
 @media (max-width: 600px) {
   .sectionBlock,
   .sectionBlockAlt {
-    padding: 44px 0;
+    padding: 36px 0;
   }
 
   .storyTitle {
-    font-size: 1.45rem;
+    font-size: 1.35rem;
   }
 
+  .heroBtnsRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    margin-top: 6px;
+  }
+
+  .heroBtnsRow a {
+    width: 100%;
+    padding: 11px 8px;
+    font-size: 0.78rem;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    gap: 4px;
+  }
+
+  /* 1. Cities Grid: 2-column grid on mobile */
   .citiesGrid {
-    grid-template-columns: 1fr;
-  }
-  .processGrid {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin: 20px 0;
   }
 
+  .cityCard {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+    gap: 6px;
+    border-radius: 10px;
+  }
+
+  /* 2. Process Section: 2x2 grid on mobile */
+  .processGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .processCard {
+    padding: 20px 10px 14px 10px;
+    gap: 6px;
+    border-radius: 14px;
+  }
+
+  .processIconBox {
+    width: 40px;
+    height: 40px;
+    margin-top: 2px;
+  }
+
+  .processTitle {
+    font-size: 0.84rem;
+    margin: 2px 0 0 0;
+  }
+
+  .processDesc {
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+
+  /* 3. Features Section: 2-column grid on mobile */
+  .featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .featureCard {
+    padding: 14px 12px;
+    gap: 6px;
+    border-radius: 14px;
+  }
+
+  .featureIconBox {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .featureTitle {
+    font-size: 0.86rem;
+    line-height: 1.25;
+  }
+
+  .featureDesc {
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+
+  /* Pillars Grid: 2-column grid on mobile */
+  .pillarsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .pillarCard {
+    padding: 8px 10px;
+    font-size: 0.76rem;
+    gap: 6px;
+  }
+
+  /* Mission & Vision on mobile */
+  .missionVisionGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .mvCard {
+    padding: 20px 16px;
+    gap: 8px;
+  }
+
+  .mvTitle {
+    font-size: 1.15rem;
+  }
+
+  .mvDesc {
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  /* 4. Bottom CTA: Side by side buttons on mobile */
   .ctaBanner {
-    padding: 44px 16px;
+    padding: 40px 16px;
   }
 
   .ctaHeading {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
   }
 
   .ctaSub {
     font-size: 0.82rem;
     line-height: 1.4;
+    margin-bottom: 20px;
   }
 
   .ctaBtns {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
     width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
   }
 
   .ctaBtnWhite,
   .ctaBtnOutline {
     width: 100%;
-    max-width: 320px;
-    padding: 11px 16px;
-    font-size: 0.86rem;
+    padding: 11px 8px;
+    font-size: 0.78rem;
+    white-space: nowrap;
+    justify-content: center;
+    text-align: center;
   }
 }
+
 
