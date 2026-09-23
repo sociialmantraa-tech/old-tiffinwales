@@ -1380,25 +1380,33 @@
   background: #fff8f2;
   border: 1.5px solid #fed7aa;
   border-radius: 12px;
-  padding: 6px;
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  padding: 4px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 4px;
   margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
 }
 
 .tabButton {
+  flex: 1;
   background: transparent;
   border: none;
   color: #6b7280;
-  font-size: 0.84rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  padding: 10px 22px;
+  font-size: clamp(0.72rem, 2.2vw, 0.84rem);
+  font-weight: 750;
+  letter-spacing: 0.3px;
+  padding: 9px 10px;
   border-radius: 8px;
   cursor: pointer;
   transition: var(--transition-smooth);
   text-transform: uppercase;
+  white-space: nowrap;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .tabButton:hover {
@@ -1609,17 +1617,30 @@
     grid-template-columns: repeat(2, 1fr);
   }
   .relatedGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
   .actionRow {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
   }
   .qtyControl {
-    width: 100%;
-    justify-content: space-between;
+    flex-shrink: 0;
+    min-width: 96px;
+    height: 42px;
+    padding: 2px 4px;
+    box-sizing: border-box;
   }
   .addToCartBtn {
-    width: 100%;
+    flex: 1;
+    min-width: 0;
+    height: 42px;
+    font-size: 0.82rem;
+    padding: 0 10px;
+    box-sizing: border-box;
   }
   .descTh {
     width: 130px;
