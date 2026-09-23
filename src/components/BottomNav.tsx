@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
@@ -8,8 +8,22 @@ import { Home, UtensilsCrossed, BookOpen, User, ShoppingBag } from 'lucide-react
 import styles from './BottomNav.module.css';
 
 export const BottomNav = () => {
-  const pathname = usePathname();
+  const pathname = usePathname() || '';
   const { cartCount, isCartOpen, setIsCartOpen, subscription } = useCart();
+
+  // Close cart drawer whenever user changes page/route
+  useEffect(() => {
+    setIsCartOpen(false);
+  }, [pathname, setIsCartOpen]);
+
+  // Normalize path without trailing slash for exact matching
+  const cleanPath = pathname ? pathname.replace(/\/$/, '') || '/' : '/';
+
+  const isHomeActive = cleanPath === '/' && !isCartOpen;
+  const isTiffinActive = (cleanPath === '/tiffin' || cleanPath.startsWith('/tiffin')) && !isCartOpen;
+  const isMenuActive = (cleanPath === '/menu' || cleanPath.startsWith('/menu')) && !isCartOpen;
+  const isCartActive = isCartOpen || cleanPath === '/cart';
+  const isAccountActive = (cleanPath === '/account' || cleanPath.startsWith('/account')) && !isCartOpen;
 
   return (
     <nav className={styles.bottomNav} aria-label="Mobile Navigation">
@@ -17,7 +31,8 @@ export const BottomNav = () => {
         {/* 1. Home */}
         <Link
           href="/"
-          className={`${styles.navItem} ${pathname === '/' ? styles.active : ''}`}
+          className={`${styles.navItem} ${isHomeActive ? styles.active : ''}`}
+          onClick={() => setIsCartOpen(false)}
         >
           <div className={styles.iconWrapper}>
             <Home size={20} />
@@ -28,7 +43,8 @@ export const BottomNav = () => {
         {/* 2. Tiffin Plans */}
         <Link
           href="/tiffin"
-          className={`${styles.navItem} ${pathname === '/tiffin' ? styles.active : ''}`}
+          className={`${styles.navItem} ${isTiffinActive ? styles.active : ''}`}
+          onClick={() => setIsCartOpen(false)}
         >
           <div className={styles.iconWrapper}>
             <UtensilsCrossed size={20} />
@@ -39,7 +55,8 @@ export const BottomNav = () => {
         {/* 3. Menu */}
         <Link
           href="/menu"
-          className={`${styles.navItem} ${pathname === '/menu' ? styles.active : ''}`}
+          className={`${styles.navItem} ${isMenuActive ? styles.active : ''}`}
+          onClick={() => setIsCartOpen(false)}
         >
           <div className={styles.iconWrapper}>
             <BookOpen size={20} />
@@ -51,7 +68,7 @@ export const BottomNav = () => {
         <button
           type="button"
           onClick={() => setIsCartOpen(!isCartOpen)}
-          className={`${styles.navItem} ${styles.cartItem} ${isCartOpen || pathname === '/cart' ? styles.active : ''}`}
+          className={`${styles.navItem} ${styles.cartItem} ${isCartActive ? styles.active : ''}`}
           aria-label="View Cart"
         >
           <div className={styles.iconWrapper}>
@@ -65,10 +82,11 @@ export const BottomNav = () => {
           <span className={styles.navLabel}>Cart</span>
         </button>
 
-        {/* 5. Account (After Cart) */}
+        {/* 5. Account */}
         <Link
           href="/account"
-          className={`${styles.navItem} ${pathname === '/account' ? styles.active : ''}`}
+          className={`${styles.navItem} ${isAccountActive ? styles.active : ''}`}
+          onClick={() => setIsCartOpen(false)}
         >
           <div className={styles.iconWrapper}>
             <User size={20} />
