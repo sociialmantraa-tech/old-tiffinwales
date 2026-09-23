@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
-import { ShieldCheck, Truck, Store, CreditCard, Banknote, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Truck, Store, CreditCard, CheckCircle2, ArrowRight } from 'lucide-react';
 import { calculateDeliveryFee } from '@/lib/delivery';
+import styles from './checkout.module.css';
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -129,89 +130,77 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div style={{ padding: '40px 0 80px 0', background: 'var(--tw-cream)', minHeight: '85vh' }}>
+    <div className={styles.checkoutPageWrapper}>
       <div className="tw-container">
-        <h1 style={{ fontSize: '2.4rem', fontWeight: 900, marginBottom: '30px' }}>Complete Your Checkout</h1>
+        <h1 className={styles.checkoutHeading}>Complete Your Checkout</h1>
 
-        <form onSubmit={handleSubmit} style={{ display: 'grid', gridTemplateColumns: '1.3fr 0.7fr', gap: '30px' }}>
+        <form onSubmit={handleSubmit} className={styles.checkoutFormGrid}>
           {/* Left Column: Form Details */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            {/* Contact & Personal Info */}
-            <div style={{ background: '#ffffff', border: '1.5px solid var(--tw-border)', borderRadius: 'var(--radius-lg)', padding: '28px' }}>
-              <h2 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '18px' }}>1. Contact Information</h2>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '6px' }}>First Name *</label>
+          <div className={styles.formLeftCol}>
+            {/* 1. Contact & Personal Info */}
+            <div className={styles.formSectionCard}>
+              <h2 className={styles.sectionHeading}>1. Contact Information</h2>
+              
+              <div className={styles.formRow2}>
+                <div className={styles.fieldGroup}>
+                  <label className={styles.fieldLabel}>First Name *</label>
                   <input
                     type="text"
                     name="firstName"
                     required
                     value={formData.firstName}
                     onChange={handleChange}
-                    style={{ width: '100%', height: '46px', padding: '0 14px', border: '1px solid var(--tw-border)', borderRadius: 'var(--radius-sm)', outline: 'none' }}
+                    className={styles.textInput}
                   />
                 </div>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '6px' }}>Last Name *</label>
+                <div className={styles.fieldGroup}>
+                  <label className={styles.fieldLabel}>Last Name *</label>
                   <input
                     type="text"
                     name="lastName"
                     required
                     value={formData.lastName}
                     onChange={handleChange}
-                    style={{ width: '100%', height: '46px', padding: '0 14px', border: '1px solid var(--tw-border)', borderRadius: 'var(--radius-sm)', outline: 'none' }}
+                    className={styles.textInput}
                   />
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '6px' }}>Email Address *</label>
+              <div className={styles.formRow2}>
+                <div className={styles.fieldGroup}>
+                  <label className={styles.fieldLabel}>Email Address *</label>
                   <input
                     type="email"
                     name="email"
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    style={{ width: '100%', height: '46px', padding: '0 14px', border: '1px solid var(--tw-border)', borderRadius: 'var(--radius-sm)', outline: 'none' }}
+                    className={styles.textInput}
                   />
                 </div>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '6px' }}>Phone Number *</label>
+                <div className={styles.fieldGroup}>
+                  <label className={styles.fieldLabel}>Phone Number *</label>
                   <input
                     type="tel"
                     name="phone"
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    style={{ width: '100%', height: '46px', padding: '0 14px', border: '1px solid var(--tw-border)', borderRadius: 'var(--radius-sm)', outline: 'none' }}
+                    className={styles.textInput}
                   />
                 </div>
               </div>
             </div>
 
-            {/* Delivery Details */}
-            <div style={{ background: '#ffffff', border: '1.5px solid var(--tw-border)', borderRadius: 'var(--radius-lg)', padding: '28px' }}>
-              <h2 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '18px' }}>2. Delivery Preference</h2>
+            {/* 2. Delivery Details */}
+            <div className={styles.formSectionCard}>
+              <h2 className={styles.sectionHeading}>2. Delivery Preference</h2>
 
-              <div style={{ display: 'flex', gap: '14px', marginBottom: '20px' }}>
+              <div className={styles.deliveryModeGrid}>
                 <button
                   type="button"
                   onClick={() => setFormData({ ...formData, deliveryMode: 'delivery' })}
-                  style={{
-                    flex: 1,
-                    padding: '14px',
-                    borderRadius: 'var(--radius-md)',
-                    border: formData.deliveryMode === 'delivery' ? '2px solid var(--tw-orange)' : '1.5px solid var(--tw-border)',
-                    background: formData.deliveryMode === 'delivery' ? 'var(--tw-orange-light)' : '#ffffff',
-                    color: formData.deliveryMode === 'delivery' ? 'var(--tw-orange-dark)' : 'var(--tw-dark)',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '8px'
-                  }}
+                  className={`${styles.modeBtn} ${formData.deliveryMode === 'delivery' ? styles.modeBtnActive : ''}`}
                 >
                   <Truck size={18} />
                   <span>Doorstep Delivery</span>
@@ -220,20 +209,7 @@ export default function CheckoutPage() {
                 <button
                   type="button"
                   onClick={() => setFormData({ ...formData, deliveryMode: 'pickup' })}
-                  style={{
-                    flex: 1,
-                    padding: '14px',
-                    borderRadius: 'var(--radius-md)',
-                    border: formData.deliveryMode === 'pickup' ? '2px solid var(--tw-orange)' : '1.5px solid var(--tw-border)',
-                    background: formData.deliveryMode === 'pickup' ? 'var(--tw-orange-light)' : '#ffffff',
-                    color: formData.deliveryMode === 'pickup' ? 'var(--tw-orange-dark)' : 'var(--tw-dark)',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '8px'
-                  }}
+                  className={`${styles.modeBtn} ${formData.deliveryMode === 'pickup' ? styles.modeBtnActive : ''}`}
                 >
                   <Store size={18} />
                   <span>Store Pick-up (1001 Mass Ave)</span>
@@ -242,127 +218,116 @@ export default function CheckoutPage() {
 
               {formData.deliveryMode === 'delivery' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                  <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '6px' }}>Street Address *</label>
+                  <div className={styles.fieldGroup}>
+                    <label className={styles.fieldLabel}>Street Address *</label>
                     <input
                       type="text"
                       name="address"
                       required
                       value={formData.address}
                       onChange={handleChange}
-                      style={{ width: '100%', height: '46px', padding: '0 14px', border: '1px solid var(--tw-border)', borderRadius: 'var(--radius-sm)', outline: 'none' }}
+                      className={styles.textInput}
                     />
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '14px' }}>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '6px' }}>Apt / Suite</label>
+                  <div className={styles.formRow3}>
+                    <div className={styles.fieldGroup}>
+                      <label className={styles.fieldLabel}>Apt / Suite</label>
                       <input
                         type="text"
                         name="apartment"
                         value={formData.apartment}
                         onChange={handleChange}
-                        style={{ width: '100%', height: '46px', padding: '0 14px', border: '1px solid var(--tw-border)', borderRadius: 'var(--radius-sm)', outline: 'none' }}
+                        className={styles.textInput}
                       />
                     </div>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '6px' }}>City *</label>
+                    <div className={styles.fieldGroup}>
+                      <label className={styles.fieldLabel}>City *</label>
                       <input
                         type="text"
                         name="city"
                         required
                         value={formData.city}
                         onChange={handleChange}
-                        style={{ width: '100%', height: '46px', padding: '0 14px', border: '1px solid var(--tw-border)', borderRadius: 'var(--radius-sm)', outline: 'none' }}
+                        className={styles.textInput}
                       />
                     </div>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '6px' }}>Zip Code *</label>
+                    <div className={styles.fieldGroup}>
+                      <label className={styles.fieldLabel}>Zip Code *</label>
                       <input
                         type="text"
                         name="zipCode"
                         required
                         value={formData.zipCode}
                         onChange={handleChange}
-                        style={{ width: '100%', height: '46px', padding: '0 14px', border: '1px solid var(--tw-border)', borderRadius: 'var(--radius-sm)', outline: 'none' }}
+                        className={styles.textInput}
                       />
                     </div>
                   </div>
                 </div>
               )}
 
-              <div style={{ marginTop: '14px' }}>
-                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '6px' }}>Delivery Instructions &amp; Dietary Notes</label>
+              <div style={{ marginTop: '16px' }} className={styles.fieldGroup}>
+                <label className={styles.fieldLabel}>Delivery Instructions &amp; Dietary Notes</label>
                 <textarea
                   name="notes"
                   rows={2}
                   value={formData.notes}
                   onChange={handleChange}
                   placeholder="Gate code, drop-off spot, or allergy notes..."
-                  style={{ width: '100%', padding: '10px 14px', border: '1px solid var(--tw-border)', borderRadius: 'var(--radius-sm)', outline: 'none', resize: 'vertical' }}
+                  className={styles.textArea}
                 />
               </div>
             </div>
 
-            {/* Payment Method */}
-            <div style={{ background: '#ffffff', border: '1.5px solid var(--tw-border)', borderRadius: 'var(--radius-lg)', padding: '28px' }}>
-              <h2 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '18px' }}>3. Payment Method</h2>
+            {/* 3. Payment Method */}
+            <div className={styles.formSectionCard}>
+              <h2 className={styles.sectionHeading}>3. Payment Method</h2>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '14px',
-                    padding: '18px 20px',
-                    borderRadius: 'var(--radius-md)',
-                    border: '2px solid var(--tw-orange)',
-                    background: 'var(--tw-orange-light)',
-                  }}
-                >
-                  <CreditCard size={22} style={{ color: 'var(--tw-orange)' }} />
-                  <div style={{ flex: 1 }}>
-                    <strong style={{ display: 'block', color: '#111827', fontSize: '0.95rem' }}>Credit / Debit Card (Stripe Checkout)</strong>
-                    <span style={{ fontSize: '0.8rem', color: '#4b5563' }}>Visa, Mastercard, Amex, Apple Pay &amp; Google Pay</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#16a34a', fontWeight: 700, background: '#f0fdf4', padding: '4px 10px', borderRadius: 'var(--radius-full)', border: '1px solid #bbf7d0' }}>
-                    <ShieldCheck size={14} />
-                    <span>256-Bit Encrypted</span>
-                  </div>
+              <div className={styles.paymentCard}>
+                <CreditCard size={22} style={{ color: 'var(--tw-orange)' }} />
+                <div className={styles.paymentInfo}>
+                  <strong className={styles.paymentTitle}>Credit / Debit Card (Stripe SSL)</strong>
+                  <span className={styles.paymentSubtitle}>Visa, Mastercard, Amex, Apple Pay &amp; Google Pay</span>
+                </div>
+                <div className={styles.sslBadge}>
+                  <ShieldCheck size={14} />
+                  <span>256-Bit Encrypted</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right Column: Order Summary & Place Order */}
-          <div>
-            <div style={{ background: '#ffffff', border: '1.5px solid var(--tw-border)', borderRadius: 'var(--radius-lg)', padding: '28px', position: 'sticky', top: '100px' }}>
-              <h2 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '20px', borderBottom: '1px solid var(--tw-border-light)', paddingBottom: '14px' }}>
+          <div className={styles.summaryCol}>
+            <div className={styles.orderSummaryCard}>
+              <h2 className={styles.summaryHeader}>
                 Order Summary
               </h2>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '20px', maxHeight: '300px', overflowY: 'auto' }}>
+              <div className={styles.cartItemsList}>
                 {cart.map((item) => (
-                  <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.9rem' }}>
+                  <div key={item.id} className={styles.cartItemSummaryRow}>
                     <div>
-                      <strong style={{ display: 'block' }}>{item.quantity}x {item.name}</strong>
+                      <strong style={{ display: 'block', color: '#111827' }}>{item.quantity}x {item.name}</strong>
                       {item.customization?.planDuration && (
                         <span style={{ fontSize: '0.75rem', color: 'var(--tw-orange)', fontWeight: 700 }}>
                           {item.customization.planDuration} Days Subscription
                         </span>
                       )}
                     </div>
-                    <span style={{ fontWeight: 800 }}>${(item.price * item.quantity).toFixed(2)}</span>
+                    <span style={{ fontWeight: 800, color: '#111827' }}>${(item.price * item.quantity).toFixed(2)}</span>
                   </div>
                 ))}
               </div>
 
-              <div style={{ borderTop: '1px solid var(--tw-border-light)', paddingTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#4b5563' }}>
+              <div className={styles.calculationRows}>
+                <div className={styles.calcRow}>
                   <span>Subtotal</span>
-                  <strong>${cartTotal.toFixed(2)}</strong>
+                  <strong style={{ color: '#111827' }}>${cartTotal.toFixed(2)}</strong>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#4b5563', alignItems: 'flex-start' }}>
+
+                <div className={styles.calcRow}>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span>Delivery Fee</span>
                     {formData.deliveryMode === 'delivery' && deliveryInfo.totalDeliveryDays > 0 && (
@@ -374,14 +339,16 @@ export default function CheckoutPage() {
                   {formData.deliveryMode === 'pickup' ? (
                     <strong style={{ color: 'var(--tw-veg)' }}>FREE (Store Pickup)</strong>
                   ) : (
-                    <strong style={{ color: 'var(--tw-dark)' }}>${deliveryFee.toFixed(2)}</strong>
+                    <strong style={{ color: '#111827' }}>${deliveryFee.toFixed(2)}</strong>
                   )}
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#4b5563' }}>
+
+                <div className={styles.calcRow}>
                   <span>Estimated Tax (6.25%)</span>
-                  <strong>${estimatedTax.toFixed(2)}</strong>
+                  <strong style={{ color: '#111827' }}>${estimatedTax.toFixed(2)}</strong>
                 </div>
-                <div style={{ borderTop: '1.5px solid var(--tw-border)', paddingTop: '14px', display: 'flex', justifyContent: 'space-between', fontSize: '1.3rem', fontWeight: 900, color: 'var(--tw-dark)' }}>
+
+                <div className={styles.calcTotalRow}>
                   <span>Total</span>
                   <span>${grandTotal.toFixed(2)}</span>
                 </div>
@@ -390,8 +357,7 @@ export default function CheckoutPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="btn-primary"
-                style={{ width: '100%', height: '54px', fontSize: '1.05rem', marginBottom: '16px' }}
+                className={`btn-primary ${styles.submitBtnFull}`}
               >
                 {isSubmitting ? (
                   <span>Activating Subscription...</span>
@@ -403,7 +369,7 @@ export default function CheckoutPage() {
                 )}
               </button>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.78rem', color: '#6b7280', background: 'var(--tw-cream)', padding: '10px', borderRadius: 'var(--radius-sm)' }}>
+              <div className={styles.guaranteeBox}>
                 <ShieldCheck size={18} style={{ color: 'var(--tw-veg)', flexShrink: 0 }} />
                 <span>Zero Risk • Automatic Remaining Days Tracking</span>
               </div>
