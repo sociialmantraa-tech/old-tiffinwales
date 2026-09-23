@@ -14,10 +14,10 @@ import {
   Flame, 
   Smile, 
   Award,
-  Star,
   Compass,
   Target
 } from 'lucide-react';
+import { TestimonialsSection } from '@/components/TestimonialsSection';
 import styles from './about.module.css';
 
 export const metadata = {
@@ -112,27 +112,6 @@ export default function AboutPage() {
     { number: '10,000+', label: 'Fresh Meals Delivered' },
     { number: '7 Days', label: 'Continuous Weekly Service' },
     { number: '18+', label: 'Massachusetts Cities Served' }
-  ];
-
-  const testimonials = [
-    {
-      quote: 'Living in Cambridge away from India, finding authentic home-style dal and soft rotis was tough. TiffinWales has been a lifesaver throughout my graduate studies at MIT!',
-      author: 'Rahul S.',
-      role: 'MIT Graduate Student',
-      avatar: 'R'
-    },
-    {
-      quote: 'The butter chicken and yellow dal tadka taste exactly like mom’s home cooking. Not oily like restaurants, perfectly spiced, and always on time at our office.',
-      author: 'Priya K.',
-      role: 'Software Engineer in Kendall Sq',
-      avatar: 'P'
-    },
-    {
-      quote: 'Flexible subscriptions and pure vegetarian options are amazing. Being able to skip days when traveling with zero credit loss makes it the best service in Greater Boston.',
-      author: 'Vikram M.',
-      role: 'Brookline Resident',
-      avatar: 'V'
-    }
   ];
 
   return (
@@ -259,7 +238,7 @@ export default function AboutPage() {
             <span className={styles.tagLabel}>THE TIFFINWALES DIFFERENCE</span>
             <h2 className="section-title">Why Families, Students &amp; Professionals Choose Us</h2>
             <p className="section-subtitle">
-              We cook each meal with the same care and respect as our own family's kitchen.
+              We cook each meal with the same care and respect as our own family&apos;s kitchen.
             </p>
           </div>
 
@@ -363,42 +342,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 8. CUSTOMER TESTIMONIALS */}
-      <section className={styles.sectionBlock}>
-        <div className="tw-container">
-          <div className="section-header">
-            <span className={styles.tagLabel}>CUSTOMER LOVE</span>
-            <h2 className="section-title">What Our Customers Say</h2>
-            <p className="section-subtitle">
-              Loved by university students, busy engineers, and local families across Boston &amp; Cambridge.
-            </p>
-          </div>
-
-          <div className={styles.testimonialsGrid}>
-            {testimonials.map((item, idx) => (
-              <div key={idx} className={styles.testimonialCard}>
-                <div>
-                  <div className={styles.starsRow}>
-                    <Star size={18} fill="#f59e0b" />
-                    <Star size={18} fill="#f59e0b" />
-                    <Star size={18} fill="#f59e0b" />
-                    <Star size={18} fill="#f59e0b" />
-                    <Star size={18} fill="#f59e0b" />
-                  </div>
-                  <p className={styles.quoteText}>&ldquo;{item.quote}&rdquo;</p>
-                </div>
-                <div className={styles.authorMeta}>
-                  <div className={styles.authorAvatar}>{item.avatar}</div>
-                  <div>
-                    <h4 className={styles.authorName}>{item.author}</h4>
-                    <span className={styles.authorRole}>{item.role}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* 8. CUSTOMER TESTIMONIALS (Same 1-Line Component as Home Page) */}
+      <TestimonialsSection />
 
       {/* 9. BOTTOM CTA BANNER */}
       <section className={styles.ctaBanner}>
@@ -408,11 +353,11 @@ export default function AboutPage() {
             Fresh Indian meals delivered daily across Boston, Cambridge, and Massachusetts.
           </p>
           <div className={styles.ctaBtns}>
-            <Link href="/tiffin" className="btn-primary" style={{ background: '#ffffff', color: 'var(--tw-orange)' }}>
+            <Link href="/tiffin" className={styles.ctaBtnWhite}>
               <span>Order Tiffin Plan</span>
               <ArrowRight size={18} />
             </Link>
-            <Link href="/menu" className="btn-outline" style={{ borderColor: '#ffffff', color: '#ffffff' }}>
+            <Link href="/menu" className={styles.ctaBtnOutline}>
               <span>View A La Carte Menu</span>
             </Link>
           </div>

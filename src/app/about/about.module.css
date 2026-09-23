@@ -468,30 +468,79 @@
 /* Bottom CTA Banner */
 .ctaBanner {
   background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 60%), linear-gradient(135deg, #d9480f 0%, #ff6413 100%);
-  padding: 70px 20px;
+  padding: 60px 20px;
   text-align: center;
   color: #ffffff;
 }
 
 .ctaHeading {
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
   font-weight: 900;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   color: #ffffff;
+  line-height: 1.25;
+  word-break: break-word;
 }
 
 .ctaSub {
-  font-size: 1.15rem;
-  max-width: 600px;
-  margin: 0 auto 28px auto;
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  max-width: 750px;
+  margin: 0 auto 24px auto;
   opacity: 0.95;
+  line-height: 1.45;
+  word-break: break-word;
 }
 
 .ctaBtns {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  align-items: center;
+  gap: 14px;
   flex-wrap: wrap;
+}
+
+.ctaBtnWhite {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: #ffffff;
+  color: var(--tw-orange, #ff6413);
+  border-radius: var(--radius-full, 9999px);
+  font-weight: 800;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  border: 2px solid #ffffff;
+}
+
+.ctaBtnWhite:hover {
+  background: #fff8f3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.ctaBtnOutline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 26px;
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: var(--radius-full, 9999px);
+  font-weight: 800;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.ctaBtnOutline:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 960px) {
@@ -516,10 +565,47 @@
 }
 
 @media (max-width: 600px) {
+  .sectionBlock,
+  .sectionBlockAlt {
+    padding: 44px 0;
+  }
+
+  .storyTitle {
+    font-size: 1.45rem;
+  }
+
   .citiesGrid {
     grid-template-columns: 1fr;
   }
   .processGrid {
     grid-template-columns: 1fr;
   }
+
+  .ctaBanner {
+    padding: 44px 16px;
+  }
+
+  .ctaHeading {
+    font-size: 1.4rem;
+  }
+
+  .ctaSub {
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+
+  .ctaBtns {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .ctaBtnWhite,
+  .ctaBtnOutline {
+    width: 100%;
+    max-width: 320px;
+    padding: 11px 16px;
+    font-size: 0.86rem;
+  }
 }
+
