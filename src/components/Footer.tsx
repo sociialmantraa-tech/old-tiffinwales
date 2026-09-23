@@ -194,7 +194,7 @@ export const Footer = () => {
       <div className={styles.bottomBar}>
         <div className={`tw-container ${styles.bottomContainer}`}>
           <div className={styles.copyrightText}>
-            © {new Date().getFullYear()} <strong>Tiffin Wales</strong>. All rights reserved. Handcrafted with traditional Indian spices.
+            © {new Date().getFullYear()} <strong>Tiffin Wales</strong>. All rights reserved.
           </div>
 
           <div className={styles.legalLinks}>

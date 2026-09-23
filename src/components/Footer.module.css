@@ -358,11 +358,27 @@
   }
 }
 
-@media (max-width: 580px) {
-  .perksGrid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+@media (max-width: 768px) {
+  .legalLinks {
+    display: none !important;
   }
+  .copyrightText {
+    font-size: 0.76rem;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .bottomBar {
+    padding: 12px 0 20px 0;
+  }
+  .bottomContainer {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 580px) {
   .footerContainer {
     grid-template-columns: 1fr 1fr;
     gap: 28px 16px;
@@ -392,9 +408,7 @@
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    gap: 12px;
-  }
-  .legalLinks {
-    justify-content: center;
+    gap: 6px;
   }
 }
+
