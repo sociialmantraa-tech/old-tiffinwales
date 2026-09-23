@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Truck, MapPin, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
+import { Truck, MapPin, CheckCircle2, ShieldCheck, Sparkles, ArrowRight, Star, Flame } from 'lucide-react';
 import { SERVICE_ZIP_CODES } from '@/lib/fallback-data';
 import styles from './HeroSection.module.css';
 
@@ -55,7 +55,7 @@ export const HeroSection = () => {
       />
 
       <div className={styles.heroGrid}>
-        {/* Left: Original Text & CTAs */}
+        {/* Left Column: Text, CTAs & Delivery Check */}
         <div className={styles.leftCol}>
           <div className={styles.badgePill}>
             <Sparkles size={14} className={styles.badgePillIcon} />
@@ -63,42 +63,41 @@ export const HeroSection = () => {
           </div>
 
           <h1 className={styles.heroTitle}>
-            <span className={styles.titleLine}>Indian Tiffin Service in Cambridge</span>
-            <span className={styles.titleLine}>Boston, Massachusetts</span>
+            <span className={styles.titleLine}>Indian Tiffin Service in</span>
+            <span className={`${styles.titleLine} ${styles.highlightCity}`}>Cambridge &amp; Boston</span>
           </h1>
 
           <p className={styles.heroSubtitle}>
-            Fresh Homemade Indian Meals Delivered Daily.
+            Fresh Homemade Indian Meals Delivered Daily across Harvard, MIT, Cambridge &amp; Boston.
           </p>
 
+          {/* Action Buttons */}
           <div className={styles.ctaRow}>
             <Link href="/tiffin" className={styles.heroBtnPrimary}>
               <span>Order Now</span>
+              <ArrowRight size={16} />
             </Link>
             <Link href="/#weekly-menu" className={styles.heroBtnSecondary}>
               <span>Explore Weekly Menu</span>
             </Link>
           </div>
 
-          {/* Trust Row */}
+          {/* Social Proof Bar */}
           <div className={styles.trustRow}>
-            <img
-              src="https://tiffinwales.com/wp-content/uploads/2026/06/image-removebg-preview.png"
-              alt="500+ Happy Customers"
-              className={styles.trustImg}
-            />
+            <div className={styles.starsRow}>
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={14} fill="#ff6413" color="#ff6413" />
+              ))}
+            </div>
             <div className={styles.trustText}>
-              <span className={styles.desktopTrustText}>
-                <strong>500+ Happy Customers</strong> | Daily Delivery | Fresh Homemade Meals | Veg &amp; Non-Veg Options
-              </span>
-              <span className={styles.mobileTrustText}>
-                <strong>500+ Happy Customers</strong> • Daily Fresh Meals
+              <span>
+                <strong>4.9/5 Rating</strong> • 500+ Happy Diners in Cambridge &amp; Boston
               </span>
             </div>
           </div>
 
           {/* Delivery Zone Checker */}
-          <div className={styles.mobileZipChecker}>
+          <div className={styles.zipCheckerCard}>
             <div className={styles.zipTitle}>
               <Truck size={15} />
               <span>Check Delivery to Your Zip Code:</span>
@@ -132,19 +131,34 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        {/* Right: Uncropped Food Graphic Banner with Tiffin Box & Official Logo */}
+        {/* Right Column: Hero Food Banner Card with Floating Glass Badges */}
         <div className={styles.rightCol}>
-          <img
-            src="/hero-tiffin-official.webp"
-            alt="Tiffin Wales Authentic Indian Tiffin Box Meal Service Cambridge Boston"
-            className={styles.heroFoodBannerImg}
-          />
+          <div className={styles.heroImageCard}>
+            <img
+              src="/hero-tiffin-official.webp"
+              alt="Tiffin Wales Authentic Indian Tiffin Box Meal Service Cambridge Boston"
+              className={styles.heroFoodBannerImg}
+            />
+
+            {/* Floating Glassmorphism Badges */}
+            <div className={styles.floatingBadgeTop}>
+              <span className={styles.badgeEmoji}>⭐</span>
+              <div className={styles.badgeInfo}>
+                <strong>4.9 / 5 Rating</strong>
+                <span>Cambridge &amp; Boston</span>
+              </div>
+            </div>
+
+            <div className={styles.floatingBadgeBottom}>
+              <span className={styles.badgeEmoji}>🔥</span>
+              <div className={styles.badgeInfo}>
+                <strong>Fresh &amp; Hot Daily</strong>
+                <span>Zero Preservatives</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
-
-
-
-
