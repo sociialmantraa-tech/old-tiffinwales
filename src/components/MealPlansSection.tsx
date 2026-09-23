@@ -11,6 +11,7 @@ interface MealPlansSectionProps {
   hideSubDetails?: boolean;
   initialDisplayCount?: number;
   pageSize?: number;
+  showAll?: boolean;
 }
 
 export const MealPlansSection: React.FC<MealPlansSectionProps> = ({
@@ -18,13 +19,14 @@ export const MealPlansSection: React.FC<MealPlansSectionProps> = ({
   hideSubDetails = false,
   initialDisplayCount = 3,
   pageSize = 3,
+  showAll = false,
 }) => {
   const [activeFilter, setActiveFilter] = useState<'all' | 'veg' | 'non-veg' | 'mix' | 'meal-plans' | 'daily'>('all');
-  const [visibleCount, setVisibleCount] = useState<number>(initialDisplayCount);
+  const [visibleCount, setVisibleCount] = useState<number>(showAll ? 999 : initialDisplayCount);
 
   const handleFilterChange = (filter: 'all' | 'veg' | 'non-veg' | 'mix' | 'meal-plans' | 'daily') => {
     setActiveFilter(filter);
-    setVisibleCount(initialDisplayCount);
+    setVisibleCount(showAll ? 999 : initialDisplayCount);
   };
 
   const filteredPlans = MEAL_PLAN_TIERS.filter((plan) => {
@@ -36,8 +38,8 @@ export const MealPlansSection: React.FC<MealPlansSectionProps> = ({
     return true;
   });
 
-  const displayedPlans = filteredPlans.slice(0, visibleCount);
-  const hasMore = visibleCount < filteredPlans.length;
+  const displayedPlans = showAll ? filteredPlans : filteredPlans.slice(0, visibleCount);
+  const hasMore = !showAll && visibleCount < filteredPlans.length;
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + pageSize);

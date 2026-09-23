@@ -1,8 +1,6 @@
 import React from 'react';
 import { MealPlansSection } from '@/components/MealPlansSection';
-import { WeeklyMenuSection } from '@/components/WeeklyMenuSection';
-import { HowItWorks } from '@/components/HowItWorks';
-import { Sparkles, HelpCircle, Check, ArrowRight } from 'lucide-react';
+import { Sparkles, HelpCircle } from 'lucide-react';
 
 export const metadata = {
   title: 'Indian Tiffin Meal Plans | 5 Days & Monthly Subscriptions | Tiffin Wales Boston & Cambridge',
@@ -56,8 +54,8 @@ export default function TiffinPage() {
         </div>
       </div>
 
-      {/* Primary Plans Section (Header hidden to prevent duplicate titles) */}
-      <MealPlansSection hideHeader={true} hideSubDetails={true} />
+      {/* Primary Plans Section: Displays ALL meal plans directly without Read More/Load More */}
+      <MealPlansSection hideHeader={true} hideSubDetails={true} showAll={true} />
 
       {/* Comparison Table Section */}
       <section className="tw-section" style={{ background: 'linear-gradient(180deg, #fef4eb 0%, #fae6d3 100%)', borderTop: '1.5px solid #f0e1d2', borderBottom: '1.5px solid #f0e1d2' }}>
@@ -128,12 +126,6 @@ export default function TiffinPage() {
           </div>
         </div>
       </section>
-
-      {/* Rotating Menu */}
-      <WeeklyMenuSection />
-
-      {/* How it works */}
-      <HowItWorks />
 
       {/* FAQs */}
       <section className="tw-section" style={{ background: 'linear-gradient(180deg, #fffaf5 0%, #fff2e6 100%)', borderTop: '1.5px solid #f0e1d2' }}>
