@@ -198,11 +198,11 @@ const NON_VEG_DISHES = [
 ];
 
 const SUBSCRIPTION_PLANS = [
-  { id: '2-days-plan', label: '2 Days Meal Plan', days: 2, price: 29.98, subtext: '2 Daily Scheduled Deliveries' },
-  { id: '3-days-plan', label: '3 Days Meal Plan', days: 3, price: 44.97, subtext: '3 Daily Scheduled Deliveries' },
-  { id: '4-days-plan', label: '4 Days Meal Plan', days: 4, price: 59.96, subtext: '4 Daily Scheduled Deliveries' },
-  { id: '5-days-plan', label: '5 Days Meal Plan', days: 5, price: 74.95, subtext: '5 Daily Scheduled Deliveries' },
-  { id: '7-days-plan', label: '7 Days Meal Plan', days: 7, price: 104.93, subtext: '7 Daily Scheduled Deliveries' },
+  { id: '2-days-plan', label: '2-Day Plan', days: 2, price: 29.98, subtext: '2 Daily Scheduled Deliveries' },
+  { id: '3-days-plan', label: '3-Day Plan', days: 3, price: 44.97, subtext: '3 Daily Scheduled Deliveries' },
+  { id: '4-days-plan', label: '4-Day Plan', days: 4, price: 59.96, subtext: '4 Daily Scheduled Deliveries' },
+  { id: '5-days-plan', label: '5-Day Plan', days: 5, price: 74.95, subtext: '5 Daily Scheduled Deliveries' },
+  { id: '7-days-plan', label: '7-Day Plan', days: 7, price: 104.93, subtext: '7 Daily Scheduled Deliveries' },
 ];
 
 const BREAD_OPTIONS = ['Fresh Roti', 'Naan', 'Tandoori Roti', 'Paratha'];
