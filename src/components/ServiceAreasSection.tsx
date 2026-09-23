@@ -71,7 +71,7 @@ export const ServiceAreasSection = () => {
               <span className={styles.pickupTag}>Store Pick-up Available</span>
               <h3 className={styles.pickupAddress}>1001 Massachusetts Ave, Cambridge, MA 02138</h3>
               <p className={styles.pickupHours}>
-                <Clock size={16} /> Monday – Sunday: 11:30 AM – 9:30 PM (Pickup &amp; Delivery)
+                <Clock size={16} /> Open: Monday to Sunday • Morning: 11:00 AM – 03:00 PM | Evening: 5:00 PM – 10:00 PM
               </p>
             </div>
           </div>

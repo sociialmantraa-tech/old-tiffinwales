@@ -184,8 +184,9 @@ export const Footer = () => {
                 <Clock size={16} />
               </div>
               <div>
-                <strong>Operating Hours</strong>
-                <p>Mon – Sun: 11:30 AM – 9:30 PM</p>
+                <strong>Open: Monday to Sunday</strong>
+                <p style={{ margin: '2px 0 0 0' }}>Morning 11:00 AM – 03:00 PM</p>
+                <p style={{ margin: '1px 0 0 0' }}>Evening 5:00 PM – 10:00 PM</p>
               </div>
             </div>
 

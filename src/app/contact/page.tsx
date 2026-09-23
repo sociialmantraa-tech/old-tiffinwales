@@ -158,8 +158,9 @@ export default function ContactPage() {
                 <div className={styles.infoItem}>
                   <Clock size={20} className={styles.infoIcon} />
                   <div>
-                    <strong>Hours of Operation:</strong>
-                    <span>Daily: 11:30 AM – 9:30 PM (Pickup &amp; Delivery)</span>
+                    <strong>Open: Monday to Sunday</strong>
+                    <span style={{ display: 'block', fontSize: '0.88rem' }}>Morning 11:00 AM – 03:00 PM</span>
+                    <span style={{ display: 'block', fontSize: '0.88rem' }}>Evening 5:00 PM – 10:00 PM</span>
                   </div>
                 </div>
               </div>
