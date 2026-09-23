@@ -396,6 +396,14 @@
   justify-content: flex-end;
 }
 
+.heroPicture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
 .heroFoodBannerImg {
   display: block;
   width: 100%;
@@ -568,9 +576,10 @@
   }
 
   .heroFoodBannerImg {
-    max-height: 240px;
+    max-height: 230px;
     width: 100%;
-    object-fit: contain;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
     object-position: center;
     border-radius: 14px;
     filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.12));

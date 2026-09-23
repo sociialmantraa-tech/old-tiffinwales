@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Truck, MapPin, CheckCircle2, ShieldCheck, Sparkles, ArrowRight, Star, Flame } from 'lucide-react';
+import { Truck, MapPin, CheckCircle2, ShieldCheck, ArrowRight, Star } from 'lucide-react';
 import { SERVICE_ZIP_CODES } from '@/lib/fallback-data';
 import styles from './HeroSection.module.css';
 
@@ -57,11 +57,6 @@ export const HeroSection = () => {
       <div className={styles.heroGrid}>
         {/* Left Column: Text, CTAs & Delivery Check */}
         <div className={styles.leftCol}>
-          <div className={styles.badgePill}>
-            <Sparkles size={14} className={styles.badgePillIcon} />
-            <span>Cambridge &amp; Boston&apos;s #1 Indian Tiffin Service</span>
-          </div>
-
           <h1 className={styles.heroTitle}>
             <span className={styles.titleLine}>Indian Tiffin Service in</span>
             <span className={`${styles.titleLine} ${styles.highlightCity}`}>Cambridge &amp; Boston</span>
@@ -134,11 +129,14 @@ export const HeroSection = () => {
         {/* Right Column: Hero Food Banner Card with Floating Glass Badges */}
         <div className={styles.rightCol}>
           <div className={styles.heroImageCard}>
-            <img
-              src="/hero-tiffin-official.webp"
-              alt="Tiffin Wales Authentic Indian Tiffin Box Meal Service Cambridge Boston"
-              className={styles.heroFoodBannerImg}
-            />
+            <picture className={styles.heroPicture}>
+              <source media="(max-width: 768px)" srcSet="/hero-mobile-tiffin.jpg" />
+              <img
+                src="/hero-tiffin-official.webp"
+                alt="Tiffin Wales Authentic Indian Tiffin Box Meal Service Cambridge Boston"
+                className={styles.heroFoodBannerImg}
+              />
+            </picture>
 
             {/* Floating Glassmorphism Badges */}
             <div className={styles.floatingBadgeTop}>
