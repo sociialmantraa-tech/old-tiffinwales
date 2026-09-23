@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
-import { ShieldCheck, Truck, Store, CreditCard, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Truck, Store, CreditCard, CheckCircle2, ArrowRight, Lock } from 'lucide-react';
 import { calculateDeliveryFee } from '@/lib/delivery';
 import styles from './checkout.module.css';
 
@@ -26,11 +26,33 @@ export default function CheckoutPage() {
     zipCode: '02138',
     deliveryMode: initialMode as 'delivery' | 'pickup',
     paymentMethod: 'card',
+    cardName: 'Tiffin Member',
+    cardNumber: '4532 8492 1092 8491',
+    cardExpiry: '08/28',
+    cardCvc: '482',
     notes: 'Please buzz Apt 4B or leave at front lobby.'
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
+
+  // Format card number with spaces every 4 digits
+  const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let val = e.target.value.replace(/\D/g, '');
+    if (val.length > 16) val = val.slice(0, 16);
+    const formatted = val.match(/.{1,4}/g)?.join(' ') || val;
+    setFormData(prev => ({ ...prev, cardNumber: formatted }));
+  };
+
+  // Format expiry MM/YY
+  const handleExpiryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let val = e.target.value.replace(/\D/g, '');
+    if (val.length > 4) val = val.slice(0, 4);
+    if (val.length >= 3) {
+      val = `${val.slice(0, 2)}/${val.slice(2)}`;
+    }
+    setFormData(prev => ({ ...prev, cardExpiry: val }));
+  };
 
   // If delivery is selected, force paymentMethod to card
   useEffect(() => {
@@ -284,15 +306,93 @@ export default function CheckoutPage() {
             <div className={styles.formSectionCard}>
               <h2 className={styles.sectionHeading}>3. Payment Method</h2>
 
-              <div className={styles.paymentCard}>
-                <CreditCard size={22} style={{ color: 'var(--tw-orange)' }} />
-                <div className={styles.paymentInfo}>
-                  <strong className={styles.paymentTitle}>Credit / Debit Card (Stripe SSL)</strong>
-                  <span className={styles.paymentSubtitle}>Visa, Mastercard, Amex, Apple Pay &amp; Google Pay</span>
+              <div className={styles.paymentMethodSelector}>
+                <div className={styles.paymentHeaderBox}>
+                  <div className={styles.paymentLeft}>
+                    <CreditCard size={22} style={{ color: 'var(--tw-orange)' }} />
+                    <div>
+                      <strong style={{ display: 'block', color: '#111827', fontSize: '0.95rem', fontWeight: 800 }}>
+                        Credit / Debit Card (Secure SSL Gateway)
+                      </strong>
+                      <span style={{ fontSize: '0.78rem', color: '#6b7280' }}>
+                        Encrypted &amp; Processed directly via WordPress Gateway
+                      </span>
+                    </div>
+                  </div>
+                  <div className={styles.cardBrandsRow}>
+                    <span className={styles.brandBadge}>VISA</span>
+                    <span className={styles.brandBadge}>MC</span>
+                    <span className={styles.brandBadge}>AMEX</span>
+                    <span className={styles.brandBadge}>DISC</span>
+                  </div>
                 </div>
-                <div className={styles.sslBadge}>
-                  <ShieldCheck size={14} />
-                  <span>256-Bit Encrypted</span>
+
+                {/* Real Card Input Fields Container */}
+                <div className={styles.cardFieldsContainer}>
+                  <div className={styles.fieldGroup}>
+                    <label className={styles.fieldLabel}>Cardholder Name *</label>
+                    <input
+                      type="text"
+                      name="cardName"
+                      required
+                      value={formData.cardName}
+                      onChange={handleChange}
+                      placeholder="Name as it appears on card"
+                      className={styles.textInput}
+                    />
+                  </div>
+
+                  <div className={styles.fieldGroup}>
+                    <label className={styles.fieldLabel}>Card Number *</label>
+                    <div className={styles.cardNumberWrap}>
+                      <CreditCard size={18} className={styles.cardInputIcon} />
+                      <input
+                        type="text"
+                        name="cardNumber"
+                        required
+                        maxLength={19}
+                        value={formData.cardNumber}
+                        onChange={handleCardNumberChange}
+                        placeholder="4532 •••• •••• ••••"
+                        className={styles.textInputWithIcon}
+                      />
+                      <Lock size={15} className={styles.cardLockIcon} />
+                    </div>
+                  </div>
+
+                  <div className={styles.formRow2} style={{ marginBottom: 0 }}>
+                    <div className={styles.fieldGroup}>
+                      <label className={styles.fieldLabel}>Expiration Date *</label>
+                      <input
+                        type="text"
+                        name="cardExpiry"
+                        required
+                        maxLength={5}
+                        value={formData.cardExpiry}
+                        onChange={handleExpiryChange}
+                        placeholder="MM / YY"
+                        className={styles.textInput}
+                      />
+                    </div>
+                    <div className={styles.fieldGroup}>
+                      <label className={styles.fieldLabel}>Security Code (CVV / CVC) *</label>
+                      <input
+                        type="password"
+                        name="cardCvc"
+                        required
+                        maxLength={4}
+                        value={formData.cardCvc}
+                        onChange={handleChange}
+                        placeholder="CVC (3 or 4 digits)"
+                        className={styles.textInput}
+                      />
+                    </div>
+                  </div>
+
+                  <div className={styles.sslBadge} style={{ alignSelf: 'flex-start', marginTop: '4px' }}>
+                    <ShieldCheck size={14} />
+                    <span>256-Bit SSL Encrypted &amp; PCI-DSS Level 1 Certified</span>
+                  </div>
                 </div>
               </div>
             </div>
