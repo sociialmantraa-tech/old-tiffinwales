@@ -4,7 +4,7 @@ import { MenuFilterSection } from '@/components/MenuFilterSection';
 import { Sparkles, Utensils } from 'lucide-react';
 
 export const metadata = {
-  title: 'Order Extras & A La Carte Indian Dishes | Tiffin Wales Cambridge',
+  title: 'Daily Indian Food Menu & Extras | Tiffin Wales Cambridge & Boston',
   description: 'Order authentic Butter Chicken, Dal Makhani, Shahi Paneer, Tandoori Naan, Rotis, Crispy Samosas, and Mango Lassi in Cambridge & Boston.',
 };
 

@@ -143,7 +143,7 @@ export const Footer = () => {
             <li>
               <Link href="/menu">
                 <ChevronRight size={13} className={styles.linkArrow} />
-                <span>A La Carte Menu</span>
+                <span>Daily Food Menu</span>
               </Link>
             </li>
             <li>

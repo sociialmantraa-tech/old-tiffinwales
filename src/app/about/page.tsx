@@ -133,7 +133,7 @@ export default function AboutPage() {
                 <ArrowRight size={16} />
               </Link>
               <Link href="/menu" className="btn-outline">
-                <span>View A La Carte Menu</span>
+                <span>View Full Menu</span>
               </Link>
             </div>
           </div>
@@ -334,7 +334,7 @@ export default function AboutPage() {
               <ArrowRight size={18} />
             </Link>
             <Link href="/menu" className={styles.ctaBtnOutline}>
-              <span>View A La Carte Menu</span>
+              <span>View Full Menu</span>
             </Link>
           </div>
         </div>
