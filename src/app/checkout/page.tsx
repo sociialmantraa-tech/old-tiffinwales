@@ -3,7 +3,20 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
-import { ShieldCheck, Truck, Store, CreditCard, CheckCircle2, ArrowRight, Lock } from 'lucide-react';
+import { 
+  ShieldCheck, 
+  Truck, 
+  Store, 
+  CreditCard, 
+  CheckCircle2, 
+  ArrowRight, 
+  Lock, 
+  Check, 
+  User, 
+  MapPin, 
+  Sparkles,
+  ShoppingBag
+} from 'lucide-react';
 import { calculateDeliveryFee } from '@/lib/delivery';
 import styles from './checkout.module.css';
 
@@ -106,7 +119,7 @@ export default function CheckoutPage() {
         total: grandTotal,
         deliveryAddress: `${formData.address}${formData.apartment ? ` ${formData.apartment}` : ''}, ${formData.city}, ${formData.state} ${formData.zipCode}`,
         deliveryTiming: formData.deliveryMode === 'pickup' ? 'Free In-Store Pickup (1001 Mass Ave)' : 'Scheduled Daily Delivery',
-        paymentMethod: 'Paid via Card (Stripe SSL)'
+        paymentMethod: 'Paid via Card (WordPress SSL)'
       };
       addOrder(newOrder);
 
@@ -142,8 +155,9 @@ export default function CheckoutPage() {
   if (cart.length === 0) {
     return (
       <div className="tw-container" style={{ padding: '80px 20px', textAlign: 'center' }}>
+        <div style={{ fontSize: '4rem', marginBottom: '16px' }}>🍱</div>
         <h1 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '12px' }}>Your Cart is Empty</h1>
-        <p style={{ color: 'var(--tw-muted)', marginBottom: '20px' }}>Please add meals to your cart before proceeding to checkout.</p>
+        <p style={{ color: 'var(--tw-muted)', marginBottom: '24px' }}>Please add meals to your cart before proceeding to checkout.</p>
         <button className="btn-primary" onClick={() => router.push('/tiffin')}>
           Browse Meal Plans
         </button>
@@ -153,15 +167,44 @@ export default function CheckoutPage() {
 
   return (
     <div className={styles.checkoutPageWrapper}>
-      <div className="tw-container">
-        <h1 className={styles.checkoutHeading}>Complete Your Checkout</h1>
+      {/* 1. Top Hero Header Banner */}
+      <div className={styles.checkoutHeroBanner}>
+        <div className="tw-container">
+          <h1 className={styles.checkoutHeading}>Complete Your Checkout</h1>
+          <p className={styles.checkoutSubtext}>
+            Authentic, Homestyle Indian Tiffin Service • Cambridge &amp; Boston
+          </p>
 
+          {/* 3-Step Flow Indicator */}
+          <div className={styles.stepsProgressBar}>
+            <div className={`${styles.stepItem} ${styles.stepItemDone}`}>
+              <span className={styles.stepNum}>✓</span>
+              <span>1. Cart</span>
+            </div>
+            <div className={styles.stepSeparator}></div>
+            <div className={`${styles.stepItem} ${styles.stepItemActive}`}>
+              <span className={styles.stepNum}>2</span>
+              <span>2. Delivery &amp; Payment</span>
+            </div>
+            <div className={styles.stepSeparator}></div>
+            <div className={styles.stepItem}>
+              <span className={styles.stepNum}>3</span>
+              <span>3. Confirmation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="tw-container">
         <form onSubmit={handleSubmit} className={styles.checkoutFormGrid}>
           {/* Left Column: Form Details */}
           <div className={styles.formLeftCol}>
-            {/* 1. Contact & Personal Info */}
+            {/* Step 1: Contact Information */}
             <div className={styles.formSectionCard}>
-              <h2 className={styles.sectionHeading}>1. Contact Information</h2>
+              <div className={styles.sectionHeaderRow}>
+                <div className={styles.stepBadgeIcon}>1</div>
+                <h2 className={styles.sectionHeading}>Contact Information</h2>
+              </div>
               
               <div className={styles.formRow2}>
                 <div className={styles.fieldGroup}>
@@ -214,28 +257,39 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            {/* 2. Delivery Details */}
+            {/* Step 2: Delivery Details */}
             <div className={styles.formSectionCard}>
-              <h2 className={styles.sectionHeading}>2. Delivery Preference</h2>
+              <div className={styles.sectionHeaderRow}>
+                <div className={styles.stepBadgeIcon}>2</div>
+                <h2 className={styles.sectionHeading}>Delivery Preference</h2>
+              </div>
 
               <div className={styles.deliveryModeGrid}>
-                <button
-                  type="button"
+                <div
                   onClick={() => setFormData({ ...formData, deliveryMode: 'delivery' })}
-                  className={`${styles.modeBtn} ${formData.deliveryMode === 'delivery' ? styles.modeBtnActive : ''}`}
+                  className={`${styles.modeCard} ${formData.deliveryMode === 'delivery' ? styles.modeCardActive : ''}`}
                 >
-                  <Truck size={18} />
-                  <span>Doorstep Delivery</span>
-                </button>
+                  <div className={styles.modeIconBox}>
+                    <Truck size={20} />
+                  </div>
+                  <div>
+                    <h3 className={styles.modeTitle}>Doorstep Delivery</h3>
+                    <p className={styles.modeSubtext}>Delivered fresh to your home, dorm, or office daily</p>
+                  </div>
+                </div>
 
-                <button
-                  type="button"
+                <div
                   onClick={() => setFormData({ ...formData, deliveryMode: 'pickup' })}
-                  className={`${styles.modeBtn} ${formData.deliveryMode === 'pickup' ? styles.modeBtnActive : ''}`}
+                  className={`${styles.modeCard} ${formData.deliveryMode === 'pickup' ? styles.modeCardActive : ''}`}
                 >
-                  <Store size={18} />
-                  <span>Store Pick-up (1001 Mass Ave)</span>
-                </button>
+                  <div className={styles.modeIconBox}>
+                    <Store size={20} />
+                  </div>
+                  <div>
+                    <h3 className={styles.modeTitle}>Store Pick-up (FREE)</h3>
+                    <p className={styles.modeSubtext}>Pick up counter at 1001 Massachusetts Ave, Cambridge</p>
+                  </div>
+                </div>
               </div>
 
               {formData.deliveryMode === 'delivery' && (
@@ -248,6 +302,7 @@ export default function CheckoutPage() {
                       required
                       value={formData.address}
                       onChange={handleChange}
+                      placeholder="e.g. 1001 Massachusetts Ave"
                       className={styles.textInput}
                     />
                   </div>
@@ -260,6 +315,7 @@ export default function CheckoutPage() {
                         name="apartment"
                         value={formData.apartment}
                         onChange={handleChange}
+                        placeholder="Apt 4B"
                         className={styles.textInput}
                       />
                     </div>
@@ -296,15 +352,18 @@ export default function CheckoutPage() {
                   rows={2}
                   value={formData.notes}
                   onChange={handleChange}
-                  placeholder="Gate code, drop-off spot, or allergy notes..."
+                  placeholder="Gate code, drop-off spot, or allergy preferences..."
                   className={styles.textArea}
                 />
               </div>
             </div>
 
-            {/* 3. Payment Method */}
+            {/* Step 3: Payment Gateway */}
             <div className={styles.formSectionCard}>
-              <h2 className={styles.sectionHeading}>3. Payment Method</h2>
+              <div className={styles.sectionHeaderRow}>
+                <div className={styles.stepBadgeIcon}>3</div>
+                <h2 className={styles.sectionHeading}>Payment Gateway</h2>
+              </div>
 
               <div className={styles.paymentMethodSelector}>
                 <div className={styles.paymentHeaderBox}>
@@ -312,10 +371,10 @@ export default function CheckoutPage() {
                     <CreditCard size={22} style={{ color: 'var(--tw-orange)' }} />
                     <div>
                       <strong style={{ display: 'block', color: '#111827', fontSize: '0.95rem', fontWeight: 800 }}>
-                        Credit / Debit Card (Secure SSL Gateway)
+                        Credit / Debit Card (Secure Checkout)
                       </strong>
                       <span style={{ fontSize: '0.78rem', color: '#6b7280' }}>
-                        Encrypted &amp; Processed directly via WordPress Gateway
+                        Encrypted 256-Bit SSL payment processing
                       </span>
                     </div>
                   </div>
@@ -337,7 +396,7 @@ export default function CheckoutPage() {
                       required
                       value={formData.cardName}
                       onChange={handleChange}
-                      placeholder="Name as it appears on card"
+                      placeholder="Name as printed on card"
                       className={styles.textInput}
                     />
                   </div>
@@ -391,7 +450,7 @@ export default function CheckoutPage() {
 
                   <div className={styles.sslBadge} style={{ alignSelf: 'flex-start', marginTop: '4px' }}>
                     <ShieldCheck size={14} />
-                    <span>256-Bit SSL Encrypted &amp; PCI-DSS Level 1 Certified</span>
+                    <span>256-Bit SSL Encrypted &amp; PCI-DSS Certified</span>
                   </div>
                 </div>
               </div>
@@ -401,22 +460,23 @@ export default function CheckoutPage() {
           {/* Right Column: Order Summary & Place Order */}
           <div className={styles.summaryCol}>
             <div className={styles.orderSummaryCard}>
-              <h2 className={styles.summaryHeader}>
-                Order Summary
-              </h2>
+              <div className={styles.summaryHeader}>
+                <span>Order Summary</span>
+                <span className={styles.itemCountBadge}>{cart.length} {cart.length === 1 ? 'Item' : 'Items'}</span>
+              </div>
 
               <div className={styles.cartItemsList}>
                 {cart.map((item) => (
-                  <div key={item.id} className={styles.cartItemSummaryRow}>
+                  <div key={item.id} className={styles.cartItemRow}>
                     <div>
-                      <strong style={{ display: 'block', color: '#111827' }}>{item.quantity}x {item.name}</strong>
+                      <div className={styles.cartItemTitle}>{item.quantity}x {item.name}</div>
                       {item.customization?.planDuration && (
-                        <span style={{ fontSize: '0.75rem', color: 'var(--tw-orange)', fontWeight: 700 }}>
-                          {item.customization.planDuration} Days Subscription
+                        <span className={styles.cartItemBadge}>
+                          {item.customization.planDuration} Days Tiffin Subscription
                         </span>
                       )}
                     </div>
-                    <span style={{ fontWeight: 800, color: '#111827' }}>${(item.price * item.quantity).toFixed(2)}</span>
+                    <span className={styles.cartItemPrice}>${(item.price * item.quantity).toFixed(2)}</span>
                   </div>
                 ))}
               </div>
@@ -450,7 +510,7 @@ export default function CheckoutPage() {
 
                 <div className={styles.calcTotalRow}>
                   <span>Total</span>
-                  <span>${grandTotal.toFixed(2)}</span>
+                  <span className={styles.totalAmount}>${grandTotal.toFixed(2)}</span>
                 </div>
               </div>
 
@@ -460,7 +520,7 @@ export default function CheckoutPage() {
                 className={`btn-primary ${styles.submitBtnFull}`}
               >
                 {isSubmitting ? (
-                  <span>Activating Subscription...</span>
+                  <span>Processing Payment...</span>
                 ) : (
                   <>
                     <span>Place Order &amp; Activate Plan</span>
@@ -471,7 +531,7 @@ export default function CheckoutPage() {
 
               <div className={styles.guaranteeBox}>
                 <ShieldCheck size={18} style={{ color: 'var(--tw-veg)', flexShrink: 0 }} />
-                <span>Zero Risk • Automatic Remaining Days Tracking</span>
+                <span>Zero Risk • Automatic Live Remaining Days Tracker</span>
               </div>
             </div>
           </div>
