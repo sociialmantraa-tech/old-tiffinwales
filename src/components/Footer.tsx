@@ -129,18 +129,6 @@ export const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link href="/tiffin">
-                <ChevronRight size={13} className={styles.linkArrow} />
-                <span>Tiffin Meal Plans</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/menu">
-                <ChevronRight size={13} className={styles.linkArrow} />
-                <span>Daily Food Menu</span>
-              </Link>
-            </li>
-            <li>
               <Link href="/about">
                 <ChevronRight size={13} className={styles.linkArrow} />
                 <span>About Us</span>
