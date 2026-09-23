@@ -126,7 +126,7 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        {/* Right Column: Hero Food Banner Card with Floating Glass Badges */}
+        {/* Right Column: Hero Food Banner Card */}
         <div className={styles.rightCol}>
           <div className={styles.heroImageCard}>
             <picture className={styles.heroPicture}>
@@ -137,23 +137,6 @@ export const HeroSection = () => {
                 className={styles.heroFoodBannerImg}
               />
             </picture>
-
-            {/* Floating Glassmorphism Badges */}
-            <div className={styles.floatingBadgeTop}>
-              <span className={styles.badgeEmoji}>⭐</span>
-              <div className={styles.badgeInfo}>
-                <strong>4.9 / 5 Rating</strong>
-                <span>Cambridge &amp; Boston</span>
-              </div>
-            </div>
-
-            <div className={styles.floatingBadgeBottom}>
-              <span className={styles.badgeEmoji}>🔥</span>
-              <div className={styles.badgeInfo}>
-                <strong>Fresh &amp; Hot Daily</strong>
-                <span>Zero Preservatives</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>

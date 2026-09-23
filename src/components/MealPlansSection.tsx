@@ -56,10 +56,6 @@ export const MealPlansSection: React.FC<MealPlansSectionProps> = ({
               <span>Homemade Punjabi &amp; North Indian Meals</span>
             </div>
             <h2 className="section-title">Meal Plans &amp; Tiffin Subscriptions</h2>
-            <p className="section-subtitle">
-              Choose your ideal meal plan with daily delivery to your door across Cambridge &amp; Boston.
-              Available in 100% Pure Vegetarian, Authentic Non-Veg, and Customizable Veg/Non-Veg Mix.
-            </p>
           </div>
         )}
 
