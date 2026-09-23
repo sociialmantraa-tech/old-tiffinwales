@@ -119,36 +119,22 @@ export default function AboutPage() {
       {/* 1. HERO SECTION */}
       <section className={styles.heroSection}>
         <div className="tw-container">
-          <div className={styles.heroGrid}>
-            <div>
-              <span className={styles.tagLabel}>ABOUT US</span>
-              <h1 className={styles.heroHeading}>
-                About <span className={styles.heroHighlight}>TiffinWales</span>
-              </h1>
-              <p className={styles.heroSubtitle}>
-                Bringing Fresh Homemade Indian Meals to Boston, Cambridge &amp; Massachusetts.
-              </p>
-              <div className={styles.heroBtnsRow}>
-                <Link href="/tiffin" className="btn-primary">
-                  <span>Explore Meal Plans</span>
-                  <ArrowRight size={16} />
-                </Link>
-                <Link href="/menu" className="btn-outline">
-                  <span>View A La Carte Menu</span>
-                </Link>
-              </div>
-            </div>
-
-            <div className={styles.heroImgWrapper}>
-              <img
-                src="https://tiffinwales.com/wp-content/uploads/2026/03/02-Tiffin-food-instagram.png"
-                alt="Tiffin Wales Authentic Indian Thali"
-                className={styles.heroImg}
-              />
-              <div className={styles.heroBadgeFloat}>
-                <Sparkles size={16} color="var(--tw-orange)" />
-                <span>100% Homestyle • Fresh Daily</span>
-              </div>
+          <div className={styles.heroContentCentered}>
+            <span className={styles.tagLabel}>ABOUT US</span>
+            <h1 className={styles.heroHeading}>
+              About <span className={styles.heroHighlight}>TiffinWales</span>
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Bringing Fresh Homemade Indian Meals to Boston, Cambridge &amp; Massachusetts.
+            </p>
+            <div className={styles.heroBtnsRow}>
+              <Link href="/tiffin" className="btn-primary">
+                <span>Explore Meal Plans</span>
+                <ArrowRight size={16} />
+              </Link>
+              <Link href="/menu" className="btn-outline">
+                <span>View A La Carte Menu</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -157,39 +143,29 @@ export default function AboutPage() {
       {/* 2. OUR STORY SECTION */}
       <section className={styles.sectionBlock}>
         <div className="tw-container">
-          <div className={styles.storyGrid}>
-            <div>
-              <img
-                src="https://tiffinwales.com/wp-content/uploads/2026/06/Non-Veg-01.webp"
-                alt="Tiffin Wales Delicious Curry and Breads"
-                className={styles.storyImg}
-              />
-            </div>
+          <div className={styles.storyContentCentered}>
+            <span className={styles.tagLabel}>OUR STORY</span>
+            <h2 className={styles.storyTitle}>Authentic Indian Food That Feels Like Home</h2>
+            <p className={styles.storyParagraph}>
+              TiffinWales was created to help students, busy professionals, and families enjoy fresh, wholesome, homemade Indian meals while living away from home. We understand how much you miss the warmth of home-style cooking, which is why we handle the meal prep, cooking, and delivery for you.
+            </p>
 
-            <div>
-              <span className={styles.tagLabel}>OUR STORY</span>
-              <h2 className={styles.storyTitle}>Authentic Indian Food That Feels Like Home</h2>
-              <p className={styles.storyParagraph}>
-                TiffinWales was created to help students, busy professionals, and families enjoy fresh, wholesome, homemade Indian meals while living away from home. We understand how much you miss the warmth of home-style cooking, which is why we handle the meal prep, cooking, and delivery for you.
-              </p>
-
-              <div className={styles.pillarsGrid}>
-                <div className={styles.pillarCard}>
-                  <CheckCircle2 size={18} className={styles.pillarIcon} />
-                  <span>Fresh Ingredients</span>
-                </div>
-                <div className={styles.pillarCard}>
-                  <CheckCircle2 size={18} className={styles.pillarIcon} />
-                  <span>Traditional Recipes</span>
-                </div>
-                <div className={styles.pillarCard}>
-                  <CheckCircle2 size={18} className={styles.pillarIcon} />
-                  <span>Daily Morning Cooking</span>
-                </div>
-                <div className={styles.pillarCard}>
-                  <CheckCircle2 size={18} className={styles.pillarIcon} />
-                  <span>Home-Style Purity</span>
-                </div>
+            <div className={styles.pillarsGrid}>
+              <div className={styles.pillarCard}>
+                <CheckCircle2 size={18} className={styles.pillarIcon} />
+                <span>Fresh Ingredients</span>
+              </div>
+              <div className={styles.pillarCard}>
+                <CheckCircle2 size={18} className={styles.pillarIcon} />
+                <span>Traditional Recipes</span>
+              </div>
+              <div className={styles.pillarCard}>
+                <CheckCircle2 size={18} className={styles.pillarIcon} />
+                <span>Daily Morning Cooking</span>
+              </div>
+              <div className={styles.pillarCard}>
+                <CheckCircle2 size={18} className={styles.pillarIcon} />
+                <span>Home-Style Purity</span>
               </div>
             </div>
           </div>
