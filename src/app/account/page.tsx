@@ -996,16 +996,6 @@ export default function AccountPage() {
                           <p className={styles.hotlineText}>📞 Call us: +1 (617) 555-0199</p>
                         </div>
                       </div>
-
-                      <div className={styles.infoCard}>
-                        <h4 className={styles.infoTitle}>
-                          <Utensils size={18} className={styles.infoIcon} />
-                          <span>Fresh Daily Preparation</span>
-                        </h4>
-                        <p className={styles.infoText}>
-                          Your meals are cooked fresh every morning with authentic ground spices. Dedicated separate kitchen sections for Pure Vegetarian and Halal Non-Vegetarian.
-                        </p>
-                      </div>
                     </div>
                   </div>
                 ) : (
