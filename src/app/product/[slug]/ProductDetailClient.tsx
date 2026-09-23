@@ -646,7 +646,7 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({
                       >
                         <div className={styles.cardTitleWrap}>
                           <span className={styles.cardIcon}>🌱</span>
-                          <span>Pure Vegetarian</span>
+                          <span>Pure Veg</span>
                         </div>
                       </div>
 
@@ -659,7 +659,7 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({
                       >
                         <div className={styles.cardTitleWrap}>
                           <span className={styles.cardIcon}>🍗</span>
-                          <span>Non-Vegetarian</span>
+                          <span>Non-Veg</span>
                         </div>
                       </div>
 
@@ -672,7 +672,7 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({
                       >
                         <div className={styles.cardTitleWrap}>
                           <span className={styles.cardIcon}>🍱</span>
-                          <span>Veg &amp; Non-Veg Mix</span>
+                          <span>Veg &amp; Mix</span>
                         </div>
                       </div>
                     </div>

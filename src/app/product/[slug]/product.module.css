@@ -229,26 +229,32 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .cardGrid3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .cardGridDuration {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .selectableCard {
   background: #ffffff;
   border: 1.5px solid #e5e7eb;
   border-radius: 8px;
-  padding: 10px 12px;
-  min-height: 42px;
+  padding: 8px 10px;
+  min-height: 40px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -257,6 +263,8 @@
   position: relative;
   transition: all 0.2s ease;
   text-align: left;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .selectableCard:hover {
@@ -278,29 +286,31 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6px;
+  gap: 4px;
   white-space: nowrap;
+  min-width: 0;
 }
 
 .cardTitleWrap {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.76rem;
+  gap: 4px;
+  font-size: 0.74rem;
   font-weight: 800;
   color: #111111;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .cardIcon {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   flex-shrink: 0;
 }
 
 .cardPrice {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 800;
   color: var(--tw-orange);
   white-space: nowrap;
@@ -314,66 +324,85 @@
 }
 
 .cardTagFree {
-  font-size: 0.64rem;
+  font-size: 0.62rem;
   font-weight: 800;
   color: #15803d;
   background: #dcfce7;
-  padding: 1px 6px;
+  padding: 1px 5px;
   border-radius: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .cardTagDelivery {
-  font-size: 0.64rem;
+  font-size: 0.62rem;
   font-weight: 800;
   color: #0369a1;
   background: #e0f2fe;
-  padding: 1px 6px;
+  padding: 1px 5px;
   border-radius: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .cardTagOneTime {
-  font-size: 0.64rem;
+  font-size: 0.62rem;
   font-weight: 800;
   color: var(--tw-orange-dark);
   background: var(--tw-orange-light);
   border: 1px solid #fed7aa;
-  padding: 1px 6px;
+  padding: 1px 5px;
   border-radius: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .cardTagDaily {
-  font-size: 0.64rem;
+  font-size: 0.62rem;
   font-weight: 800;
   color: #c2410c;
   background: #ffedd5;
   border: 1px solid #fed7aa;
-  padding: 1px 6px;
+  padding: 1px 5px;
   border-radius: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Pill Selectors (Bread / Spice) */
 .pillSelectorRow {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 6px;
-  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .pillSelectorRow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
 }
 
 .pillOptionBtn {
-  flex: 1;
-  min-width: 70px;
-  padding: 6px 10px;
+  width: 100%;
+  min-width: 0;
+  padding: 7px 6px;
   background: #ffffff;
   border: 1.5px solid #e5e7eb;
-  border-radius: 6px;
-  font-size: 0.78rem;
-  font-weight: 700;
+  border-radius: 7px;
+  font-size: 0.74rem;
+  font-weight: 750;
   color: #374151;
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 4px;
   transition: all 0.2s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .pillOptionBtn:hover {
@@ -1543,12 +1572,38 @@
 }
 
 @media (max-width: 680px) {
-  .cardGrid2,
-  .cardGrid3,
-  .cardGridDuration,
+  .cardGrid2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .cardGrid3 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
+  .cardGridDuration {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
   .dateTimeGrid,
   .scheduleGrid {
     grid-template-columns: 1fr;
+  }
+  .selectableCard {
+    padding: 7px 6px;
+    min-height: 38px;
+  }
+  .cardTitleWrap {
+    font-size: 0.7rem;
+    gap: 3px;
+  }
+  .cardIcon {
+    font-size: 0.8rem;
+  }
+  .cardTagFree,
+  .cardTagOneTime,
+  .cardTagDaily {
+    font-size: 0.56rem;
+    padding: 1px 4px;
   }
   .dishCardsGrid {
     grid-template-columns: repeat(2, 1fr);
