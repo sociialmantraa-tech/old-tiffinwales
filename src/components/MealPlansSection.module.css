@@ -576,44 +576,49 @@
     grid-template-columns: 1fr;
   }
   .planExplainerBanner {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: flex-start;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 12px;
-    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    padding: 8px 6px;
     margin-bottom: 24px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    border-radius: 16px;
-  }
-  .planExplainerBanner::-webkit-scrollbar {
-    display: none;
+    border-radius: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
   }
   .explainerItem {
-    flex: 0 0 80%;
-    max-width: 280px;
-    min-width: 240px;
-    scroll-snap-align: center;
-    background: rgba(255, 255, 255, 0.7);
-    padding: 10px 12px;
-    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 8px 3px;
+    border-radius: 10px;
     border: 1px solid #fed7aa;
-    gap: 10px;
+    gap: 3px;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
   .explainerIcon {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    margin-bottom: 2px;
   }
   .explainerItem strong {
-    font-size: 0.82rem;
+    font-size: 0.66rem;
+    font-weight: 850;
+    line-height: 1.15;
+    color: #1f2937;
+    margin: 0;
+    word-break: break-word;
   }
   .explainerItem p {
-    font-size: 0.72rem;
-    line-height: 1.3;
+    font-size: 0.56rem;
+    line-height: 1.15;
+    color: #6b7280;
+    margin: 0;
+    word-break: break-word;
   }
   .explainerDivider {
     display: none;
