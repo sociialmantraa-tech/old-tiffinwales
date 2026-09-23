@@ -18,47 +18,21 @@ export const OfficialWhatsAppIcon = ({ size = 26, className }: { size?: number; 
 );
 
 export const WhatsAppButton = () => {
-  const [showTooltip, setShowTooltip] = useState(false);
-
   const phoneNumber = '16175550199';
   const defaultMessage = encodeURIComponent('Hi Tiffin Wales! I have a question about your daily tiffin plans & delivery in Cambridge/Boston.');
 
   return (
     <div className={styles.container}>
-      {showTooltip && (
-        <div className={styles.tooltipBox}>
-          <button
-            className={styles.closeTooltip}
-            onClick={() => setShowTooltip(false)}
-          >
-            ✕
-          </button>
-          <div className={styles.tooltipHeader}>
-            <span className={styles.onlineDot}></span>
-            <strong>Tiffin Wales Kitchen</strong>
-          </div>
-          <p className={styles.tooltipText}>
-            Namaste! Need help picking a 5-Day meal plan or checking your delivery zone? Chat with us live on WhatsApp!
-          </p>
-          <a
-            href={`https://wa.me/${phoneNumber}?text=${defaultMessage}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.tooltipCta}
-          >
-            Start WhatsApp Chat 💬
-          </a>
-        </div>
-      )}
-
-      <button
+      <a
+        href={`https://wa.me/${phoneNumber}?text=${defaultMessage}`}
+        target="_blank"
+        rel="noopener noreferrer"
         className={styles.floatBtn}
-        onClick={() => setShowTooltip(!showTooltip)}
-        aria-label="Contact Tiffin Wales on WhatsApp"
+        aria-label="Chat with Tiffin Wales on WhatsApp"
       >
         <OfficialWhatsAppIcon size={28} className={styles.waIcon} />
         <span className={styles.pulseRing}></span>
-      </button>
+      </a>
     </div>
   );
 };
