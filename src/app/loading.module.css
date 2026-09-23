@@ -1,0 +1,135 @@
+.loadingOverlay {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tw-cream-light);
+  padding: 40px 20px;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  text-align: center;
+}
+
+/* Animated Logo Ring */
+.logoWrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outerSpinRing {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: var(--tw-orange);
+  border-right-color: var(--tw-orange);
+  animation: spinRing 1.2s linear infinite;
+}
+
+.pulseGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(255, 100, 19, 0.15);
+  animation: pulseGlow 1.8s ease-in-out infinite alternate;
+}
+
+.brandLogo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  z-index: 2;
+  filter: drop-shadow(0 4px 10px rgba(255, 100, 19, 0.25));
+  animation: floatBounce 2s ease-in-out infinite alternate;
+}
+
+/* Text Group */
+.textGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.loadingTitle {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--tw-dark);
+  text-transform: uppercase;
+}
+
+.loadingSubtitle {
+  font-size: 0.88rem;
+  color: var(--tw-muted);
+  font-weight: 600;
+}
+
+/* Progress Bar */
+.progressBarWrapper {
+  width: 200px;
+  height: 5px;
+  background: #ede4dc;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+  position: relative;
+}
+
+.progressBarFill {
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(90deg, var(--tw-orange), #ff9e66, var(--tw-orange));
+  border-radius: 10px;
+  position: absolute;
+  animation: shimmerMove 1.5s ease-in-out infinite;
+}
+
+@keyframes spinRing {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0.9;
+  }
+}
+
+@keyframes floatBounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes shimmerMove {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 100%;
+  }
+}

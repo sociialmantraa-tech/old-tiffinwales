@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Jost:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+:root {
+  /* Tiffin Wales Signature Colors */
+  --tw-orange: #ff6413;
+  --tw-orange-hover: #e85507;
+  --tw-orange-dark: #cc4500;
+  --tw-orange-light: #fff5ee;
+  --tw-orange-glow: rgba(255, 100, 19, 0.22);
+  
+  --tw-cream: #fffaf5;
+  --tw-cream-light: #fdfaf6;
+  --tw-cream-card: #ffffff;
+  
+  --tw-dark: #151515;
+  --tw-dark-subtle: #2d2d2d;
+  --tw-muted: #5c5f65;
+  --tw-border: #ede4dc;
+  --tw-border-light: #f5ede6;
+  
+  --tw-veg: #16a34a;
+  --tw-veg-bg: #f0fdf4;
+  --tw-nonveg: #dc2626;
+  --tw-nonveg-bg: #fef2f2;
+  
+  /* Typography matching original website */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-heading: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 50px;
+  
+  --shadow-sm: 0 2px 10px rgba(45, 25, 10, 0.04);
+  --shadow-md: 0 8px 24px rgba(45, 25, 10, 0.07);
+  --shadow-lg: 0 16px 40px rgba(45, 25, 10, 0.1);
+  --shadow-glow: 0 8px 25px rgba(255, 100, 19, 0.25);
+  
+  --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: var(--font-body);
+  background-color: #ffffff;
+  color: var(--tw-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 64px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--tw-dark);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+/* Layout Utilities */
+.tw-container {
+  width: 100%;
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.tw-section {
+  padding: 50px 0;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .tw-section {
+    padding: 28px 0;
+  }
+}
+
+/* Elegant Section Headers */
+.section-header {
+  text-align: center;
+  max-width: 960px;
+  margin: 0 auto 32px auto;
+  padding: 0 12px;
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    margin: 0 auto 20px auto;
+  }
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--tw-orange-light);
+  color: var(--tw-orange);
+  padding: 6px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 100, 19, 0.2);
+  white-space: nowrap;
+}
+
+.section-title {
+  font-size: clamp(1.35rem, 3.2vw, 2.3rem);
+  font-weight: 850;
+  color: var(--tw-dark);
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.section-subtitle {
+  font-size: 1.02rem;
+  color: var(--tw-muted);
+  line-height: 1.6;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: clamp(1.15rem, 4.8vw, 1.55rem);
+    letter-spacing: -0.3px;
+    white-space: nowrap;
+    line-height: 1.25;
+  }
+  .section-subtitle {
+    font-size: 0.86rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 440px) {
+  .section-title {
+    font-size: clamp(1.02rem, 4.4vw, 1.28rem);
+  }
+}
+
+/* Buttons matching original site */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--tw-orange);
+  color: #ffffff;
+  padding: 13px 30px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(255, 100, 19, 0.25);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: var(--transition-smooth);
+}
+
+.btn-primary:hover {
+  background: var(--tw-orange-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(255, 100, 19, 0.38);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #ffffff;
+  color: var(--tw-dark);
+  padding: 13px 28px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 1.5px solid #d4c8be;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: var(--transition-smooth);
+}
+
+.btn-outline:hover {
+  border-color: var(--tw-orange);
+  color: var(--tw-orange);
+  background: #fff8f4;
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+button, .btn-primary, .btn-outline, .btn-sm {
+  white-space: nowrap;
+}
+
+/* Authentic Indian Veg / Non-Veg Badges */
+.badge-veg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 1.8px solid var(--tw-veg);
+  border-radius: 4px;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.badge-veg::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--tw-veg);
+}
+
+.badge-nonveg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 1.8px solid var(--tw-nonveg);
+  border-radius: 4px;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.badge-nonveg::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 9px solid var(--tw-nonveg);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8f4f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #d6c5b8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tw-orange);
+}

@@ -1,0 +1,36 @@
+.topProgressTrack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5px;
+  background: rgba(255, 100, 19, 0.15);
+  z-index: 9999;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.topProgressBar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--tw-orange) 0%,
+    #ffa366 50%,
+    var(--tw-orange-dark) 100%
+  );
+  box-shadow: 0 0 10px rgba(255, 100, 19, 0.8);
+  animation: barProgress 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+}
+
+@keyframes barProgress {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-20%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

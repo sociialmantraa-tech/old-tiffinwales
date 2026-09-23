@@ -1,0 +1,91 @@
+import React from 'react';
+import { MapPin, Truck, Store, Clock } from 'lucide-react';
+import styles from './ServiceAreasSection.module.css';
+
+export const ServiceAreasSection = () => {
+  const zones = [
+    {
+      title: 'Cambridge (Core Service Radius)',
+      zips: '02138, 02139, 02140, 02141, 02142',
+      neighborhoods: 'Harvard Sq, MIT, Central Sq, Kendall Sq, Porter Sq, Inman Sq',
+      badge: 'Daily Delivery'
+    },
+    {
+      title: 'Somerville & Davis Sq',
+      zips: '02143, 02144, 02145',
+      neighborhoods: 'Davis Square, Union Square, Spring Hill, East Somerville',
+      badge: 'Low Flat Fee'
+    },
+    {
+      title: 'Boston & University Quarters',
+      zips: '02215, 02115, 02116, 02114, 02111',
+      neighborhoods: 'Boston University, Fenway, Northeastern, Back Bay, Downtown',
+      badge: 'Daily Express'
+    },
+    {
+      title: 'Allston & Brighton',
+      zips: '02134, 02135',
+      neighborhoods: 'Harvard Ave, Commonwealth Ave, Cleveland Circle, Oak Square',
+      badge: 'Daily Express'
+    }
+  ];
+
+  return (
+    <section className={`tw-section ${styles.section}`}>
+      <div className="tw-container">
+        <div className="section-header">
+          <div className="section-tag">
+            <Truck size={14} />
+            <span>Delivery Coverage</span>
+          </div>
+          <h2 className="section-title">Areas We Proudly Serve</h2>
+          <p className="section-subtitle">
+            Hot and fresh delivery across Greater Boston and Cambridge, plus convenient in-store pickup.
+          </p>
+        </div>
+
+        <div className={styles.zonesGrid}>
+          {zones.map((zone, idx) => (
+            <div key={idx} className={styles.zoneCard}>
+              <div className={styles.zoneTop}>
+                <MapPin size={20} className={styles.pinIcon} />
+                <span className={styles.zoneBadge}>{zone.badge}</span>
+              </div>
+              <h3 className={styles.zoneTitle}>{zone.title}</h3>
+              <p className={styles.zoneNeighborhoods}>{zone.neighborhoods}</p>
+              <div className={styles.zipPills}>
+                <strong>Zip Codes:</strong> {zone.zips}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Store Pickup Highlight Box */}
+        <div className={styles.storePickupCard}>
+          <div className={styles.pickupLeft}>
+            <div className={styles.storeIconWrapper}>
+              <Store size={32} />
+            </div>
+            <div>
+              <span className={styles.pickupTag}>Store Pick-up Available</span>
+              <h3 className={styles.pickupAddress}>1001 Massachusetts Ave, Cambridge, MA 02138</h3>
+              <p className={styles.pickupHours}>
+                <Clock size={16} /> Monday – Sunday: 11:30 AM – 9:30 PM (Pickup &amp; Delivery)
+              </p>
+            </div>
+          </div>
+          <div className={styles.pickupRight}>
+            <a
+              href="https://maps.google.com/?q=1001+Massachusetts+Ave+Cambridge+MA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline"
+            >
+              Get Directions ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

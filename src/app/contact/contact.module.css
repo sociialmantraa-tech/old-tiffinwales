@@ -1,0 +1,222 @@
+.contactPage {
+  background: linear-gradient(180deg, #fffaf5 0%, #fff4ec 100%);
+  padding: 0 0 80px 0;
+  min-height: 80vh;
+}
+
+.header {
+  background: radial-gradient(circle at 50% 0%, rgba(255, 100, 19, 0.12) 0%, transparent 60%), linear-gradient(145deg, #fff4e8 0%, #ffebd9 50%, #fff8f2 100%);
+  padding: 50px 20px 45px 20px;
+  border-bottom: 1.5px solid #f0e1d2;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.formCard {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid #fed7aa;
+  padding: 36px 32px;
+  box-shadow: 0 10px 30px rgba(255, 100, 19, 0.06);
+}
+
+.formTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--tw-dark);
+  margin-bottom: 20px;
+}
+
+.alertSuccess {
+  background: #f0fdf4;
+  border: 1.5px solid #bbf7d0;
+  color: #166534;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  border: 1.5px solid var(--tw-border);
+  border-radius: var(--radius-sm);
+  background: var(--tw-cream);
+  font-size: 0.92rem;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.input,
+.select {
+  height: 48px;
+  padding: 0 14px;
+}
+
+.textarea {
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: var(--tw-orange);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(255, 100, 19, 0.12);
+}
+
+.submitBtn {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+/* Sidebar Info Cards */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.infoCard {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid #fed7aa;
+  padding: 30px 26px;
+  box-shadow: 0 8px 24px rgba(255, 100, 19, 0.04);
+}
+
+.infoTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--tw-dark);
+  margin-bottom: 22px;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.infoIcon {
+  color: var(--tw-orange);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.infoItem strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--tw-dark);
+  margin-bottom: 2px;
+}
+
+.infoItem span {
+  font-size: 0.88rem;
+  color: #4b5563;
+  line-height: 1.45;
+}
+
+/* WhatsApp Card */
+.waCard {
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.waHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.waHeader strong {
+  font-size: 1.1rem;
+  color: #166534;
+}
+
+.waDesc {
+  font-size: 0.88rem;
+  color: #15803d;
+  line-height: 1.5;
+}
+
+.waBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #25d366;
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: var(--transition-smooth);
+}
+
+.waBtn:hover {
+  background: #20ba59;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
+}

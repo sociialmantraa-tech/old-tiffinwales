@@ -1,0 +1,343 @@
+.datePickerContainer {
+  position: relative;
+  width: 100%;
+}
+
+/* Trigger Button */
+.datePickerTrigger {
+  width: 100%;
+  height: 38px;
+  padding: 0 11px;
+  border-radius: 7px;
+  border: 1.5px solid #fed7aa;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.81rem;
+  font-weight: 650;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  font-family: inherit;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.datePickerTrigger:hover {
+  border-color: #fb923c;
+  background: #fffdfa;
+}
+
+.datePickerTriggerOpen {
+  border-color: var(--tw-orange, #ff6413) !important;
+  box-shadow: 0 0 0 2px rgba(255, 100, 19, 0.2) !important;
+  background: #fffcf8 !important;
+}
+
+.datePickerValue {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calendarIcon {
+  color: var(--tw-orange, #ff6413);
+  flex-shrink: 0;
+}
+
+.selectedDateText {
+  color: #1f2937;
+  font-weight: 650;
+  letter-spacing: -0.1px;
+}
+
+.dropdownChevron {
+  color: #6b7280;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.dropdownChevronRotate {
+  transform: rotate(180deg);
+  color: var(--tw-orange, #ff6413);
+}
+
+/* Popover Calendar Container */
+.calendarPopover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 320px;
+  max-width: 92vw;
+  background: #ffffff;
+  border: 1.5px solid #fed7aa;
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14), 0 2px 10px rgba(255, 100, 19, 0.08);
+  z-index: 120;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: calendarPopIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes calendarPopIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header */
+.calendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.monthTitleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.monthTitle {
+  font-size: 0.92rem;
+  font-weight: 750;
+  color: #111827;
+  letter-spacing: -0.2px;
+}
+
+.navButtons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navBtn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.navBtn:hover {
+  background: #fff7ed;
+  border-color: #fdba74;
+  color: #ea580c;
+}
+
+/* Quick Shortcuts */
+.quickShortcuts {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.shortcutChip {
+  padding: 4px 9px;
+  border-radius: 6px;
+  border: 1px solid #fed7aa;
+  background: #fffaf5;
+  color: #c2410c;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  outline: none;
+  font-family: inherit;
+}
+
+.shortcutChip:hover {
+  background: #ffedd5;
+  border-color: #fb923c;
+  transform: translateY(-1px);
+}
+
+/* Weekday Labels */
+.weekdaysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+  text-align: center;
+}
+
+.weekdayCell {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #6b7280;
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  position: relative;
+}
+
+.tuesdayHeader {
+  color: #dc2626 !important;
+  font-weight: 800;
+}
+
+.offDot {
+  font-size: 1rem;
+  line-height: 0.5;
+  color: #ef4444;
+}
+
+/* Days Grid */
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.emptyDayCell {
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.dayCell {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: #ffffff;
+  color: #1f2937;
+  font-size: 0.78rem;
+  font-weight: 650;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  padding: 0;
+  font-family: inherit;
+}
+
+.dayCell:hover:not(:disabled) {
+  background: #fff7ed;
+  border-color: #fdba74;
+  color: #ea580c;
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(255, 100, 19, 0.15);
+}
+
+/* Selected Day */
+.daySelected {
+  background: linear-gradient(135deg, #ff6413 0%, #ea580c 100%) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  border-color: #ea580c !important;
+  box-shadow: 0 4px 10px rgba(255, 100, 19, 0.38) !important;
+  transform: scale(1.03);
+}
+
+.daySelected:hover {
+  transform: scale(1.03) !important;
+}
+
+.selectedCheck {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  color: #ffffff;
+}
+
+/* Current Day Highlight */
+.dayToday {
+  border-color: #ff6413;
+  color: #c2410c;
+  font-weight: 800;
+  background: #fffcf8;
+}
+
+.todayIndicatorDot {
+  position: absolute;
+  bottom: 3px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ff6413;
+}
+
+/* Blocked Tuesday State */
+.dayTuesdayBlocked {
+  background: #f9fafb !important;
+  color: #9ca3af !important;
+  border-color: #f3f4f6 !important;
+  cursor: not-allowed !important;
+  opacity: 0.65;
+  text-decoration: line-through;
+  text-decoration-color: #ef4444;
+}
+
+.closedTag {
+  position: absolute;
+  bottom: 2px;
+  font-size: 0.52rem;
+  font-weight: 800;
+  color: #ef4444;
+  background: #fee2e2;
+  padding: 0 3px;
+  border-radius: 3px;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+/* Past Dates Disabled */
+.dayPastDisabled {
+  background: transparent !important;
+  color: #d1d5db !important;
+  cursor: not-allowed !important;
+  opacity: 0.45;
+}
+
+/* Kitchen Footer Notice */
+.calendarFooterBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 7px 9px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 7px;
+  font-size: 0.68rem;
+  color: #9a3412;
+  line-height: 1.35;
+}
+
+.footerInfoIcon {
+  color: #ea580c;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+@media (max-width: 480px) {
+  .calendarPopover {
+    width: 290px;
+    padding: 10px;
+  }
+}

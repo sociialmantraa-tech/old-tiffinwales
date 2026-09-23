@@ -1,0 +1,1584 @@
+.productPage {
+  padding: 30px 0 80px 0;
+  background: var(--tw-cream);
+  min-height: 85vh;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--tw-muted);
+  margin-bottom: 30px;
+}
+
+.breadcrumb a:hover {
+  color: var(--tw-orange);
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
+  gap: 36px;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--tw-border);
+  padding: 28px 32px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Image Column */
+.imageCol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: 90px;
+  align-self: flex-start;
+  min-width: 0;
+}
+
+.mainImageWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 380px;
+  max-height: 480px;
+  background: #fdfbf7;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1.5px solid var(--tw-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  max-height: 460px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.dietBadgeWrapper {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 4px;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}
+
+.thumbRow {
+  display: flex;
+  gap: 8px;
+}
+
+.thumbBtn {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--tw-border);
+  overflow: hidden;
+  cursor: pointer;
+  background: #ffffff;
+  padding: 0;
+  transition: var(--transition-smooth);
+}
+
+.thumbBtn:hover,
+.thumbActive {
+  border-color: var(--tw-orange);
+  box-shadow: 0 0 0 2px var(--tw-orange-glow);
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Details Column */
+.detailsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tagRow {
+  display: flex;
+  gap: 6px;
+}
+
+.catBadge {
+  background: var(--tw-cream);
+  border: 1px solid var(--tw-border);
+  color: var(--tw-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+}
+
+.popularBadge {
+  background: var(--tw-orange-light);
+  color: var(--tw-orange-dark);
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.title {
+  font-size: clamp(1.15rem, 1.6vw, 1.38rem);
+  font-weight: 800;
+  color: var(--tw-dark);
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--tw-orange);
+}
+
+.perMealText {
+  font-size: 0.78rem;
+  color: var(--tw-muted);
+  font-weight: 600;
+}
+
+.productNotice {
+  font-size: 0.82rem;
+  color: #4b5563;
+  line-height: 1.4;
+  margin-top: -2px;
+}
+
+.desc {
+  font-size: 0.88rem;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* Rich Subscription Customizer */
+.customizerFormContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.sectionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sectionLabelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sectionLabel {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #111111;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.sectionActiveBadge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--tw-orange);
+  background: #fff7ed;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid #fed7aa;
+}
+
+/* 2-Column & 3-Column Radio Cards */
+.cardGrid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.cardGrid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.cardGridDuration {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.selectableCard {
+  background: #ffffff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  min-height: 42px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  position: relative;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.selectableCard:hover {
+  border-color: #fdba74;
+  transform: translateY(-1px);
+}
+
+.selectableCardActive {
+  border-color: var(--tw-orange) !important;
+  background: linear-gradient(135deg, #fff2e2 0%, #ffeed9 100%) !important;
+  box-shadow: 0 0 0 2px var(--tw-orange), 0 4px 14px rgba(255, 100, 19, 0.16) !important;
+}
+
+.selectableCardActive .cardTitleWrap {
+  color: var(--tw-orange-dark) !important;
+}
+
+.cardTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.cardTitleWrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #111111;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardIcon {
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.cardPrice {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--tw-orange);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cardSubtext {
+  font-size: 0.7rem;
+  color: #6b7280;
+  line-height: 1.25;
+}
+
+.cardTagFree {
+  font-size: 0.64rem;
+  font-weight: 800;
+  color: #15803d;
+  background: #dcfce7;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+.cardTagDelivery {
+  font-size: 0.64rem;
+  font-weight: 800;
+  color: #0369a1;
+  background: #e0f2fe;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+.cardTagOneTime {
+  font-size: 0.64rem;
+  font-weight: 800;
+  color: var(--tw-orange-dark);
+  background: var(--tw-orange-light);
+  border: 1px solid #fed7aa;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+.cardTagDaily {
+  font-size: 0.64rem;
+  font-weight: 800;
+  color: #c2410c;
+  background: #ffedd5;
+  border: 1px solid #fed7aa;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+/* Pill Selectors (Bread / Spice) */
+.pillSelectorRow {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pillOptionBtn {
+  flex: 1;
+  min-width: 70px;
+  padding: 6px 10px;
+  background: #ffffff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #374151;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.pillOptionBtn:hover {
+  border-color: #fdba74;
+}
+
+.pillOptionActive {
+  background: linear-gradient(135deg, var(--tw-orange), #ea580c) !important;
+  border-color: var(--tw-orange) !important;
+  color: #ffffff !important;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(255, 100, 19, 0.35) !important;
+}
+
+/* Day-by-Day Dish Picker */
+.dayPickerContainer {
+  background: #ffffff;
+  border: 1.5px solid #fed7aa;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dayTabsRow {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 3px;
+}
+
+.dayTabBtn {
+  background: #fafaf9;
+  border: 1.5px solid #e7e5e4;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #44403c;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  transition: all 0.2s ease;
+}
+
+.dayTabBtnActive {
+  background: linear-gradient(135deg, var(--tw-orange), #ea580c) !important;
+  border-color: var(--tw-orange) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(255, 100, 19, 0.3) !important;
+}
+
+.dayTabSub {
+  font-size: 0.64rem;
+  opacity: 0.9;
+}
+
+.activeDayPrompt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.activeDayNumber {
+  background: var(--tw-orange);
+  color: #ffffff;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.dishCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.dishSelectCard {
+  background: #ffffff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.dishSelectCard:hover {
+  border-color: #fdba74;
+}
+
+.dishSelectCardActive {
+  border-color: var(--tw-orange) !important;
+  background: linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%) !important;
+  box-shadow: 0 0 0 1.5px var(--tw-orange), 0 2px 8px rgba(255, 100, 19, 0.15) !important;
+}
+
+.dishSelectCardActive .dishName {
+  color: var(--tw-dark) !important;
+  font-weight: 850 !important;
+}
+
+.dishSelectCardInPlan {
+  border-color: #fb923c !important;
+  background: #fff7ed !important;
+  box-shadow: 0 1px 4px rgba(251, 146, 60, 0.15) !important;
+}
+
+.dishSelectCardInPlan .dishName {
+  color: #9a3412 !important;
+  font-weight: 750 !important;
+}
+
+.dishBadgesGroup {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.dishSelectedActiveTag {
+  font-size: 0.58rem;
+  font-weight: 850;
+  color: #ffffff;
+  background: #ea580c;
+  padding: 1px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.dishSelectedDayTag {
+  font-size: 0.58rem;
+  font-weight: 800;
+  color: #c2410c;
+  background: #ffedd5;
+  border: 1px solid #fed7aa;
+  padding: 1px 4px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.dishName {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #1f2937;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.dishTypeVegBadge {
+  font-size: 0.58rem;
+  font-weight: 800;
+  color: #16a34a;
+  background: #dcfce7;
+  padding: 1px 4px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.dishTypeNonVegBadge {
+  font-size: 0.58rem;
+  font-weight: 800;
+  color: #dc2626;
+  background: #fee2e2;
+  padding: 1px 4px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* Pack Selector Bar (When Quantity > 1) */
+.packSelectorRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed #fed7aa;
+  flex-wrap: wrap;
+}
+
+.packSelectorLabel {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #44403c;
+  text-transform: uppercase;
+}
+
+.packTabBtn {
+  background: #fafaf9;
+  border: 1.5px solid #e7e5e4;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 750;
+  color: #44403c;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.packTabBtn:hover {
+  border-color: #fdba74;
+}
+
+.packTabBtnActive {
+  background: linear-gradient(135deg, var(--tw-orange), #ea580c) !important;
+  border-color: var(--tw-orange) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(255, 100, 19, 0.3) !important;
+}
+
+.packTabSub {
+  font-size: 0.65rem;
+  opacity: 0.95;
+  background: rgba(0, 0, 0, 0.12);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* Customized Daily Schedule Box */
+.scheduleSummaryBox {
+  background: #fffdf9;
+  border: 1.5px solid #fed7aa;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.scheduleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #111111;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.scheduleTip {
+  font-size: 0.68rem;
+  color: var(--tw-orange);
+  font-weight: 700;
+}
+
+.schedulePackList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.schedulePackSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #ffffff;
+  border: 1.5px solid #fed7aa;
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.schedulePackSectionActive {
+  border-color: var(--tw-orange);
+  box-shadow: 0 0 0 1px var(--tw-orange);
+  background: #fffcf8;
+}
+
+.schedulePackTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ffedd5;
+  padding-bottom: 4px;
+}
+
+.schedulePackTitle {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--tw-orange-dark);
+}
+
+.schedulePackActiveTag {
+  font-size: 0.64rem;
+  font-weight: 800;
+  color: #15803d;
+  background: #dcfce7;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.scheduleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.scheduleDayCard {
+  background: #ffffff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.scheduleDayCardActive {
+  border-color: var(--tw-orange);
+  background: linear-gradient(135deg, #fff2e2 0%, #ffeed9 100%);
+  box-shadow: 0 0 0 1px var(--tw-orange);
+}
+
+.scheduleDayInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.scheduleDayTitle {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #111111;
+}
+
+.scheduleDayDish {
+  font-size: 0.76rem;
+  color: #4b5563;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.changeDishBtn {
+  background: var(--tw-orange);
+  color: #ffffff;
+  border: none;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.changeDishBtn:hover {
+  background: #ea580c;
+}
+
+/* Date & Time Inputs */
+.dateTimeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.inputWithIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.inputLeftIcon {
+  position: absolute;
+  left: 10px;
+  color: var(--tw-orange);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.styledDateInput {
+  width: 100%;
+  height: 38px;
+  padding-left: 32px;
+  padding-right: 10px;
+  border-radius: 7px;
+  border: 1.5px solid #fed7aa;
+  background: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1f2937;
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.styledDateInput:focus {
+  border-color: var(--tw-orange);
+  box-shadow: 0 0 0 2px rgba(255, 100, 19, 0.18);
+  background: #fffcf8;
+}
+
+/* Custom Time Dropdown */
+.timeDropdownContainer {
+  position: relative;
+  width: 100%;
+}
+
+.timeDropdownTrigger {
+  width: 100%;
+  height: 38px;
+  padding: 0 10px;
+  border-radius: 7px;
+  border: 1.5px solid #fed7aa;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 650;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  font-family: inherit;
+}
+
+.timeDropdownTrigger:hover {
+  border-color: #fb923c;
+  background: #fffdfa;
+}
+
+.timeDropdownTriggerOpen {
+  border-color: var(--tw-orange) !important;
+  box-shadow: 0 0 0 2px rgba(255, 100, 19, 0.2) !important;
+  background: #fffcf8 !important;
+}
+
+.timeDropdownValue {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timeIcon {
+  color: var(--tw-orange);
+  flex-shrink: 0;
+}
+
+.dropdownChevron {
+  color: #6b7280;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.dropdownChevronRotate {
+  transform: rotate(180deg);
+  color: var(--tw-orange);
+}
+
+.timeDropdownMenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-height: 380px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1.5px solid #fed7aa;
+  border-radius: 10px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.14);
+  z-index: 100;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: dropdownFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timeGroupHeader {
+  font-size: 0.69rem;
+  font-weight: 800;
+  color: #9a3412;
+  background: #fff7ed;
+  border: 1px solid #ffedd5;
+  padding: 5px 9px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.35px;
+  margin-top: 2px;
+}
+
+.timeOptionsList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.timeOptionItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 6px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background: #fafafa;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.timeOptionItem:hover {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  color: #ea580c;
+  transform: translateY(-1px);
+}
+
+.timeOptionItemActive {
+  background: linear-gradient(135deg, var(--tw-orange), #ea580c) !important;
+  border-color: var(--tw-orange) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: 0 2px 8px rgba(255, 100, 19, 0.28);
+}
+
+.timeOptionText {
+  white-space: nowrap;
+  font-size: 0.73rem;
+  letter-spacing: -0.1px;
+}
+
+.timeCheckIcon {
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.sectionSubtextTag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #9ca3af;
+  background: #f3f4f6;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+.styledTextarea {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 7px;
+  border: 1.5px solid #fed7aa;
+  background: #ffffff;
+  font-size: 0.8rem;
+  color: #1f2937;
+  outline: none;
+  font-family: inherit;
+  resize: vertical;
+  transition: var(--transition-smooth);
+  line-height: 1.4;
+}
+
+.styledTextarea:focus {
+  border-color: var(--tw-orange);
+  box-shadow: 0 0 0 2px rgba(255, 100, 19, 0.18);
+  background: #fffcf8;
+}
+
+/* Price Box */
+.priceSummaryBox {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border: 1.5px solid #fdba74;
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 2px 8px rgba(255, 100, 19, 0.08);
+}
+
+.summaryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.summaryTitleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.summaryLabel {
+  font-size: 0.74rem;
+  font-weight: 850;
+  color: #9a3412;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.summaryQtyTag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #c2410c;
+}
+
+.summaryValue {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--tw-orange-dark);
+  font-family: var(--font-heading, inherit);
+}
+
+/* Daily Tiffin Customizer Styles */
+.topBoxCard {
+  background: #fff8f2;
+  border: 1.5px solid #fed7aa;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.selectGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.selectLabel {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.planActivePrice {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #111111;
+  margin: 2px 0 0 0;
+  font-family: var(--font-heading, inherit);
+}
+
+.dishesCounterBanner {
+  background: #fffbeb;
+  border: 1.5px solid #fde68a;
+  border-radius: 6px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.counterBadge {
+  background: var(--tw-orange);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counterText {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.formFieldsStack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fieldLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.requiredStar {
+  color: #dc2626;
+}
+
+.fieldSubtext {
+  font-size: 0.74rem;
+  color: #6b7280;
+  margin-top: -1px;
+  margin-bottom: 2px;
+}
+
+.dishesCheckboxGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 12px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 8px 10px;
+  background: #ffffff;
+  border: 1.5px solid var(--tw-border);
+  border-radius: var(--radius-sm);
+}
+
+.dishCheckboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  color: #374151;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 0;
+  user-select: none;
+}
+
+.dishCheckboxInput {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--tw-orange);
+  cursor: pointer;
+}
+
+.dishNameText {
+  line-height: 1.25;
+}
+
+/* Price Summary Box */
+.priceSummaryBox {
+  background: #fff8f2;
+  border: 1.5px solid #fde68a;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.summaryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+.summaryLabel {
+  font-size: 0.82rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+.summaryValue {
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.summaryTotalRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #fcd34d;
+  padding-top: 6px;
+  font-size: 0.88rem;
+}
+
+.totalLabel {
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.totalValue {
+  font-weight: 900;
+  color: #1f2937;
+  font-size: 0.95rem;
+}
+
+/* Actions */
+.actionRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.qtyControl {
+  display: flex;
+  align-items: center;
+  background: var(--tw-cream);
+  border: 1.5px solid var(--tw-border);
+  border-radius: var(--radius-full);
+  padding: 3px;
+}
+
+.qtyBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--tw-dark);
+  transition: var(--transition-smooth);
+}
+
+.qtyBtn:hover {
+  background: #ffffff;
+  color: var(--tw-orange);
+}
+
+.qtyNum {
+  font-size: 0.92rem;
+  font-weight: 800;
+  padding: 0 10px;
+}
+
+.addToCartBtn {
+  flex: 1;
+  height: 42px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+}
+
+.addedBtn {
+  background: var(--tw-veg);
+}
+
+.guaranteeBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+}
+
+.guaranteeIcon {
+  color: var(--tw-veg);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.guaranteeBox strong {
+  display: block;
+  font-size: 0.78rem;
+  color: #166534;
+}
+
+.guaranteeBox p {
+  font-size: 0.72rem;
+  color: #15803d;
+}
+
+/* Related */
+.relatedSection {
+  margin-top: 60px;
+}
+
+.relatedTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--tw-dark);
+  margin-bottom: 24px;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.relatedCard {
+  background: #ffffff;
+  border: 1.5px solid var(--tw-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.relatedCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--tw-orange);
+  box-shadow: var(--shadow-sm);
+}
+
+.relImgWrapper {
+  width: 100%;
+  height: 160px;
+  background: #fdfbf7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-bottom: 1px solid var(--tw-border);
+}
+
+.relImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.relInfo {
+  padding: 14px;
+}
+
+.relInfo h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--tw-dark);
+  margin-bottom: 4px;
+}
+
+/* WooCommerce Style Tabs Section */
+.tabsContainer {
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.tabsHeader {
+  background: #fff8f2;
+  border: 1.5px solid #fed7aa;
+  border-radius: 12px;
+  padding: 6px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tabButton {
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 10px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-transform: uppercase;
+}
+
+.tabButton:hover {
+  color: var(--tw-orange);
+}
+
+.activeTabButton {
+  background: var(--tw-orange) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(255, 100, 19, 0.25);
+}
+
+.tabContentBox {
+  background: #ffffff;
+  border: 1.5px solid var(--tw-border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-sm);
+}
+
+.tabTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 20px;
+  font-family: var(--font-heading, inherit);
+}
+
+.descContent {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: #374151;
+  white-space: pre-line;
+}
+
+/* Compact Tabular Description Tab */
+.descContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.descHeaderCompact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.descTitleCompact {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.descTextCompact {
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.descTableWrapper {
+  border: 1.5px solid #fed7aa;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.descTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.descTable tr {
+  border-bottom: 1px solid #ffedd5;
+  transition: background 0.15s ease;
+}
+
+.descTable tr:last-child {
+  border-bottom: none;
+}
+
+.descTable tr:hover {
+  background: #fffcf8;
+}
+
+.descTh {
+  width: 220px;
+  text-align: left;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  font-weight: 750;
+  color: #9a3412;
+  background: #fffaf5;
+  border-right: 1.5px solid #ffedd5;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.thIconLucide {
+  color: var(--tw-orange);
+  margin-right: 8px;
+  vertical-align: -3px;
+  flex-shrink: 0;
+}
+
+.descTd {
+  padding: 10px 16px;
+  font-size: 0.86rem;
+  color: #374151;
+  line-height: 1.45;
+  vertical-align: middle;
+}
+
+.attributesTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.attributesTable tr {
+  border-bottom: 1px solid var(--tw-border-light);
+}
+
+.attributesTable th {
+  text-align: left;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: #111111;
+  width: 200px;
+  font-size: 0.92rem;
+  background: #faf8f5;
+}
+
+.attributesTable td {
+  padding: 12px 16px;
+  color: #4b5563;
+  font-size: 0.92rem;
+}
+
+.reviewsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.relPrice {
+  font-weight: 800;
+  color: var(--tw-orange);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 960px) {
+  .productGrid {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+  .cardGridDuration {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dishCardsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .relatedGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .cardGrid2,
+  .cardGrid3,
+  .cardGridDuration,
+  .dateTimeGrid,
+  .scheduleGrid {
+    grid-template-columns: 1fr;
+  }
+  .dishCardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .relatedGrid {
+    grid-template-columns: 1fr;
+  }
+  .actionRow {
+    flex-direction: column;
+  }
+  .qtyControl {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .addToCartBtn {
+    width: 100%;
+  }
+  .descTh {
+    width: 130px;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+    white-space: normal;
+  }
+  .descTd {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+  .timeDropdownMenu {
+    min-width: 100%;
+    left: 0;
+    right: 0;
+  }
+}

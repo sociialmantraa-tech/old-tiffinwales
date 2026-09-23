@@ -1,0 +1,238 @@
+.section {
+  background: 
+    radial-gradient(circle at 50% 10%, rgba(255, 100, 19, 0.18) 0%, transparent 65%),
+    linear-gradient(160deg, #1d1411 0%, #291a14 50%, #140f0d 100%);
+  border-top: 1.5px solid #3d2920;
+  border-bottom: 1.5px solid #3d2920;
+  color: #ffffff;
+}
+
+.section :global(.section-title) {
+  color: #ffffff;
+}
+
+.section :global(.section-subtitle) {
+  color: #d1d5db;
+}
+
+.section :global(.section-tag) {
+  background: rgba(255, 100, 19, 0.2);
+  border-color: rgba(255, 100, 19, 0.45);
+  color: #ff924a;
+}
+
+.daySelector {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  overflow-x: auto;
+  padding: 4px 10px 14px 10px;
+}
+
+.dayBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 120px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: var(--transition-smooth);
+}
+
+.dayBtn:hover {
+  border-color: var(--tw-orange);
+  background: rgba(255, 100, 19, 0.15);
+  transform: translateY(-2px);
+}
+
+.activeDay {
+  background: linear-gradient(135deg, var(--tw-orange), #d94300) !important;
+  border-color: var(--tw-orange) !important;
+  box-shadow: 0 8px 25px rgba(255, 100, 19, 0.45) !important;
+}
+
+.dayName {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.activeDay .dayName {
+  color: #ffffff;
+}
+
+.daySub {
+  font-size: 0.72rem;
+  color: #9ca3af;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.activeDay .daySub {
+  color: #ffeedd;
+}
+
+.menuContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.menuCard {
+  background: #ffffff;
+  border: 1.5px solid #fed7aa;
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  transition: var(--transition-smooth);
+}
+
+.menuCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--tw-orange);
+  box-shadow: 0 20px 48px rgba(255, 100, 19, 0.2);
+}
+
+.menuCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f2e2d5;
+}
+
+.cardBadgeVeg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  color: var(--tw-veg);
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+.cardBadgeNonVeg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  color: var(--tw-nonveg);
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+.tagDay {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--tw-orange);
+  background: #ffffff;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--tw-border);
+  white-space: nowrap;
+}
+
+.dishList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1;
+}
+
+.dishItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.dishBullet {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid var(--tw-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: var(--tw-dark);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.dishName {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--tw-dark);
+  margin-bottom: 2px;
+  white-space: nowrap;
+}
+
+.dishDesc {
+  font-size: 0.85rem;
+  color: var(--tw-muted);
+  line-height: 1.4;
+}
+
+.inclusionsBox {
+  margin-top: 14px;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--tw-border);
+}
+
+.incTitle {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--tw-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+.incList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.incList li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+.checkIcon {
+  color: var(--tw-veg);
+  flex-shrink: 0;
+}
+
+@media (max-width: 800px) {
+  .menuContainer {
+    grid-template-columns: 1fr;
+  }
+}
