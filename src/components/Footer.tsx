@@ -91,13 +91,13 @@ export const Footer = () => {
             <li>
               <Link href="/tiffin">
                 <ChevronRight size={13} className={styles.linkArrow} />
-                <span>Veg Meal Plans</span>
+                <span>Veg Tiffin</span>
               </Link>
             </li>
             <li>
               <Link href="/tiffin">
                 <ChevronRight size={13} className={styles.linkArrow} />
-                <span>Non-Veg Meal Plans</span>
+                <span>Non-Veg Tiffin</span>
               </Link>
             </li>
             <li>
@@ -109,7 +109,7 @@ export const Footer = () => {
             <li>
               <Link href="/tiffin">
                 <ChevronRight size={13} className={styles.linkArrow} />
-                <span>All Meal Plans</span>
+                <span>All Tiffin Plans</span>
               </Link>
             </li>
           </ul>
@@ -184,9 +184,9 @@ export const Footer = () => {
                 <Clock size={16} />
               </div>
               <div>
-                <strong>Open: Monday to Sunday</strong>
-                <p style={{ margin: '2px 0 0 0' }}>Morning 11:00 AM – 03:00 PM</p>
-                <p style={{ margin: '1px 0 0 0' }}>Evening 5:00 PM – 10:00 PM</p>
+                <strong>Open : Monday to Sunday</strong>
+                <p>Morning 11:00 AM – 03:00 PM</p>
+                <p>Evening 5:00 PM - 10:00 PM</p>
               </div>
             </div>
 
