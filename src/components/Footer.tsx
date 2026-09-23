@@ -89,25 +89,25 @@ export const Footer = () => {
           </h4>
           <ul className={styles.linkList}>
             <li>
-              <Link href="/tiffin">
+              <Link href="/product/5-days-meal">
                 <ChevronRight size={13} className={styles.linkArrow} />
-                <span>5 Days Weekly Plan (Popular)</span>
+                <span>5 Days Meal Plan</span>
               </Link>
             </li>
             <li>
-              <Link href="/tiffin">
+              <Link href="/product/7-days-meal">
                 <ChevronRight size={13} className={styles.linkArrow} />
-                <span>30 Days Monthly Subscription</span>
+                <span>7 Days Full Week Plan</span>
               </Link>
             </li>
             <li>
-              <Link href="/tiffin">
+              <Link href="/product/20-days-meal">
                 <ChevronRight size={13} className={styles.linkArrow} />
-                <span>2, 3 &amp; 4 Days Flexi Packs</span>
+                <span>20 Days Monthly Plan</span>
               </Link>
             </li>
             <li>
-              <Link href="/tiffin">
+              <Link href="/product/1-day-meal">
                 <ChevronRight size={13} className={styles.linkArrow} />
                 <span>Single Day Trial Tiffin</span>
               </Link>
@@ -115,7 +115,7 @@ export const Footer = () => {
             <li>
               <Link href="/tiffin">
                 <ChevronRight size={13} className={styles.linkArrow} />
-                <span>100% Pure Veg Tiffins</span>
+                <span>View All Meal Plans →</span>
               </Link>
             </li>
           </ul>
@@ -129,33 +129,39 @@ export const Footer = () => {
           </h4>
           <ul className={styles.linkList}>
             <li>
-              <Link href="/#weekly-menu">
+              <Link href="/">
                 <ChevronRight size={13} className={styles.linkArrow} />
-                <span>Weekly Rotating Menu</span>
+                <span>Home</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/tiffin">
+                <ChevronRight size={13} className={styles.linkArrow} />
+                <span>Tiffin Meal Plans</span>
               </Link>
             </li>
             <li>
               <Link href="/menu">
                 <ChevronRight size={13} className={styles.linkArrow} />
-                <span>Order Extra Dishes &amp; Addons</span>
+                <span>A La Carte Menu</span>
               </Link>
             </li>
             <li>
               <Link href="/about">
                 <ChevronRight size={13} className={styles.linkArrow} />
-                <span>About Our Homestyle Kitchen</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/#service-areas">
-                <ChevronRight size={13} className={styles.linkArrow} />
-                <span>Delivery Areas &amp; Zip Codes</span>
+                <span>About Us</span>
               </Link>
             </li>
             <li>
               <Link href="/contact">
                 <ChevronRight size={13} className={styles.linkArrow} />
-                <span>Contact &amp; Customer Support</span>
+                <span>Contact Us</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/account">
+                <ChevronRight size={13} className={styles.linkArrow} />
+                <span>My Account &amp; Tracking</span>
               </Link>
             </li>
           </ul>
