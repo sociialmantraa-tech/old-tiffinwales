@@ -651,8 +651,13 @@
   .trustRow {
     order: 6;
     margin: 4px auto 0 auto;
-    padding: 5px 12px;
-    font-size: 0.75rem;
+    padding: 4px 12px;
+    font-size: 0.74rem;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
   }
 
   .zipCheckerCard {

@@ -81,12 +81,12 @@ export const HeroSection = () => {
           <div className={styles.trustRow}>
             <div className={styles.starsRow}>
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={14} fill="#ff6413" color="#ff6413" />
+                <Star key={i} size={13} fill="#ff6413" color="#ff6413" />
               ))}
             </div>
             <div className={styles.trustText}>
               <span>
-                <strong>4.9/5 Rating</strong> • 500+ Happy Diners in Cambridge &amp; Boston
+                <strong>4.9/5 Rating</strong> • 500+ Happy Diners
               </span>
             </div>
           </div>
