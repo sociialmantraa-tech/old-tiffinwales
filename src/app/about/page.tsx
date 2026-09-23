@@ -208,12 +208,12 @@ export default function AboutPage() {
       </section>
 
       {/* 4. WHY CHOOSE TIFFINWALES (6 FEATURE CARDS) */}
-      <section className={styles.sectionBlock}>
+      <section className={styles.sectionOrange}>
         <div className="tw-container">
           <div className="section-header">
-            <span className={styles.tagLabel}>THE TIFFINWALES DIFFERENCE</span>
-            <h2 className="section-title">Why Families, Students &amp; Professionals Choose Us</h2>
-            <p className="section-subtitle">
+            <span className={styles.tagLabelWhite}>THE TIFFINWALES DIFFERENCE</span>
+            <h2 className={styles.sectionTitleWhite}>Why Families, Students &amp; Professionals Choose Us</h2>
+            <p className={styles.sectionSubtitleWhite}>
               We cook each meal with the same care and respect as our own family&apos;s kitchen.
             </p>
           </div>
