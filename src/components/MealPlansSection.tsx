@@ -53,7 +53,7 @@ export const MealPlansSection: React.FC<MealPlansSectionProps> = ({
           <div className="section-header">
             <div className="section-tag">
               <Sparkles size={13} />
-              <span>Homemade Punjabi &amp; North Indian Meals</span>
+              <span>Authentic North Indian Meals</span>
             </div>
             <h2 className="section-title">Meal Plans &amp; Tiffin Subscriptions</h2>
           </div>

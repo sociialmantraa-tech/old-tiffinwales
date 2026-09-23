@@ -119,18 +119,30 @@ button, input, select, textarea {
 .section-tag {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   background: var(--tw-orange-light);
   color: var(--tw-orange);
-  padding: 6px 18px;
+  padding: 5px 14px;
   border-radius: var(--radius-full);
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   font-weight: 800;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin: 0 auto 12px auto;
   border: 1px solid rgba(255, 100, 19, 0.2);
-  white-space: nowrap;
+  max-width: 90%;
+  text-align: center;
+  line-height: 1.25;
+}
+
+@media (max-width: 768px) {
+  .section-tag {
+    font-size: 0.68rem;
+    padding: 4px 10px;
+    letter-spacing: 0.3px;
+    gap: 4px;
+  }
 }
 
 .section-title {
