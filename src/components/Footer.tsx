@@ -7,7 +7,11 @@ import {
   MapPin, 
   Phone, 
   Clock, 
-  Star
+  Star,
+  ChevronRight,
+  Sparkles,
+  UtensilsCrossed,
+  HelpCircle
 } from 'lucide-react';
 import styles from './Footer.module.css';
 
@@ -40,11 +44,9 @@ export const Footer = () => {
 
           <div className={styles.ratingBadge}>
             <div className={styles.starsRow}>
-              <Star size={14} className={styles.starIcon} />
-              <Star size={14} className={styles.starIcon} />
-              <Star size={14} className={styles.starIcon} />
-              <Star size={14} className={styles.starIcon} />
-              <Star size={14} className={styles.starIcon} />
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={14} className={styles.starIcon} fill="#ff6413" color="#ff6413" />
+              ))}
             </div>
             <span><strong>4.9/5 Rating</strong> • 500+ Happy Diners</span>
           </div>
@@ -57,7 +59,7 @@ export const Footer = () => {
               className={`${styles.socialBtn} ${styles.instagramBtn}`}
               aria-label="Instagram"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                 <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
@@ -71,7 +73,7 @@ export const Footer = () => {
               className={`${styles.socialBtn} ${styles.facebookBtn}`}
               aria-label="Facebook"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
               <span>Facebook</span>
@@ -88,62 +90,72 @@ export const Footer = () => {
           <ul className={styles.linkList}>
             <li>
               <Link href="/tiffin">
-                <span>⭐ 5 Days Plan (Flagship)</span>
+                <ChevronRight size={13} className={styles.linkArrow} />
+                <span>5 Days Weekly Plan (Popular)</span>
               </Link>
             </li>
             <li>
               <Link href="/tiffin">
-                <span>🍱 30 Days Monthly Subscription</span>
+                <ChevronRight size={13} className={styles.linkArrow} />
+                <span>30 Days Monthly Subscription</span>
               </Link>
             </li>
             <li>
               <Link href="/tiffin">
-                <span>🍲 2, 3 &amp; 4 Days Flexi-Packs</span>
+                <ChevronRight size={13} className={styles.linkArrow} />
+                <span>2, 3 &amp; 4 Days Flexi Packs</span>
               </Link>
             </li>
             <li>
               <Link href="/tiffin">
-                <span>📅 7 Days Full Week Plan</span>
+                <ChevronRight size={13} className={styles.linkArrow} />
+                <span>Single Day Trial Tiffin</span>
               </Link>
             </li>
             <li>
               <Link href="/tiffin">
-                <span>🥗 Daily Tiffin (Single Day)</span>
+                <ChevronRight size={13} className={styles.linkArrow} />
+                <span>100% Pure Veg Tiffins</span>
               </Link>
             </li>
           </ul>
         </div>
 
-        {/* Col 3: Extras & Menu */}
+        {/* Col 3: Quick Links & Information */}
         <div className={styles.linkCol}>
           <h4 className={styles.colTitle}>
             <span className={styles.colTitleDot}></span>
-            Order Extras
+            Quick Links
           </h4>
           <ul className={styles.linkList}>
             <li>
-              <Link href="/menu">
-                <span>Butter Chicken &amp; Chicken Tikka</span>
+              <Link href="/#weekly-menu">
+                <ChevronRight size={13} className={styles.linkArrow} />
+                <span>Weekly Rotating Menu</span>
               </Link>
             </li>
             <li>
               <Link href="/menu">
-                <span>Dal Makhani &amp; Dal Tadka</span>
+                <ChevronRight size={13} className={styles.linkArrow} />
+                <span>Order Extra Dishes &amp; Addons</span>
               </Link>
             </li>
             <li>
-              <Link href="/menu">
-                <span>Shahi Paneer &amp; Kadhai Paneer</span>
+              <Link href="/about">
+                <ChevronRight size={13} className={styles.linkArrow} />
+                <span>About Our Homestyle Kitchen</span>
               </Link>
             </li>
             <li>
-              <Link href="/menu">
-                <span>Fresh Rotis &amp; Garlic Naan</span>
+              <Link href="/#service-areas">
+                <ChevronRight size={13} className={styles.linkArrow} />
+                <span>Delivery Areas &amp; Zip Codes</span>
               </Link>
             </li>
             <li>
-              <Link href="/menu">
-                <span>Crispy Samosas &amp; Mango Lassi</span>
+              <Link href="/contact">
+                <ChevronRight size={13} className={styles.linkArrow} />
+                <span>Contact &amp; Customer Support</span>
               </Link>
             </li>
           </ul>
@@ -173,7 +185,7 @@ export const Footer = () => {
               </div>
               <div>
                 <strong>Operating Hours</strong>
-                <p>Monday – Sunday: 11:30 AM – 9:30 PM</p>
+                <p>Mon – Sun: 11:30 AM – 9:30 PM</p>
               </div>
             </div>
 
@@ -195,14 +207,6 @@ export const Footer = () => {
         <div className={`tw-container ${styles.bottomContainer}`}>
           <div className={styles.copyrightText}>
             © {new Date().getFullYear()} <strong>Tiffin Wales</strong>. All rights reserved.
-          </div>
-
-          <div className={styles.legalLinks}>
-            <Link href="/account">My Account</Link>
-            <span>•</span>
-            <Link href="/about">About Us</Link>
-            <span>•</span>
-            <Link href="/contact">Contact</Link>
           </div>
         </div>
       </div>
