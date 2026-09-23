@@ -31,15 +31,16 @@ export const ServiceAreasSection = () => {
   ];
 
   return (
-    <section className={`tw-section ${styles.section}`}>
-      <div className="tw-container">
-        <div className="section-header">
-          <div className="section-tag">
+    <section className={styles.section} id="service-areas">
+      <div className={styles.bgOverlay}></div>
+      <div className={`tw-container ${styles.container}`}>
+        <div className={styles.sectionHeader}>
+          <div className={styles.sectionTag}>
             <Truck size={14} />
             <span>Delivery Coverage</span>
           </div>
-          <h2 className="section-title">Areas We Proudly Serve</h2>
-          <p className="section-subtitle">
+          <h2 className={styles.sectionTitle}>Areas We Proudly Serve</h2>
+          <p className={styles.sectionSubtitle}>
             Hot and fresh delivery across Greater Boston and Cambridge, plus convenient in-store pickup.
           </p>
         </div>
