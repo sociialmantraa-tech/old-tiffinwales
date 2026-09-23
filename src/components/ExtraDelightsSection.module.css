@@ -29,12 +29,13 @@
 }
 
 .title {
-  font-size: 2.85rem;
+  font-size: clamp(1.35rem, 3.8vw, 2.85rem);
   color: #1f2937;
   margin: 0 0 18px;
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.5px;
+  white-space: nowrap;
 }
 
 .description {
@@ -180,7 +181,8 @@
   }
 
   .title {
-    font-size: 1.95rem;
+    font-size: clamp(1.15rem, 4.8vw, 1.65rem);
+    white-space: nowrap;
   }
 
   .description {
