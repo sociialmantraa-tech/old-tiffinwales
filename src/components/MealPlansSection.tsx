@@ -52,10 +52,12 @@ export const MealPlansSection: React.FC<MealPlansSectionProps> = ({
         {!hideHeader && (
           <div className="section-header">
             <div className="section-tag">
-              <Sparkles size={13} />
-              <span>Authentic North Indian Meals</span>
+              <span>🍱 POPULAR MEAL PLANS</span>
             </div>
-            <h2 className="section-title">Meal Plans &amp; Tiffin Subscriptions</h2>
+            <h2 className="section-title">Meal Plans</h2>
+            <p className="section-subtitle">
+              Fresh homemade Indian food delivery in Boston, Cambridge &amp; Massachusetts.
+            </p>
           </div>
         )}
 

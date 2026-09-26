@@ -1,74 +1,69 @@
+'use client';
+
 import React from 'react';
-import { CalendarCheck, Utensils, Truck, Heart, ArrowRight } from 'lucide-react';
 import styles from './HowItWorks.module.css';
 
 export const HowItWorks = () => {
-  const steps = [
-    {
-      num: '01',
-      title: 'Choose Your Plan',
-      sub: 'DAILY, WEEKLY OR MONTHLY',
-      desc: 'Pick from flexible 2, 3, 4, 5, or 7-day meal packs, or our cost-saving 30-day monthly subscription.',
-      icon: <CalendarCheck size={28} />
-    },
-    {
-      num: '02',
-      title: 'Customize Your Meal',
-      sub: 'PICK YOUR FAVORITE',
-      desc: 'Choose Vegetarian, Non-Vegetarian, or mixed options. Select your spice level and bread preference (Naan or Rotis).',
-      icon: <Utensils size={28} />
-    },
-    {
-      num: '03',
-      title: 'Pickup or Delivery',
-      sub: "WE'VE GOT YOU COVERED",
-      desc: 'Free pickup at 1001 Massachusetts Ave, Cambridge, or guaranteed warm delivery to your door across Boston & Cambridge.',
-      icon: <Truck size={28} />
-    },
-    {
-      num: '04',
-      title: 'Enjoy Fresh Homestyle Meal',
-      sub: 'TASTE THE DIFFERENCE',
-      desc: 'Open your hot, fresh tiffin tray. 100% homestyle nutrition, authentic spices, and zero preservative guilt.',
-      icon: <Heart size={28} />
-    }
-  ];
-
   return (
-    <section className={`tw-section ${styles.section}`}>
-      {/* Background Floating Spices */}
-      <img
-        src="/elements/coriander-clean.png"
-        alt="Fresh Herb"
-        className={`${styles.bgElement} ${styles.bgTopRight}`}
-      />
-      <img
-        src="/elements/red-chili-clean.png"
-        alt="Spicy Chili"
-        className={`${styles.bgElement} ${styles.bgBottomLeft}`}
-      />
-
-      <div className="tw-container">
-        <div className={styles.sectionHeader}>
-          <div className={styles.sectionTag}>Easy 4-Step Process</div>
-          <h2 className={styles.sectionTitle}>How TiffinWales Works</h2>
-          <p className={styles.sectionSubtitle}>
-            Say goodbye to grocery shopping, chopping, and cooking chores. Wholesome Indian dining is now effortless.
+    <section className={styles.howItWorksSection} id="how-it-works">
+      <div className={styles.container}>
+        {/* Header */}
+        <div className={styles.heading}>
+          <span className={styles.subtitle}>HOW IT WORKS</span>
+          <h2 className={styles.title}>How TiffinWales Works</h2>
+          <p className={styles.desc}>
+            Fresh homemade Indian meals delivered in just a few simple steps.
           </p>
         </div>
 
+        {/* 4 Steps Grid */}
         <div className={styles.stepsGrid}>
-          {steps.map((step, idx) => (
-            <div key={idx} className={styles.stepCard}>
-              <div className={styles.stepTopRow}>
-                <div className={styles.iconWrapper}>{step.icon}</div>
-                <span className={styles.stepNum}>{step.num}</span>
-              </div>
-              <span className={styles.stepSub}>{step.sub}</span>
-              <h3 className={styles.stepTitle}>{step.title}</h3>
-              <p className={styles.stepDesc}>{step.desc}</p>
-            </div>
-          ))}
+          {/* STEP 1 */}
+          <div className={`${styles.stepCard} ${styles.orange}`}>
+            <div className={styles.icon}>📅</div>
+            <div className={styles.badge}>STEP 1</div>
+            <h3 className={styles.stepTitle}>Choose Your Plan</h3>
+            <h4 className={styles.stepSub}>DAILY, WEEKLY OR MONTHLY</h4>
+            <p className={styles.stepText}>
+              Select a meal plan that fits your schedule. Daily, weekly, and monthly options available.
+            </p>
+          </div>
+
+          {/* STEP 2 */}
+          <div className={`${styles.stepCard} ${styles.green}`}>
+            <div className={styles.icon}>🍱</div>
+            <div className={styles.badge}>STEP 2</div>
+            <h3 className={styles.stepTitle}>Select Your Meal</h3>
+            <h4 className={styles.stepSub}>PICK YOUR FAVORITE</h4>
+            <ul className={styles.stepList}>
+              <li>5 Days Meal Plan</li>
+              <li>Veg Tiffin</li>
+              <li>Non-Veg Tiffin</li>
+              <li>Taste The Twist</li>
+            </ul>
+          </div>
+
+          {/* STEP 3 */}
+          <div className={`${styles.stepCard} ${styles.teal}`}>
+            <div className={styles.icon}>🚚</div>
+            <div className={styles.badge}>STEP 3</div>
+            <h3 className={styles.stepTitle}>Pickup or Delivery</h3>
+            <h4 className={styles.stepSub}>WE&apos;VE GOT YOU COVERED</h4>
+            <p className={styles.stepText}>
+              Get fresh meals delivered to your door or pick them up at your convenience.
+            </p>
+          </div>
+
+          {/* STEP 4 */}
+          <div className={`${styles.stepCard} ${styles.blue}`}>
+            <div className={styles.icon}>🍽️</div>
+            <div className={styles.badge}>STEP 4</div>
+            <h3 className={styles.stepTitle}>Enjoy Your Meal</h3>
+            <h4 className={styles.stepSub}>TASTE THE DIFFERENCE</h4>
+            <p className={styles.stepText}>
+              Enjoy authentic homemade meals prepared fresh daily with quality ingredients.
+            </p>
+          </div>
         </div>
       </div>
     </section>

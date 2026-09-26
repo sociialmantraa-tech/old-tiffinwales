@@ -7,10 +7,16 @@ const WP_API_BASE = 'https://tiffinwales.com/wp-json';
  * Robust fetch wrapper with timeout and fallback protection.
  * Ensures the website never throws an unhandled error or crashes.
  */
+let memoryCachedProducts: Product[] | null = FALLBACK_PRODUCTS;
+
 export async function getProducts(): Promise<Product[]> {
+  if (memoryCachedProducts && memoryCachedProducts.length > 0) {
+    return memoryCachedProducts;
+  }
+
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
+    const timeoutId = setTimeout(() => controller.abort(), 800);
 
     const res = await fetch(`${WP_API_BASE}/wc/store/v1/products?per_page=100`, {
       signal: controller.signal,
@@ -25,11 +31,13 @@ export async function getProducts(): Promise<Product[]> {
 
     if (!res.ok) {
       console.warn(`[API] Remote endpoint responded with status ${res.status}. Using fallback catalog.`);
+      memoryCachedProducts = FALLBACK_PRODUCTS;
       return FALLBACK_PRODUCTS;
     }
 
     const liveData = await res.json();
     if (!Array.isArray(liveData) || liveData.length === 0) {
+      memoryCachedProducts = FALLBACK_PRODUCTS;
       return FALLBACK_PRODUCTS;
     }
 
@@ -72,9 +80,11 @@ export async function getProducts(): Promise<Product[]> {
       if (fallback5Day) liveProducts.unshift(fallback5Day);
     }
 
+    memoryCachedProducts = liveProducts;
     return liveProducts;
   } catch (err: any) {
     console.warn('[API] Fetch error:', err?.message || err);
+    memoryCachedProducts = FALLBACK_PRODUCTS;
     return FALLBACK_PRODUCTS;
   }
 }
