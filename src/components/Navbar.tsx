@@ -45,6 +45,14 @@ export const Navbar = () => {
     setMobileMenuOpen(false);
   }, [pathname]);
 
+  const isLinkActive = (href: string) => {
+    if (!pathname) return false;
+    const current = pathname.replace(/\/$/, '') || '/';
+    const target = href.split('?')[0].replace(/\/$/, '') || '/';
+    if (target === '/') return current === '/';
+    return current === target || current.startsWith(target + '/');
+  };
+
   const navLinks = [
     { name: 'HOME', href: '/', icon: Home },
     { name: 'TIFFIN', href: '/tiffin', icon: UtensilsCrossed },
@@ -94,7 +102,7 @@ export const Navbar = () => {
         <nav className={styles.navMenu}>
           {navLinks.map((link) => {
             if (link.children) {
-              const isChildActive = link.children.some((child) => pathname === child.href) || pathname === link.href;
+              const isChildActive = link.children.some((child) => isLinkActive(child.href)) || isLinkActive(link.href);
               return (
                 <div key={link.name} className={styles.navDropdownWrap}>
                   <Link
@@ -108,7 +116,7 @@ export const Navbar = () => {
                     <div className={styles.dropdownInner}>
                       {link.children.map((child) => {
                         const ChildIcon = child.icon;
-                        const isCurrent = pathname === child.href;
+                        const isCurrent = isLinkActive(child.href);
                         return (
                           <Link
                             key={child.name}
@@ -126,7 +134,7 @@ export const Navbar = () => {
               );
             }
 
-            const isActive = pathname === link.href;
+            const isActive = isLinkActive(link.href);
             return (
               <Link
                 key={link.name}
@@ -204,8 +212,8 @@ export const Navbar = () => {
             <div className={styles.mobileNavLinks}>
               {navLinks.map((link) => {
                 const Icon = link.icon;
-                const isDirectActive = pathname === link.href;
-                const isAnyActive = link.children ? link.children.some(c => pathname === c.href) || isDirectActive : isDirectActive;
+                const isDirectActive = isLinkActive(link.href);
+                const isAnyActive = link.children ? link.children.some(c => isLinkActive(c.href)) || isDirectActive : isDirectActive;
 
                 if (link.children) {
                   return (

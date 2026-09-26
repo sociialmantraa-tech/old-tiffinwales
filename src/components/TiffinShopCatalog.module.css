@@ -4,22 +4,29 @@
   width: 100%;
 }
 
-/* =========================
-   BREADCRUMB AREA (Merida Theme Style)
-========================= */
-.breadcrumbArea {
-  background: linear-gradient(180deg, #fff7f0 0%, #ffeedd 100%);
-  padding: 45px 20px 40px;
-  border-bottom: 1px solid #fed7aa;
+/* ========================================================
+   OFFICIAL BREADCRUMB AREA (Matches .breadcroumb-area)
+======================================================== */
+.breadcroumbArea {
+  background-image: url(/tiffin-page-banner.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 140px;
+  padding: 40px 20px;
+  display: flex;
+  align-items: center;
   position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.breadcrumbContainer {
+.container {
+  width: 100%;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.breadcrumbContent {
+.breadcroumbRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,49 +34,55 @@
   gap: 15px;
 }
 
-.breadcrumbTitle {
-  font-size: clamp(2rem, 3.2vw, 2.8rem);
-  font-weight: 800;
-  color: #222222;
+.breadcroumbContent {
+  flex: 1;
+}
+
+.breadcumbTitle {
+  font-family: var(--font-serif, "Cormorant Garamond", serif);
+  font-size: clamp(2.4rem, 3.8vw, 3.2rem);
+  font-weight: 700;
+  color: #ff6912;
   margin: 0;
   line-height: 1.2;
 }
 
-.breadcrumbSub {
+.breSub {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
-  color: #666666;
+  color: #ff6912;
 }
 
-.breadcrumbLink {
+.breHome {
   color: #ff6912;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.breadcrumbLink:hover {
-  color: #e05505;
+.breHome:hover {
+  color: #000000;
   text-decoration: underline;
 }
 
-.separator {
-  color: #999999;
+.breSep {
+  color: #ff6912;
+  opacity: 0.8;
 }
 
-.currentCrumb {
-  color: #444444;
+.breCurrent {
+  color: #222222;
 }
 
-/* =========================
-   MAIN CONTAINER
-========================= */
+/* ========================================================
+   MAIN SHOP CONTAINER
+======================================================== */
 .mainContainer {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 40px 20px 80px;
+  padding: 45px 20px 80px;
 }
 
 /* Category Filter Bar */
@@ -78,7 +91,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
   flex-wrap: wrap;
 }
 
@@ -192,51 +205,58 @@
   border-color: #ff6912;
 }
 
-/* =========================
-   4-COLUMN PRODUCTS GRID (Matches .columns-4)
-========================= */
+/* ========================================================
+   4-COLUMN WOOCOMMERCE PRODUCT GRID (.products.columns-4)
+======================================================== */
 .productsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
+  gap: 26px;
 }
 
-.productCard {
-  background: #ffffff;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1.5px solid #ececec;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s ease;
+.wooSingleItemWrapper {
   display: flex;
   flex-direction: column;
 }
 
-.productCard:hover {
+.productItem {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1.5px solid #eaeaea;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.productItem:hover {
   transform: translateY(-6px);
   border-color: #ff6912;
-  box-shadow: 0 12px 30px rgba(255, 105, 18, 0.12);
+  box-shadow: 0 14px 32px rgba(255, 105, 18, 0.12);
 }
 
 .imgLink {
   display: block;
   text-decoration: none;
+  position: relative;
 }
 
-.imgWrapper {
+.productImg {
   position: relative;
   width: 100%;
-  height: 240px;
+  height: 250px;
   background: #fdfdfd;
   overflow: hidden;
 }
 
-.productImg {
+.wpPostImage {
   object-fit: cover;
   transition: transform 0.5s ease;
 }
 
-.productCard:hover .productImg {
+.productItem:hover .wpPostImage {
   transform: scale(1.06);
 }
 
@@ -281,64 +301,75 @@
   box-shadow: 0 2px 8px rgba(255, 105, 18, 0.3);
 }
 
-/* Card Body */
-.cardBody {
+/* Product Info */
+.productInfo {
   padding: 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
   text-align: center;
   align-items: center;
+  justify-content: space-between;
 }
 
-.productTitle {
+.productHolder {
+  width: 100%;
+}
+
+.woocommerceLoopProductTitle {
   font-size: 18px;
   font-weight: 700;
   color: #222222;
-  margin: 0 0 10px 0;
+  margin: 0 0 8px 0;
   line-height: 1.3;
 }
 
-.titleLink {
+.woocommerceLoopProductTitle a {
   color: inherit;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.titleLink:hover {
+.woocommerceLoopProductTitle a:hover {
   color: #ff6912;
 }
 
-.priceRow {
+.productPrice {
   margin-bottom: 16px;
 }
 
-.priceLabel {
-  font-size: 18px;
+.price {
+  font-size: 17px;
   font-weight: 800;
   color: #ff6912;
 }
 
-.selectOptionsBtn {
+/* Product Actions */
+.productActions {
+  width: 100%;
   margin-top: auto;
+}
+
+.buttonSelectOptions {
   width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 11px 18px;
-  background: #ffffff;
-  color: #ff6912;
-  border: 1.5px solid #ff6912;
+  background: #f8f8f8;
+  color: #333333;
+  border: 1.5px solid #e0e0e0;
   border-radius: 30px;
   font-size: 13.5px;
   font-weight: 700;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
-.selectOptionsBtn:hover {
+.buttonSelectOptions:hover {
   background: #ff6912;
+  border-color: #ff6912;
   color: #ffffff;
   box-shadow: 0 6px 16px rgba(255, 105, 18, 0.25);
 }
@@ -385,9 +416,9 @@
   cursor: pointer;
 }
 
-/* =========================
+/* ========================================================
    RESPONSIVE BREAKPOINTS
-========================= */
+======================================================== */
 @media (max-width: 1200px) {
   .productsGrid {
     grid-template-columns: repeat(3, 1fr);
@@ -401,7 +432,7 @@
     gap: 18px;
   }
 
-  .breadcrumbContent {
+  .breadcroumbRow {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -417,8 +448,8 @@
     padding: 25px 15px 60px;
   }
 
-  .imgWrapper {
-    height: 200px;
+  .productImg {
+    height: 210px;
   }
 
   .categoryBar {

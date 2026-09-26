@@ -4,7 +4,7 @@ import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Product } from '@/lib/types';
-import { Search, ChevronRight, ArrowRight, Sparkles, Filter } from 'lucide-react';
+import { Search, ArrowRight } from 'lucide-react';
 import styles from './TiffinShopCatalog.module.css';
 
 interface TiffinShopCatalogProps {
@@ -23,6 +23,46 @@ function cleanText(text: string): string {
     .trim();
 }
 
+// Exact WooCommerce product order on tiffinwales.com/tiffin/
+const EXACT_WC_ORDER = [
+  '2-days-meal',
+  '3-days-meal',
+  '4-days-meal',
+  '5-days-meal',
+  '7-days-meal',
+  'aloo-gobi',
+  'aloo-jeera',
+  'aloo-methi',
+  'bhindi-masala',
+  'chana-masala',
+  'dal-makhani',
+  'kadhai-paneer',
+  'malai-kofta',
+  'matar-paneer',
+  'punjabi-kadhai-pakora',
+  'shahi-paneer',
+  'chili-paneer',
+  'butter-chicken',
+  'chicken-achari-curry',
+  'chicken-dhaniwal-korma',
+  'chicken-kadhai',
+  'chicken-madras',
+  'chilli-chicken',
+  'goat-achari-curry',
+  'lamb-achari-curry',
+  'lamb-bhuna-gosht',
+  'lamb-kadhai',
+  'shrimp-kadhai',
+  'tandoori-roti',
+  'naan',
+  'paratha',
+  'samosa',
+  'mango-lassi',
+  'veg-tiffin',
+  'non-veg',
+  'veg-non-veg-tiffin',
+];
+
 export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialProducts }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -33,20 +73,21 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
   const categories = [
     { id: 'all', label: 'All Tiffins & Meals' },
     { id: 'meal-plans', label: '🍱 Meal Plans (2–7 Days)' },
-    { id: 'veg', label: '🥗 Veg Tiffins' },
-    { id: 'non-veg', label: '🍗 Non-Veg Tiffins' },
+    { id: 'veg', label: '🥗 Veg' },
+    { id: 'non-veg', label: '🍗 Non-Veg' },
     { id: 'breads', label: '🫓 Breads' },
     { id: 'extras', label: '🥤 Beverages & Snacks' },
   ];
 
-  // Prioritize meal plans at the very top of "all" just like tiffinwales.com (2 Days, 3 Days, 4 Days, 5 Days, 7 Days, etc.)
+  // Sort initially by the exact WooCommerce product order from tiffinwales.com
   const sortedInitial = useMemo(() => {
     const list = [...initialProducts];
     return list.sort((a, b) => {
-      const aIsPlan = a.slug.includes('days-meal') || a.slug.includes('tiffin');
-      const bIsPlan = b.slug.includes('days-meal') || b.slug.includes('tiffin');
-      if (aIsPlan && !bIsPlan) return -1;
-      if (!aIsPlan && bIsPlan) return 1;
+      const idxA = EXACT_WC_ORDER.indexOf(a.slug);
+      const idxB = EXACT_WC_ORDER.indexOf(b.slug);
+      if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+      if (idxA !== -1) return -1;
+      if (idxB !== -1) return 1;
       return 0;
     });
   }, [initialProducts]);
@@ -57,7 +98,7 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
       // Category Match
       let catMatch = true;
       if (selectedCategory === 'meal-plans') {
-        catMatch = p.isMealPlan || p.slug.includes('days-meal') || p.slug.includes('tiffin');
+        catMatch = p.isMealPlan || p.slug.includes('days-meal') || p.slug.includes('tiffin') || p.slug === 'non-veg';
       } else if (selectedCategory === 'veg') {
         catMatch = p.isVeg;
       } else if (selectedCategory === 'non-veg') {
@@ -107,17 +148,19 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
 
   return (
     <div className={styles.pageWrap}>
-      {/* 1. Authentic Breadcrumb Area (Matches Merida theme on tiffinwales.com) */}
-      <div className={styles.breadcrumbArea}>
-        <div className={styles.breadcrumbContainer}>
-          <div className={styles.breadcrumbContent}>
-            <h1 className={styles.breadcrumbTitle}>Tiffin</h1>
-            <div className={styles.breadcrumbSub}>
-              <Link href="/" className={styles.breadcrumbLink}>
+      {/* 1. Official Breadcrumb Area (Matches Merida theme on tiffinwales.com exactly) */}
+      <div className={styles.breadcroumbArea}>
+        <div className={styles.container}>
+          <div className={styles.breadcroumbRow}>
+            <div className={styles.breadcroumbContent}>
+              <h1 className={styles.breadcumbTitle}>Tiffin</h1>
+            </div>
+            <div className={styles.breSub}>
+              <Link href="/" className={styles.breHome}>
                 Tiffin Wales
               </Link>
-              <span className={styles.separator}>&gt;</span>
-              <span className={styles.currentCrumb}>Tiffin</span>
+              <span className={styles.breSep}>&gt;</span>
+              <span className={styles.breCurrent}>Tiffin</span>
             </div>
           </div>
         </div>
@@ -125,7 +168,7 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
 
       {/* 2. Main Shop Catalog Content */}
       <main className={styles.mainContainer}>
-        {/* Category Filters Carousel */}
+        {/* Category Filters Bar */}
         <div className={styles.categoryBar}>
           <div className={styles.categoryPills}>
             {categories.map((cat) => (
@@ -189,7 +232,7 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
           </div>
         </div>
 
-        {/* 3. 4-Column Product Grid */}
+        {/* 3. 4-Column Product Grid (Matches WooCommerce .products.columns-4) */}
         {displayed.length === 0 ? (
           <div className={styles.noResults}>
             <p>No tiffin meals found matching your criteria.</p>
@@ -210,24 +253,27 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
                 product.isMealPlan ||
                 product.slug.includes('days-meal') ||
                 product.slug.includes('tiffin') ||
+                product.slug === 'non-veg' ||
                 (product.variations && product.variations.length > 0);
 
               const isFlagship = product.slug === '5-days-meal';
 
               return (
-                <div key={product.id} className={styles.productCard}>
-                  {/* Image Container */}
-                  <Link href={`/product/${product.slug}`} className={styles.imgLink}>
-                    <div className={styles.imgWrapper}>
-                      <Image
-                        src={product.primaryImage || 'https://tiffinwales.com/wp-content/uploads/2026/03/5-day-meal-1.webp'}
-                        alt={cleanText(product.name)}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        className={styles.productImg}
-                      />
+                <div key={product.id} className={styles.wooSingleItemWrapper}>
+                  <div className={styles.productItem}>
+                    {/* Image Box */}
+                    <div className={styles.productImg}>
+                      <Link href={`/product/${product.slug}`} className={styles.imgLink}>
+                        <Image
+                          src={product.primaryImage || 'https://tiffinwales.com/wp-content/uploads/2026/03/5-day-meal-1.webp'}
+                          alt={cleanText(product.name)}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          className={styles.wpPostImage}
+                        />
+                      </Link>
 
-                      {/* Diet Badge */}
+                      {/* Floating Badges */}
                       <div className={styles.badgeWrap}>
                         {isFlagship ? (
                           <span className={styles.flagshipBadge}>⭐ Flagship</span>
@@ -238,29 +284,34 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
                         )}
                       </div>
                     </div>
-                  </Link>
 
-                  {/* Product Details */}
-                  <div className={styles.cardBody}>
-                    <h2 className={styles.productTitle}>
-                      <Link href={`/product/${product.slug}`} className={styles.titleLink}>
-                        {cleanText(product.name)}
-                      </Link>
-                    </h2>
+                    {/* Product Info */}
+                    <div className={styles.productInfo}>
+                      <div className={styles.productHolder}>
+                        <h2 className={styles.woocommerceLoopProductTitle}>
+                          <Link href={`/product/${product.slug}`}>
+                            {cleanText(product.name)}
+                          </Link>
+                        </h2>
 
-                    <div className={styles.priceRow}>
-                      <span className={styles.priceLabel}>
-                        {isVariable ? `From $${product.price.toFixed(2)}` : `$${product.price.toFixed(2)}`}
-                      </span>
+                        <div className={styles.productPrice}>
+                          <span className={styles.price}>
+                            {isVariable ? `From $${product.price.toFixed(2)}` : `$${product.price.toFixed(2)}`}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Select Options Button */}
+                      <div className={styles.productActions}>
+                        <Link
+                          href={`/product/${product.slug}`}
+                          className={styles.buttonSelectOptions}
+                        >
+                          <span>Select options</span>
+                          <ArrowRight size={14} />
+                        </Link>
+                      </div>
                     </div>
-
-                    <Link
-                      href={`/product/${product.slug}`}
-                      className={styles.selectOptionsBtn}
-                    >
-                      <span>Select options</span>
-                      <ArrowRight size={14} />
-                    </Link>
                   </div>
                 </div>
               );
