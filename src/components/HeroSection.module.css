@@ -3,8 +3,8 @@
     radial-gradient(circle at 8% 20%, rgba(255, 100, 19, 0.12) 0%, transparent 45%),
     radial-gradient(circle at 45% 80%, rgba(255, 180, 50, 0.1) 0%, transparent 45%),
     linear-gradient(160deg, #FFFDF8 0%, #FFF5E8 45%, #FFEED8 100%);
-  min-height: 640px;
-  height: clamp(660px, 48vw, 820px);
+  min-height: 580px;
+  height: clamp(580px, 42vw, 700px);
   display: flex;
   align-items: center;
   padding: 0;
