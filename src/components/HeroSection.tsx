@@ -1,34 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { Truck, MapPin, CheckCircle2, ShieldCheck, ArrowRight, Star } from 'lucide-react';
-import { SERVICE_ZIP_CODES } from '@/lib/fallback-data';
+import { ArrowRight, Star } from 'lucide-react';
 import styles from './HeroSection.module.css';
 
 export const HeroSection = () => {
-  const [zipInput, setZipInput] = useState('');
-  const [zipResult, setZipResult] = useState<{ match: boolean; message: string; zone?: string } | null>(null);
-
-  const handleCheckZip = (e: React.FormEvent) => {
-    e.preventDefault();
-    const clean = zipInput.trim();
-    if (!clean) return;
-
-    const found = SERVICE_ZIP_CODES.find((z) => z.zip === clean);
-    if (found) {
-      setZipResult({
-        match: true,
-        message: `Great news! We deliver to ${found.name} (${found.zip}). Mileage delivery rates apply at checkout, or choose 100% Free Store Pick-up!`,
-        zone: found.zone,
-      });
-    } else {
-      setZipResult({
-        match: false,
-        message: `While ${clean} is outside our direct radius, Free Store Pick-up at 1001 Massachusetts Ave is 100% available!`,
-      });
-    }
-  };
 
   return (
     <section className={styles.heroSection}>
@@ -89,40 +66,6 @@ export const HeroSection = () => {
                 <strong>4.9/5 Rating</strong> • 500+ Happy Diners
               </span>
             </div>
-          </div>
-
-          {/* Delivery Zone Checker */}
-          <div className={styles.zipCheckerCard}>
-            <div className={styles.zipTitle}>
-              <Truck size={15} />
-              <span>Check Delivery to Your Zip Code:</span>
-            </div>
-            <form onSubmit={handleCheckZip} className={styles.zipForm}>
-              <div className={styles.zipInputWrapper}>
-                <MapPin size={15} className={styles.zipPin} />
-                <input
-                  type="text"
-                  placeholder="Enter zip (e.g. 02138)"
-                  value={zipInput}
-                  onChange={(e) => {
-                    setZipInput(e.target.value);
-                    if (zipResult) setZipResult(null);
-                  }}
-                  className={styles.zipInput}
-                  maxLength={5}
-                />
-              </div>
-              <button type="submit" className={styles.zipBtn}>
-                Check Zone
-              </button>
-            </form>
-
-            {zipResult && (
-              <div className={`${styles.zipFeedback} ${zipResult.match ? styles.zipSuccess : styles.zipWarning}`}>
-                {zipResult.match ? <CheckCircle2 size={15} /> : <ShieldCheck size={15} />}
-                <span>{zipResult.message}</span>
-              </div>
-            )}
           </div>
         </div>
 
