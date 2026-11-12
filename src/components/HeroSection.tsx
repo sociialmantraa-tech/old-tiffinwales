@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Star } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import styles from './HeroSection.module.css';
 
 export const HeroSection = () => {
@@ -52,20 +52,6 @@ export const HeroSection = () => {
             <Link href="/#weekly-menu" className={styles.heroBtnSecondary}>
               <span>Explore Weekly Menu</span>
             </Link>
-          </div>
-
-          {/* Social Proof Bar */}
-          <div className={styles.trustRow}>
-            <div className={styles.starsRow}>
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={13} fill="#ff6413" color="#ff6413" />
-              ))}
-            </div>
-            <div className={styles.trustText}>
-              <span>
-                <strong>4.9/5 Rating</strong> • 500+ Happy Diners
-              </span>
-            </div>
           </div>
         </div>
 
