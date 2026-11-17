@@ -23,41 +23,13 @@ function cleanText(text: string): string {
     .trim();
 }
 
-// Exact WooCommerce product order on tiffinwales.com/tiffin/
+// Exact WooCommerce product order for Tiffins & Meal Plans
 const EXACT_WC_ORDER = [
   '2-days-meal',
   '3-days-meal',
   '4-days-meal',
   '5-days-meal',
   '7-days-meal',
-  'aloo-gobi',
-  'aloo-jeera',
-  'aloo-methi',
-  'bhindi-masala',
-  'chana-masala',
-  'dal-makhani',
-  'kadhai-paneer',
-  'malai-kofta',
-  'matar-paneer',
-  'punjabi-kadhai-pakora',
-  'shahi-paneer',
-  'chili-paneer',
-  'butter-chicken',
-  'chicken-achari-curry',
-  'chicken-dhaniwal-korma',
-  'chicken-kadhai',
-  'chicken-madras',
-  'chilli-chicken',
-  'goat-achari-curry',
-  'lamb-achari-curry',
-  'lamb-bhuna-gosht',
-  'lamb-kadhai',
-  'shrimp-kadhai',
-  'tandoori-roti',
-  'naan',
-  'paratha',
-  'samosa',
-  'mango-lassi',
   'veg-tiffin',
   'non-veg',
   'veg-non-veg-tiffin',
@@ -69,19 +41,31 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
   const [sortBy, setSortBy] = useState<string>('default');
   const [displayCount, setDisplayCount] = useState<number>(12);
 
-  // Categories list
+  // Categories list tailored strictly for Tiffins & Meal Plans (no extra order products)
   const categories = [
-    { id: 'all', label: 'All Tiffins & Meals' },
-    { id: 'meal-plans', label: '🍱 Meal Plans (2–7 Days)' },
-    { id: 'veg', label: '🥗 Veg' },
-    { id: 'non-veg', label: '🍗 Non-Veg' },
-    { id: 'breads', label: '🍞 Breads' },
-    { id: 'extras', label: '🥤 Beverages & Snacks' },
+    { id: 'all', label: 'All Tiffins & Plans' },
+    { id: 'meal-plans', label: '🍱 Multi-Day Plans (2–7 Days)' },
+    { id: 'daily-tiffin', label: '🥗 Daily Tiffins' },
+    { id: 'veg', label: '🟢 Veg Plans' },
+    { id: 'non-veg', label: '🔴 Non-Veg Plans' },
   ];
+
+  // Exclude extra order products (curries, breads, appetizers, desserts) - strictly show Tiffins & Meal Plans
+  const tiffinProductsOnly = useMemo(() => {
+    return initialProducts.filter(
+      (p) =>
+        p.isMealPlan ||
+        p.categories.includes('Tiffin') ||
+        p.categories.includes('Meal') ||
+        p.slug.includes('days-meal') ||
+        p.slug.includes('tiffin') ||
+        p.slug === 'non-veg'
+    );
+  }, [initialProducts]);
 
   // Sort initially by the exact WooCommerce product order from tiffinwales.com
   const sortedInitial = useMemo(() => {
-    const list = [...initialProducts];
+    const list = [...tiffinProductsOnly];
     return list.sort((a, b) => {
       const idxA = EXACT_WC_ORDER.indexOf(a.slug);
       const idxB = EXACT_WC_ORDER.indexOf(b.slug);
@@ -90,7 +74,7 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
       if (idxB !== -1) return 1;
       return 0;
     });
-  }, [initialProducts]);
+  }, [tiffinProductsOnly]);
 
   // Filtering
   const filtered = useMemo(() => {
@@ -98,23 +82,13 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
       // Category Match
       let catMatch = true;
       if (selectedCategory === 'meal-plans') {
-        // Only 2 to 7 Days Meal Plans, excluding single-day tiffins
         catMatch = p.slug.includes('days-meal');
+      } else if (selectedCategory === 'daily-tiffin') {
+        catMatch = !p.slug.includes('days-meal');
       } else if (selectedCategory === 'veg') {
-        catMatch = p.isVeg;
+        catMatch = p.isVeg || p.slug.includes('days-meal');
       } else if (selectedCategory === 'non-veg') {
-        catMatch = !p.isVeg;
-      } else if (selectedCategory === 'breads') {
-        catMatch =
-          p.categories.some((c) => c.toLowerCase().includes('bread')) ||
-          p.name.toLowerCase().includes('roti') ||
-          p.name.toLowerCase().includes('naan') ||
-          p.name.toLowerCase().includes('paratha');
-      } else if (selectedCategory === 'extras') {
-        catMatch =
-          p.categories.some((c) => c.toLowerCase().includes('dessert') || c.toLowerCase().includes('snack')) ||
-          p.name.toLowerCase().includes('lassi') ||
-          p.name.toLowerCase().includes('samosa');
+        catMatch = !p.isVeg || p.slug.includes('days-meal') || p.slug.includes('non-veg');
       }
 
       // Search Match

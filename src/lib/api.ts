@@ -49,6 +49,7 @@ export function getOptimizedImageUrl(remoteUrl: string | undefined): string {
  */
 let memoryCachedProducts: Product[] | null = null;
 let lastCacheTimestamp = 0;
+let inFlightPromise: Promise<Product[]> | null = null;
 const CACHE_TTL_MS = 60 * 1000; // 60-second in-memory freshness window
 
 export async function getProducts(): Promise<Product[]> {
@@ -57,80 +58,93 @@ export async function getProducts(): Promise<Product[]> {
     return memoryCachedProducts;
   }
 
-  try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 2500);
-
-    const res = await fetch(`${WP_API_BASE}/wc/store/v1/products?per_page=100`, {
-      signal: controller.signal,
-      headers: {
-        'Accept': 'application/json',
-        'User-Agent': 'TiffinWales-NextJS/1.0',
-      },
-      next: { revalidate: 60 } // Automatic ISR background refresh every 60 seconds
-    });
-
-    clearTimeout(timeoutId);
-
-    if (!res.ok) {
-      console.warn(`[API] Remote endpoint responded with status ${res.status}. Using cached/fallback catalog.`);
-      if (!memoryCachedProducts) memoryCachedProducts = FALLBACK_PRODUCTS;
-      return memoryCachedProducts;
-    }
-
-    const liveData = await res.json();
-    if (!Array.isArray(liveData) || liveData.length === 0) {
-      if (!memoryCachedProducts) memoryCachedProducts = FALLBACK_PRODUCTS;
-      return memoryCachedProducts;
-    }
-
-    // Normalize live products
-    const liveProducts: Product[] = liveData.map((p: any) => {
-      const rawPrice = p.prices?.price ? parseFloat(p.prices.price) / 100 : 14.99;
-      const regularPrice = p.prices?.regular_price ? parseFloat(p.prices.regular_price) / 100 : rawPrice;
-      const cats = (p.categories || []).map((c: any) => (c.name || '').replace(/&amp;/g, '&'));
-      const isMealPlan = p.slug.includes('days-meal') || p.slug.includes('tiffin') || p.slug === 'non-veg';
-      const isVeg = p.slug.includes('veg-tiffin') || cats.includes('Veg') || (
-        !cats.includes('Non-Veg') && 
-        !p.name.toLowerCase().includes('chicken') && 
-        !p.name.toLowerCase().includes('lamb') && 
-        !p.name.toLowerCase().includes('goat') && 
-        !p.name.toLowerCase().includes('shrimp')
-      );
-
-      return {
-        id: p.id,
-        name: (p.name || '').replace(/&#038;/g, '&'),
-        slug: p.slug,
-        price: rawPrice,
-        regularPrice: regularPrice,
-        formattedPrice: `$${rawPrice.toFixed(2)}`,
-        description: (p.description || '').replace(/<[^>]+>/g, '').trim(),
-        shortDescription: (p.short_description || '').replace(/<[^>]+>/g, '').trim(),
-        images: (p.images || []).map((i: any) => getOptimizedImageUrl(i.src)),
-        primaryImage: getOptimizedImageUrl(p.images?.[0]?.src),
-        categories: cats,
-        isMealPlan,
-        isVeg,
-        attributes: p.attributes || [],
-        variations: p.variations || []
-      };
-    });
-
-    // Make sure 5 Days Meal (ID 3269) is present if live list omitted it
-    if (!liveProducts.some(p => p.slug === '5-days-meal' || p.id === 3269)) {
-      const fallback5Day = FALLBACK_PRODUCTS.find(p => p.slug === '5-days-meal');
-      if (fallback5Day) liveProducts.unshift(fallback5Day);
-    }
-
-    memoryCachedProducts = liveProducts;
-    lastCacheTimestamp = now;
-    return liveProducts;
-  } catch (err: any) {
-    console.warn('[API] Fetch error:', err?.message || err);
-    if (!memoryCachedProducts) memoryCachedProducts = FALLBACK_PRODUCTS;
-    return memoryCachedProducts;
+  if (inFlightPromise) {
+    return inFlightPromise;
   }
+
+  inFlightPromise = (async () => {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2000);
+
+      const res = await fetch(`${WP_API_BASE}/wc/store/v1/products?per_page=100`, {
+        signal: controller.signal,
+        headers: {
+          'Accept': 'application/json',
+          'User-Agent': 'TiffinWales-NextJS/1.0',
+        },
+        next: { revalidate: 60 } // Automatic ISR background refresh every 60 seconds
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!res.ok) {
+        console.warn(`[API] Remote endpoint responded with status ${res.status}. Using cached/fallback catalog.`);
+        if (!memoryCachedProducts) memoryCachedProducts = FALLBACK_PRODUCTS;
+        lastCacheTimestamp = Date.now();
+        return memoryCachedProducts;
+      }
+
+      const liveData = await res.json();
+      if (!Array.isArray(liveData) || liveData.length === 0) {
+        if (!memoryCachedProducts) memoryCachedProducts = FALLBACK_PRODUCTS;
+        lastCacheTimestamp = Date.now();
+        return memoryCachedProducts;
+      }
+
+      // Normalize live products
+      const liveProducts: Product[] = liveData.map((p: any) => {
+        const rawPrice = p.prices?.price ? parseFloat(p.prices.price) / 100 : 14.99;
+        const regularPrice = p.prices?.regular_price ? parseFloat(p.prices.regular_price) / 100 : rawPrice;
+        const cats = (p.categories || []).map((c: any) => (c.name || '').replace(/&amp;/g, '&'));
+        const isMealPlan = p.slug.includes('days-meal') || p.slug.includes('tiffin') || p.slug === 'non-veg';
+        const isVeg = p.slug.includes('veg-tiffin') || cats.includes('Veg') || (
+          !cats.includes('Non-Veg') && 
+          !p.name.toLowerCase().includes('chicken') && 
+          !p.name.toLowerCase().includes('lamb') && 
+          !p.name.toLowerCase().includes('goat') && 
+          !p.name.toLowerCase().includes('shrimp')
+        );
+
+        return {
+          id: p.id,
+          name: (p.name || '').replace(/&#038;/g, '&'),
+          slug: p.slug,
+          price: rawPrice,
+          regularPrice: regularPrice,
+          formattedPrice: `$${rawPrice.toFixed(2)}`,
+          description: (p.description || '').replace(/<[^>]+>/g, '').trim(),
+          shortDescription: (p.short_description || '').replace(/<[^>]+>/g, '').trim(),
+          images: (p.images || []).map((i: any) => getOptimizedImageUrl(i.src)),
+          primaryImage: getOptimizedImageUrl(p.images?.[0]?.src),
+          categories: cats,
+          isMealPlan,
+          isVeg,
+          attributes: p.attributes || [],
+          variations: p.variations || []
+        };
+      });
+
+      // Make sure 5 Days Meal (ID 3269) is present if live list omitted it
+      if (!liveProducts.some(p => p.slug === '5-days-meal' || p.id === 3269)) {
+        const fallback5Day = FALLBACK_PRODUCTS.find(p => p.slug === '5-days-meal');
+        if (fallback5Day) liveProducts.unshift(fallback5Day);
+      }
+
+      memoryCachedProducts = liveProducts;
+      lastCacheTimestamp = Date.now();
+      return liveProducts;
+    } catch (err: any) {
+      console.warn('[API] Fetch error:', err?.message || err);
+      if (!memoryCachedProducts) memoryCachedProducts = FALLBACK_PRODUCTS;
+      lastCacheTimestamp = Date.now();
+      return memoryCachedProducts;
+    } finally {
+      inFlightPromise = null;
+    }
+  })();
+
+  return inFlightPromise;
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
