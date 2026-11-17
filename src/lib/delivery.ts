@@ -2,32 +2,18 @@ import { CartItem } from './types';
 
 /**
  * TIFFIN WALES - SMART DISTANCE-BASED DELIVERY PRICE ENGINE
- * Kitchen & Pickup Hub: 1001 Massachusetts Ave, Cambridge, MA 02138
+ * Configured from WooCommerce WooReer Settings:
+ * Hub Location: 1001 Massachusetts Ave, Cambridge, MA 02138
  * Coordinates: 42.3705° N, 71.1165° W
  * 
- * Business Logic:
- * 1. STORE PICKUP: Always FREE ($0.00).
- * 2. DISTANCE TIERS (from 1001 Mass Ave, Cambridge):
- *    - Tier 1: 0.0 - 2.0 miles (Cambridge Core - Harvard, MIT, Central, Porter) => $5.00 / delivery
- *    - Tier 2: 2.1 - 4.0 miles (Somerville, Allston, Brighton, Fenway) => $8.00 / delivery
- *    - Tier 3: 4.1 - 7.0 miles (Boston Metro, Back Bay, South End, Medford, Brookline) => $11.00 / delivery
- *    - Tier 4: 7.1 - 12.0 miles (Greater Boston Outer Ring - Waltham, Newton, Quincy, Malden) => $15.00 / delivery
- *    - Tier 5: 12.1 - 20.0 miles (Extended Zone - Burlington, Woburn, Lexington, Framingham) => $20.00 / delivery
- *    - Tier 6: > 20.0 miles (Extended Regional Delivery) => $25.00 / delivery
+ * WooReer Distance Brackets (Maximum Distance = 15 Miles):
+ * 1. 0 - 3 Miles: $5.00 / delivery
+ * 2. 3 - 5 Miles: $8.00 / delivery
+ * 3. 5 - 10 Miles: $12.00 / delivery
+ * 4. 10 - 15 Miles: $16.00 / delivery
+ * 5. > 15 Miles: OUT OF SERVICE RANGE (Customer prompted to choose Store Pick-up)
  * 
- * 3. MEAL PLANS (2, 3, 4, 5, 7 Day Meal Plans):
- *    - 1-time delivery charge per meal plan package based on distance tier rate.
- *    - Cambridge Core (0-2 mi): 1 × $5.00 = $5.00
- *    - Somerville/Allston (2-4 mi): 1 × $8.00 = $8.00
- *    - Boston Metro (4-7 mi): 1 × $11.00 = $11.00
- *    - Waltham/Newton (7-12 mi): 1 × $15.00 = $15.00
- *    - Burlington/Outer (12-20 mi): 1 × $20.00 = $20.00
- * 
- * 4. TIFFIN SUBSCRIPTION PLANS (5, 7, 10, 15, 30 Day Daily Tiffins):
- *    - Fresh daily doorstep delivery: plan days × quantity × distance rate.
- * 
- * 5. REGULAR STORE PRODUCTS & DAILY DELIGHT (1-day Tiffin):
- *    - Single delivery charge based on distance rate.
+ * STORE PICKUP: Always 100% FREE ($0.00)
  */
 
 export const KITCHEN_LOCATION = {
@@ -36,6 +22,7 @@ export const KITCHEN_LOCATION = {
   lon: -71.1165
 };
 
+export const MAX_DELIVERY_DISTANCE_MILES = 15.0;
 export const BASE_DAILY_DELIVERY_RATE = 8.00;
 
 export interface DeliveryLocation {
@@ -51,6 +38,8 @@ export interface DistanceResult {
   dailyRate: number;
   zoneName: string;
   matchedArea: string;
+  isOutOfRange: boolean;
+  maxDistance: number;
 }
 
 export interface DeliveryCalculationResult {
@@ -61,6 +50,8 @@ export interface DeliveryCalculationResult {
   distanceMiles: number;
   zoneName: string;
   matchedArea: string;
+  isOutOfRange: boolean;
+  maxDistance: number;
 }
 
 // Greater Boston & Massachusetts Zip Code Coordinates
@@ -150,14 +141,18 @@ const ZIP_COORDINATES: Record<string, { city: string; name: string; lat: number;
   '02176': { city: 'Melrose', name: 'Melrose', lat: 42.4575, lon: -71.0635 },
   '01890': { city: 'Winchester', name: 'Winchester Center', lat: 42.4525, lon: -71.1375 },
 
-  // MetroWest
+  // MetroWest (Within 15 Miles)
   '02492': { city: 'Needham', name: 'Needham / Highland', lat: 42.2815, lon: -71.2355 },
   '02494': { city: 'Needham', name: 'Needham Heights', lat: 42.2985, lon: -71.2255 },
   '02481': { city: 'Wellesley', name: 'Wellesley Hills / Babson', lat: 42.3025, lon: -71.2885 },
   '02482': { city: 'Wellesley', name: 'Wellesley Center / College', lat: 42.2985, lon: -71.3015 },
   '01760': { city: 'Natick', name: 'Natick Center / Mall', lat: 42.2835, lon: -71.3485 },
+
+  // Beyond 15 Miles (for accurate out-of-range detection)
   '01701': { city: 'Framingham', name: 'North Framingham / Saxonville', lat: 42.3168, lon: -71.4367 },
-  '01702': { city: 'Framingham', name: 'Framingham Downtown', lat: 42.2785, lon: -71.4175 }
+  '01702': { city: 'Framingham', name: 'Framingham Downtown', lat: 42.2785, lon: -71.4175 },
+  '01901': { city: 'Lynn', name: 'Lynn Downtown', lat: 42.4668, lon: -70.9495 },
+  '01902': { city: 'Lynn', name: 'Lynn / Diamond District', lat: 42.4618, lon: -70.9325 }
 };
 
 // City-level distance fallbacks if exact zip code is not found in table
@@ -185,8 +180,8 @@ const CITY_FALLBACKS: Record<string, { dist: number; name: string }> = {
   burlington: { dist: 12.8, name: 'Burlington' },
   needham: { dist: 11.0, name: 'Needham' },
   wellesley: { dist: 12.5, name: 'Wellesley' },
-  natick: { dist: 15.0, name: 'Natick' },
-  framingham: { dist: 20.0, name: 'Framingham' }
+  natick: { dist: 14.5, name: 'Natick' },
+  framingham: { dist: 21.0, name: 'Framingham' }
 };
 
 /**
@@ -209,6 +204,7 @@ function haversineMiles(lat1: number, lon1: number, lat2: number, lon2: number):
 
 /**
  * Resolves address/city/zip to driving distance and tiered delivery rate
+ * Strictly enforces maximum 15-mile delivery radius from 1001 Mass Ave, Cambridge
  */
 export function getDistanceAndRate(location?: DeliveryLocation): DistanceResult {
   const rawZip = String(location?.zipCode || '').trim();
@@ -244,7 +240,7 @@ export function getDistanceAndRate(location?: DeliveryLocation): DistanceResult 
       distanceMiles = 7.5;
       matchedArea = 'MetroWest / Suburbs (024xx)';
     } else if (zip.startsWith('018') || zip.startsWith('019') || zip.startsWith('017') || zip.startsWith('020')) {
-      distanceMiles = 14.0;
+      distanceMiles = 13.5;
       matchedArea = 'Outer Massachusetts Region';
     } else if (zip && zip.length === 5) {
       distanceMiles = 22.0;
@@ -255,31 +251,38 @@ export function getDistanceAndRate(location?: DeliveryLocation): DistanceResult 
     }
   }
 
-  // Determine Daily Rate and Zone based on distance tiers
-  let dailyRate = 5.00;
-  let zoneName = 'Local Cambridge Core (0–2 mi)';
+  const isOutOfRange = distanceMiles > MAX_DELIVERY_DISTANCE_MILES;
 
-  if (distanceMiles <= 2.0) {
+  // Determine Daily Rate and Zone based on WooReer table distance tiers
+  let dailyRate = 5.00;
+  let zoneName = 'Core Radius (0–3 mi)';
+
+  if (distanceMiles <= 3.0) {
     dailyRate = 5.00;
-    zoneName = 'Local Cambridge Core (0–2 mi)';
-  } else if (distanceMiles <= 4.0) {
+    zoneName = 'Core Radius (0–3 mi)';
+  } else if (distanceMiles <= 5.0) {
     dailyRate = 8.00;
-    zoneName = 'Somerville, Allston & Inner Boston (2–4 mi)';
-  } else if (distanceMiles <= 7.0) {
-    dailyRate = 11.00;
-    zoneName = 'Boston Metro & Near Suburbs (4–7 mi)';
-  } else if (distanceMiles <= 12.0) {
-    dailyRate = 15.00;
-    zoneName = 'Greater Boston Outer Ring (7–12 mi)';
-  } else if (distanceMiles <= 20.0) {
-    dailyRate = 20.00;
-    zoneName = 'Extended Regional Zone (12–20 mi)';
+    zoneName = 'Inner Metro (3–5 mi)';
+  } else if (distanceMiles <= 10.0) {
+    dailyRate = 12.00;
+    zoneName = 'Outer Metro (5–10 mi)';
+  } else if (distanceMiles <= 15.0) {
+    dailyRate = 16.00;
+    zoneName = 'Suburban Ring (10–15 mi)';
   } else {
-    dailyRate = 25.00;
-    zoneName = 'Extended Long-Distance (>20 mi)';
+    // Beyond 15 Miles -> Not deliverable
+    dailyRate = 0.00;
+    zoneName = 'Beyond 15-Mile Delivery Limit';
   }
 
-  return { distanceMiles, dailyRate, zoneName, matchedArea };
+  return {
+    distanceMiles,
+    dailyRate,
+    zoneName,
+    matchedArea,
+    isOutOfRange,
+    maxDistance: MAX_DELIVERY_DISTANCE_MILES
+  };
 }
 
 /**
@@ -298,11 +301,27 @@ export function calculateDeliveryFee(
       dailyRate: 0.00,
       distanceMiles: 0.0,
       zoneName: 'Store Pick-up (1001 Mass Ave, Cambridge)',
-      matchedArea: 'Kitchen Counter'
+      matchedArea: 'Kitchen Counter',
+      isOutOfRange: false,
+      maxDistance: MAX_DELIVERY_DISTANCE_MILES
     };
   }
 
-  const { distanceMiles, dailyRate, zoneName, matchedArea } = getDistanceAndRate(location);
+  const { distanceMiles, dailyRate, zoneName, matchedArea, isOutOfRange } = getDistanceAndRate(location);
+
+  if (isOutOfRange) {
+    return {
+      deliveryFee: 0.00,
+      totalDeliveryDays: 0,
+      breakdownText: `Outside 15-Mile Delivery Limit (${distanceMiles} mi from Cambridge kitchen)`,
+      dailyRate: 0.00,
+      distanceMiles,
+      zoneName,
+      matchedArea,
+      isOutOfRange: true,
+      maxDistance: MAX_DELIVERY_DISTANCE_MILES
+    };
+  }
 
   if (!cart || cart.length === 0) {
     return {
@@ -312,7 +331,9 @@ export function calculateDeliveryFee(
       dailyRate,
       distanceMiles,
       zoneName,
-      matchedArea
+      matchedArea,
+      isOutOfRange: false,
+      maxDistance: MAX_DELIVERY_DISTANCE_MILES
     };
   }
 
@@ -405,6 +426,8 @@ export function calculateDeliveryFee(
     dailyRate,
     distanceMiles,
     zoneName,
-    matchedArea
+    matchedArea,
+    isOutOfRange: false,
+    maxDistance: MAX_DELIVERY_DISTANCE_MILES
   };
 }

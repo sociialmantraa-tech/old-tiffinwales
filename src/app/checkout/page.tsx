@@ -15,7 +15,8 @@ import {
   User, 
   MapPin, 
   Sparkles,
-  ShoppingBag
+  ShoppingBag,
+  AlertCircle
 } from 'lucide-react';
 import { calculateDeliveryFee } from '@/lib/delivery';
 import styles from './checkout.module.css';
@@ -355,21 +356,44 @@ export default function CheckoutPage() {
                   </div>
 
                   {/* Real-time Distance & Delivery Rate calculation */}
-                  <div className={styles.distanceBadge}>
-                    <div className={styles.distanceBadgeHeader}>
-                      <div className={styles.distanceBadgeHeaderLeft}>
-                        <MapPin size={16} className={styles.pinIcon} />
-                        <span>{deliveryInfo.matchedArea}</span>
+                  {deliveryInfo.isOutOfRange ? (
+                    <div className={styles.outOfRangeAlert}>
+                      <div className={styles.outOfRangeAlertTop}>
+                        <AlertCircle size={20} className={styles.alertIcon} />
+                        <div>
+                          <h4>Outside 15-Mile Delivery Limit ({deliveryInfo.distanceMiles} mi away)</h4>
+                          <p>
+                            We provide doorstep daily delivery strictly within <strong>15 miles</strong> of our Cambridge kitchen (1001 Mass Ave).
+                            Your location is <strong>{deliveryInfo.distanceMiles} miles</strong> away.
+                          </p>
+                        </div>
                       </div>
-                      <span className={styles.distanceBadgeMiles}>
-                        📍 {deliveryInfo.distanceMiles} mi from kitchen
-                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setFormData(prev => ({ ...prev, deliveryMode: 'pickup' }))}
+                        className={styles.switchPickupBtn}
+                      >
+                        <Store size={15} />
+                        <span>Switch to Store Pick-up (100% FREE)</span>
+                      </button>
                     </div>
-                    <div className={styles.distanceBadgeRate}>
-                      <span>{deliveryInfo.zoneName}</span>
-                      <strong>${deliveryInfo.dailyRate.toFixed(2)} / delivery</strong>
+                  ) : (
+                    <div className={styles.distanceBadge}>
+                      <div className={styles.distanceBadgeHeader}>
+                        <div className={styles.distanceBadgeHeaderLeft}>
+                          <MapPin size={16} className={styles.pinIcon} />
+                          <span>{deliveryInfo.matchedArea}</span>
+                        </div>
+                        <span className={styles.distanceBadgeMiles}>
+                          📍 {deliveryInfo.distanceMiles} mi from kitchen (Within 15 mi range)
+                        </span>
+                      </div>
+                      <div className={styles.distanceBadgeRate}>
+                        <span>{deliveryInfo.zoneName}</span>
+                        <strong>${deliveryInfo.dailyRate.toFixed(2)} / delivery</strong>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               )}
 
@@ -529,16 +553,22 @@ export default function CheckoutPage() {
                 <div className={styles.calcRow}>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span>Delivery Fee</span>
-                    {formData.deliveryMode === 'delivery' && deliveryInfo.totalDeliveryDays > 0 && (
+                    {formData.deliveryMode === 'delivery' && deliveryInfo.isOutOfRange ? (
+                      <span style={{ fontSize: '0.72rem', color: '#dc2626', fontWeight: 700 }}>
+                        ⚠️ Beyond 15-Mile Limit ({deliveryInfo.distanceMiles} mi)
+                      </span>
+                    ) : formData.deliveryMode === 'delivery' && deliveryInfo.totalDeliveryDays > 0 ? (
                       <span style={{ fontSize: '0.72rem', color: 'var(--tw-orange)', fontWeight: 600 }}>
                         {deliveryInfo.totalDeliveryDays > 1
                           ? `${deliveryInfo.totalDeliveryDays} Deliveries × $${deliveryInfo.dailyRate.toFixed(2)}/day (${deliveryInfo.distanceMiles} mi)`
                           : `1 Scheduled Delivery ($${deliveryInfo.dailyRate.toFixed(2)} • ${deliveryInfo.distanceMiles} mi)`}
                       </span>
-                    )}
+                    ) : null}
                   </div>
                   {formData.deliveryMode === 'pickup' ? (
                     <strong style={{ color: 'var(--tw-veg)' }}>FREE (Store Pickup)</strong>
+                  ) : deliveryInfo.isOutOfRange ? (
+                    <strong style={{ color: '#dc2626' }}>Unavailable</strong>
                   ) : (
                     <strong style={{ color: '#111827' }}>${deliveryFee.toFixed(2)}</strong>
                   )}
@@ -557,11 +587,13 @@ export default function CheckoutPage() {
 
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || (formData.deliveryMode === 'delivery' && deliveryInfo.isOutOfRange)}
                 className={`btn-primary ${styles.submitBtnFull}`}
               >
                 {isSubmitting ? (
                   <span>Processing Payment...</span>
+                ) : formData.deliveryMode === 'delivery' && deliveryInfo.isOutOfRange ? (
+                  <span>Delivery Unavailable (&gt;15 mi) — Switch to Store Pick-up</span>
                 ) : (
                   <>
                     <span>Place Order &amp; Activate Plan</span>
