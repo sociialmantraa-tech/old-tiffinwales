@@ -44,10 +44,11 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
   // Categories list tailored strictly for Tiffins & Meal Plans (no extra order products)
   const categories = [
     { id: 'all', label: 'All Tiffins & Plans' },
-    { id: 'meal-plans', label: '🍱 Multi-Day Plans (2–7 Days)' },
-    { id: 'daily-tiffin', label: '🥗 Daily Tiffins' },
-    { id: 'veg', label: '🟢 Veg Plans' },
-    { id: 'non-veg', label: '🔴 Non-Veg Plans' },
+    { id: 'meal-plans', label: '🍱 2–7 Days Packs' },
+    { id: 'daily-tiffin', label: '🥗 Single Day' },
+    { id: 'veg', label: '🟢 Veg' },
+    { id: 'non-veg', label: '🔴 Non-Veg' },
+    { id: 'mix', label: '🟠 Veg & Non-Veg Mix' },
   ];
 
   // Exclude extra order products (curries, breads, appetizers, desserts) - strictly show Tiffins & Meal Plans
@@ -86,9 +87,11 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
       } else if (selectedCategory === 'daily-tiffin') {
         catMatch = !p.slug.includes('days-meal');
       } else if (selectedCategory === 'veg') {
-        catMatch = p.isVeg || p.slug.includes('days-meal');
+        catMatch = p.slug === 'veg-tiffin';
       } else if (selectedCategory === 'non-veg') {
-        catMatch = !p.isVeg || p.slug.includes('days-meal') || p.slug.includes('non-veg');
+        catMatch = p.slug === 'non-veg';
+      } else if (selectedCategory === 'mix') {
+        catMatch = p.slug === 'veg-non-veg-tiffin';
       }
 
       // Search Match
@@ -252,6 +255,10 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
                       <div className={styles.badgeWrap}>
                         {isFlagship ? (
                           <span className={styles.flagshipBadge}>⭐ Flagship</span>
+                        ) : product.slug.includes('days-meal') ? (
+                          <span className={styles.planBadge}>2–7 Days Pack</span>
+                        ) : product.slug === 'veg-non-veg-tiffin' ? (
+                          <span className={styles.mixBadge}>Veg &amp; Non-Veg Mix</span>
                         ) : product.isVeg ? (
                           <span className={styles.vegBadge}>Veg</span>
                         ) : (
