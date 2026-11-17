@@ -28,9 +28,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/09/4-Days-meal.png"
+      "/products/4-Days-meal.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/09/4-Days-meal.png",
+    "primaryImage": "/products/4-Days-meal.webp",
     "categories": [
       "Meal",
       "Tiffin"
@@ -112,9 +112,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/09/2-Days-meal.png"
+      "/products/2-Days-meal.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/09/2-Days-meal.png",
+    "primaryImage": "/products/2-Days-meal.webp",
     "categories": [
       "Meal",
       "Tiffin"
@@ -196,9 +196,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/07/7-day-meal-plan.webp"
+      "/products/7-day-meal-plan.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/07/7-day-meal-plan.webp",
+    "primaryImage": "/products/7-day-meal-plan.webp",
     "categories": [
       "Meal",
       "Tiffin"
@@ -280,9 +280,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/07/3-day-meal-plan.webp"
+      "/products/3-day-meal-plan.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/07/3-day-meal-plan.webp",
+    "primaryImage": "/products/3-day-meal-plan.webp",
     "categories": [
       "Meal",
       "Tiffin"
@@ -364,9 +364,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "Traditional Indian whole wheat flatbread, freshly cooked and served warm. Soft, nutritious, and the perfect accompaniment to any meal.",
     "shortDescription": "Soft and freshly made whole wheat roti, cooked to perfection for a healthy and satisfying meal.",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/f145d6f6-a987-4fd0-a699-2d78a0667c35.png"
+      "/products/f145d6f6-a987-4fd0-a699-2d78a0667c35.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/f145d6f6-a987-4fd0-a699-2d78a0667c35.png",
+    "primaryImage": "/products/f145d6f6-a987-4fd0-a699-2d78a0667c35.webp",
     "categories": [
       "Breads",
       "Breakfast",
@@ -428,9 +428,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "Shrimp tossed with onions &amp; peppers, kadhai masala and herbs.",
     "shortDescription": "Shrimp tossed with onions &amp; peppers, kadhai masala and herbs.",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/shrimp-kadhai.webp"
+      "/products/shrimp-kadhai.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/shrimp-kadhai.webp",
+    "primaryImage": "/products/shrimp-kadhai.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -490,9 +490,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "Bone &#8211; in goat cooked in a zesty and tangy pickle &#8211; based tomato sauce with giner and garlic.",
     "shortDescription": "Bone &#8211; in goat cooked in a zesty and tangy pickle &#8211; based tomato sauce with giner and garlic.",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/goat-achari-curry.webp"
+      "/products/goat-achari-curry.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/goat-achari-curry.webp",
+    "primaryImage": "/products/goat-achari-curry.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -552,9 +552,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "Lamb Cooked in a zesty and tangy pickle &#8211; based tomato sauce with ginger and garlic.",
     "shortDescription": "Lamb Cooked in a zesty and tangy pickle &#8211; based tomato sauce with ginger and garlic.",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/lamb-achari-curry.webp"
+      "/products/lamb-achari-curry.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/lamb-achari-curry.webp",
+    "primaryImage": "/products/lamb-achari-curry.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -614,9 +614,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "Lamb Cooked with chunks of onions &amp; peppers and a blend of herbs and spices.",
     "shortDescription": "Lamb Cooked with chunks of onions &amp; peppers and a blend of herbs and spices.",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/lamb-kadhai-1.webp"
+      "/products/lamb-kadhai-1.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/lamb-kadhai-1.webp",
+    "primaryImage": "/products/lamb-kadhai-1.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -676,9 +676,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "Slow roasted lamb cooked with warm spices and herbs",
     "shortDescription": "Slow roasted lamb cooked with warm spices and herbs",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/lamb-bhuna-gosht-1.webp"
+      "/products/lamb-bhuna-gosht-1.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/lamb-bhuna-gosht-1.webp",
+    "primaryImage": "/products/lamb-bhuna-gosht-1.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -738,9 +738,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "Chicken  Cooked in a tamarind and mustard seeds &#8211; based sauce with a hint of curry powder.",
     "shortDescription": "Chicken  Cooked in a tamarind and mustard seeds &#8211; based sauce with a hint of curry powder.",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/chicken-madras-1.webp"
+      "/products/chicken-madras-1.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/chicken-madras-1.webp",
+    "primaryImage": "/products/chicken-madras-1.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -800,9 +800,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "Chicken cooked in a zesty and tangy pickle &#8211; based tomato sauce with ginger and garlic.",
     "shortDescription": "Chicken cooked in a zesty and tangy pickle &#8211; based tomato sauce with ginger and garlic.",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/chicken-kadhai.webp"
+      "/products/chicken-kadhai.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/chicken-kadhai.webp",
+    "primaryImage": "/products/chicken-kadhai.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -862,9 +862,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "Chicken cooked in a zesty and tangu pickle &#8211; based tomato sauce with ginger and garlic",
     "shortDescription": "Chicken cooked in a zesty and tangu pickle &#8211; based tomato sauce with ginger and garlic",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/chicken-achari-curry.webp"
+      "/products/chicken-achari-curry.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/chicken-achari-curry.webp",
+    "primaryImage": "/products/chicken-achari-curry.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -924,9 +924,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "Shredded Tandoori Chicken in creamy tamato sauce with cashew paste.",
     "shortDescription": "Shredded Tandoori Chicken in creamy tamato sauce with cashew paste.",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/Butter-chicken.webp"
+      "/products/Butter-chicken.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/Butter-chicken.webp",
+    "primaryImage": "/products/Butter-chicken.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -986,9 +986,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "Crispy Chicken tossed in onion peppers, soy and chill &#8211; based sauce",
     "shortDescription": "Crispy Chicken tossed in onion peppers, soy and chill &#8211; based sauce",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/chili-chicken-1.webp"
+      "/products/chili-chicken-1.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/chili-chicken-1.webp",
+    "primaryImage": "/products/chili-chicken-1.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -1048,9 +1048,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "Chicken cooked in a yogurt and  coriander &#8211; based sauce with cardamom, spices.",
     "shortDescription": "Chicken cooked in a yogurt and  coriander &#8211; based sauce with cardamom, spices.",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/chicken-dhaniwal-korma.webp"
+      "/products/chicken-dhaniwal-korma.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/chicken-dhaniwal-korma.webp",
+    "primaryImage": "/products/chicken-dhaniwal-korma.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -1110,9 +1110,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/Aloo-gobi.webp"
+      "/products/Aloo-gobi.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/Aloo-gobi.webp",
+    "primaryImage": "/products/Aloo-gobi.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -1174,9 +1174,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/Aloo-methi-2.webp"
+      "/products/Aloo-methi-2.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/Aloo-methi-2.webp",
+    "primaryImage": "/products/Aloo-methi-2.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -1238,9 +1238,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/chana-masala.webp"
+      "/products/chana-masala.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/chana-masala.webp",
+    "primaryImage": "/products/chana-masala.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -1302,9 +1302,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/aloo-jeera-1.webp"
+      "/products/aloo-jeera-1.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/aloo-jeera-1.webp",
+    "primaryImage": "/products/aloo-jeera-1.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -1366,9 +1366,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/kadhai-paneer.webp"
+      "/products/kadhai-paneer.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/kadhai-paneer.webp",
+    "primaryImage": "/products/kadhai-paneer.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -1430,9 +1430,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/shahi-paneer-1.webp"
+      "/products/shahi-paneer-1.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/shahi-paneer-1.webp",
+    "primaryImage": "/products/shahi-paneer-1.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -1494,9 +1494,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/dal-makhani.webp"
+      "/products/dal-makhani.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/dal-makhani.webp",
+    "primaryImage": "/products/dal-makhani.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -1558,9 +1558,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/Punjabi-kadhai-pakora.webp"
+      "/products/Punjabi-kadhai-pakora.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/Punjabi-kadhai-pakora.webp",
+    "primaryImage": "/products/Punjabi-kadhai-pakora.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -1622,9 +1622,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/malai-kofta-1.webp"
+      "/products/malai-kofta-1.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/malai-kofta-1.webp",
+    "primaryImage": "/products/malai-kofta-1.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -1686,9 +1686,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/chili-paneer.webp"
+      "/products/chili-paneer.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/chili-paneer.webp",
+    "primaryImage": "/products/chili-paneer.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -1750,9 +1750,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/Bhindi-masala-1.webp"
+      "/products/Bhindi-masala-1.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/Bhindi-masala-1.webp",
+    "primaryImage": "/products/Bhindi-masala-1.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -1814,9 +1814,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/Naan-381.5-X-317.5.webp"
+      "/products/Naan-381.5-X-317.5.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/Naan-381.5-X-317.5.webp",
+    "primaryImage": "/products/Naan-381.5-X-317.5.webp",
     "categories": [
       "Breads",
       "Breakfast",
@@ -1880,9 +1880,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/paratha-381.5-X-317.5.webp"
+      "/products/paratha-381.5-X-317.5.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/paratha-381.5-X-317.5.webp",
+    "primaryImage": "/products/paratha-381.5-X-317.5.webp",
     "categories": [
       "Breads",
       "Breakfast",
@@ -1946,9 +1946,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/Samosa-381.5-X-317.5.webp"
+      "/products/Samosa-381.5-X-317.5.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/Samosa-381.5-X-317.5.webp",
+    "primaryImage": "/products/Samosa-381.5-X-317.5.webp",
     "categories": [
       "Samosa"
     ],
@@ -2007,9 +2007,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/3a9ba618-b4a5-41dd-990a-9ace2ea14360.png"
+      "/products/3a9ba618-b4a5-41dd-990a-9ace2ea14360.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/3a9ba618-b4a5-41dd-990a-9ace2ea14360.png",
+    "primaryImage": "/products/3a9ba618-b4a5-41dd-990a-9ace2ea14360.webp",
     "categories": [
       "Breakfast",
       "Dinner",
@@ -2071,9 +2071,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/mango-381.5-X-317.5.webp"
+      "/products/mango-381.5-X-317.5.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/mango-381.5-X-317.5.webp",
+    "primaryImage": "/products/mango-381.5-X-317.5.webp",
     "categories": [
       "Breakfast",
       "Desserts",
@@ -2139,9 +2139,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/03/5-day-meal-1.webp"
+      "/products/5-day-meal-1.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/03/5-day-meal-1.webp",
+    "primaryImage": "/products/5-day-meal-1.webp",
     "categories": [
       "Meal",
       "Tiffin"
@@ -2223,9 +2223,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/Non-Veg-Mix.webp"
+      "/products/Non-Veg-Mix.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/Non-Veg-Mix.webp",
+    "primaryImage": "/products/Non-Veg-Mix.webp",
     "categories": [
       "Tiffin"
     ],
@@ -2440,9 +2440,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "",
     "shortDescription": "",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/Non-Veg-01.webp"
+      "/products/Non-Veg-01.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/Non-Veg-01.webp",
+    "primaryImage": "/products/Non-Veg-01.webp",
     "categories": [
       "Tiffin"
     ],
@@ -2683,9 +2683,9 @@ export const FALLBACK_PRODUCTS: Product[] = [
     "description": "🥗 TiffinWales – Veg Tiffin\n\nA wholesome, home-style vegetarian meal made fresh every day — perfect for work, home, or on the go.\n\nIncludes:\n🫓 Soft Roti or Naan – Freshly made and perfectly puffed.\n🍛 Seasonal Sabzi – Cooked with authentic spices and farm-fresh vegetables.\n🥣 Dal or Curry – Light, flavorful, and protein-rich.\n🍚 Steamed Rice – Fragrant and fluffy for a complete meal.",
     "shortDescription": "Please place your tiffin orders at least 24 hours in advance to ensure timely preparation, delivery, or pick-up.",
     "images": [
-      "https://tiffinwales.com/wp-content/uploads/2026/06/veg-1.webp"
+      "/products/veg-1.webp"
     ],
-    "primaryImage": "https://tiffinwales.com/wp-content/uploads/2026/06/veg-1.webp",
+    "primaryImage": "/products/veg-1.webp",
     "categories": [
       "Tiffin"
     ],
@@ -2921,7 +2921,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
 export const MEAL_PLAN_TIERS = [
   {
     id: "veg-tiffin",
-    image: "https://tiffinwales.com/wp-content/uploads/2026/06/veg-1.webp",
+    image: "/products/veg-1.webp",
     name: "Veg Tiffin (Single Day)",
     days: 1,
     tagline: "Single Day Fresh Meal",
@@ -2944,7 +2944,7 @@ export const MEAL_PLAN_TIERS = [
   },
   {
     id: "non-veg",
-    image: "https://tiffinwales.com/wp-content/uploads/2026/06/Non-Veg-01.webp",
+    image: "/products/Non-Veg-01.webp",
     name: "Non-Veg Tiffin (Single Day)",
     days: 1,
     tagline: "Single Day Fresh Non-Veg",
@@ -2967,7 +2967,7 @@ export const MEAL_PLAN_TIERS = [
   },
   {
     id: "veg-non-veg-tiffin",
-    image: "https://tiffinwales.com/wp-content/uploads/2026/06/Non-Veg-Mix.webp",
+    image: "/products/Non-Veg-Mix.webp",
     name: "Veg & Non-Veg Mix Tiffin",
     days: 1,
     tagline: "The Best of Both Worlds",
@@ -2990,7 +2990,7 @@ export const MEAL_PLAN_TIERS = [
   },
   {
     id: "2-day",
-    image: "https://tiffinwales.com/wp-content/uploads/2026/09/2-Days-meal.png",
+    image: "/products/2-Days-meal.webp",
     name: "2 Days Meal Pack",
     days: 2,
     tagline: "Weekend or Mid-Week Essentials",
@@ -3013,7 +3013,7 @@ export const MEAL_PLAN_TIERS = [
   },
   {
     id: "3-day",
-    image: "https://tiffinwales.com/wp-content/uploads/2026/07/3-day-meal-plan.webp",
+    image: "/products/3-day-meal-plan.webp",
     name: "3 Days Meal Pack",
     days: 3,
     tagline: "Student & Work Week Favorite",
@@ -3036,7 +3036,7 @@ export const MEAL_PLAN_TIERS = [
   },
   {
     id: "4-day",
-    image: "https://tiffinwales.com/wp-content/uploads/2026/09/4-Days-meal.png",
+    image: "/products/4-Days-meal.webp",
     name: "4 Days Meal Pack",
     days: 4,
     tagline: "Full Weekday Routine",
@@ -3059,7 +3059,7 @@ export const MEAL_PLAN_TIERS = [
   },
   {
     id: "5-day",
-    image: "https://tiffinwales.com/wp-content/uploads/2026/03/5-day-meal-1.webp",
+    image: "/products/5-day-meal-1.webp",
     name: "5 Days Meal Plan",
     days: 5,
     tagline: "Flagship Monday - Friday Routine",
@@ -3082,7 +3082,7 @@ export const MEAL_PLAN_TIERS = [
   },
   {
     id: "7-day",
-    image: "https://tiffinwales.com/wp-content/uploads/2026/07/7-day-meal-plan.webp",
+    image: "/products/7-day-meal-plan.webp",
     name: "7 Days Meal Plan",
     days: 7,
     tagline: "Full Week 360° Meal Plan",

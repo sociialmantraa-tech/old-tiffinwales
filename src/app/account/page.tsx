@@ -173,7 +173,7 @@ export default function AccountPage() {
         items: [
           {
             name: '30 Days Full Month Tiffin Plan (Veg & Non-Veg Mix)',
-            image: 'https://tiffinwales.com/wp-content/uploads/2026/03/5-day-meal-1.webp',
+            image: '/products/5-day-meal-1.webp',
             quantity: 1,
             price: 231.84,
             isMealPlan: true,
@@ -197,7 +197,7 @@ export default function AccountPage() {
         items: [
           {
             name: 'Garlic Naan (Fresh Tandoor)',
-            image: 'https://tiffinwales.com/wp-content/uploads/2026/06/veg-1.webp',
+            image: '/products/veg-1.webp',
             quantity: 1,
             price: 1.03,
             isMealPlan: false,

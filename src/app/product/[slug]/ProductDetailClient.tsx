@@ -259,17 +259,17 @@ const DELIVERY_TIME_SLOTS = [
 ];
 
 const PLAN_IMAGES: Record<string, string> = {
-  '2-days-plan': 'https://tiffinwales.com/wp-content/uploads/2026/09/2-Days-meal.png',
-  '3-days-plan': 'https://tiffinwales.com/wp-content/uploads/2026/07/3-day-meal-plan.webp',
-  '4-days-plan': 'https://tiffinwales.com/wp-content/uploads/2026/09/4-Days-meal.png',
-  '5-days-plan': 'https://tiffinwales.com/wp-content/uploads/2026/03/5-day-meal-1.webp',
-  '7-days-plan': 'https://tiffinwales.com/wp-content/uploads/2026/07/7-day-meal-plan.webp',
+  '2-days-plan': '/products/2-Days-meal.webp',
+  '3-days-plan': '/products/3-day-meal-plan.webp',
+  '4-days-plan': '/products/4-Days-meal.webp',
+  '5-days-plan': '/products/5-day-meal-1.webp',
+  '7-days-plan': '/products/7-day-meal-plan.webp',
 };
 
 const DIET_TIFFIN_IMAGES: Record<string, string> = {
-  'Veg': 'https://tiffinwales.com/wp-content/uploads/2026/06/veg-1.webp',
-  'Non-Veg': 'https://tiffinwales.com/wp-content/uploads/2026/06/Non-Veg-01.webp',
-  'Veg & Non-Veg Mix': 'https://tiffinwales.com/wp-content/uploads/2026/06/Non-Veg-Mix.webp',
+  'Veg': '/products/veg-1.webp',
+  'Non-Veg': '/products/Non-Veg-01.webp',
+  'Veg & Non-Veg Mix': '/products/Non-Veg-Mix.webp',
 };
 
 export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({

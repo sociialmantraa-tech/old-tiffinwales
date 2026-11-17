@@ -248,7 +248,7 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
           </div>
         ) : (
           <div className={styles.productsGrid}>
-            {displayed.map((product) => {
+            {displayed.map((product, index) => {
               const isVariable =
                 product.isMealPlan ||
                 product.slug.includes('days-meal') ||
@@ -265,10 +265,12 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
                     <div className={styles.productImg}>
                       <Link href={`/product/${product.slug}`} className={styles.imgLink}>
                         <Image
-                          src={product.primaryImage || 'https://tiffinwales.com/wp-content/uploads/2026/03/5-day-meal-1.webp'}
+                          src={product.primaryImage || '/products/5-day-meal-1.webp'}
                           alt={cleanText(product.name)}
                           fill
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          priority={index < 4}
+                          loading={index < 4 ? 'eager' : 'lazy'}
                           className={styles.wpPostImage}
                         />
                       </Link>

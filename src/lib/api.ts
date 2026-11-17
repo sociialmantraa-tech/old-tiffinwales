@@ -4,6 +4,23 @@ import { FALLBACK_PRODUCTS, MEAL_PLAN_TIERS, WEEKLY_MENU_SCHEDULE, SERVICE_ZIP_C
 const WP_API_BASE = 'https://tiffinwales.com/wp-json';
 
 /**
+ * Maps remote WordPress product images to fast local CDN WebP assets when available.
+ */
+export function getOptimizedImageUrl(remoteUrl: string | undefined): string {
+  if (!remoteUrl) return '/products/5-day-meal-1.webp';
+  if (remoteUrl.startsWith('/')) return remoteUrl;
+
+  try {
+    const filename = remoteUrl.split('/').pop()?.replace(/\.(png|jpg|jpeg|webp)$/i, '.webp');
+    if (filename) {
+      return `/products/${filename}`;
+    }
+  } catch (e) {}
+
+  return remoteUrl;
+}
+
+/**
  * Robust fetch wrapper with timeout and fallback protection.
  * Ensures the website never throws an unhandled error or crashes.
  */
@@ -64,8 +81,8 @@ export async function getProducts(): Promise<Product[]> {
         formattedPrice: `$${rawPrice.toFixed(2)}`,
         description: (p.description || '').replace(/<[^>]+>/g, '').trim(),
         shortDescription: (p.short_description || '').replace(/<[^>]+>/g, '').trim(),
-        images: (p.images || []).map((i: any) => i.src),
-        primaryImage: p.images?.[0]?.src || 'https://tiffinwales.com/wp-content/uploads/2026/03/5-day-meal-1.webp',
+        images: (p.images || []).map((i: any) => getOptimizedImageUrl(i.src)),
+        primaryImage: getOptimizedImageUrl(p.images?.[0]?.src),
         categories: cats,
         isMealPlan,
         isVeg,

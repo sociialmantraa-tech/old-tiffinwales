@@ -53,7 +53,7 @@ export default function CartPage() {
               {cart.map((item) => (
                 <div key={item.id} className={styles.cartItemRow}>
                   <img
-                    src={item.image || 'https://tiffinwales.com/wp-content/uploads/2026/03/5-day-meal-1.webp'}
+                    src={item.image || '/products/5-day-meal-1.webp'}
                     alt={item.name}
                     className={styles.cartItemImg}
                   />

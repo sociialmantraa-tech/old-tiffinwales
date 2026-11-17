@@ -5,31 +5,31 @@ export const WEEKLY_ROTATION_DATA = {
       "dishes": [
         [
           "Matar Paneer",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/matar-paneer-2.webp"
+          "/products/matar-paneer-2.webp"
         ],
         [
           "Aloo Jeera",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/aloo-jeera-2.webp"
+          "/products/aloo-jeera-2.webp"
         ],
         [
           "Channa Masala",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Channa-Masala.webp"
+          "/products/Channa-Masala.webp"
         ],
         [
           "Malai Kofta",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/malai-kofta-2.webp"
+          "/products/malai-kofta-2.webp"
         ],
         [
           "Shahi Paneer",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/shahi-paneer-2.webp"
+          "/products/shahi-paneer-2.webp"
         ],
         [
           "Bhindi Masala",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Bhindi-masala-1.webp"
+          "/products/Bhindi-masala-1.webp"
         ],
         [
           "Punjabi Kadhi Pakora",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Punjabi-kadhai-pakora-1.webp"
+          "/products/Punjabi-kadhai-pakora-1.webp"
         ]
       ]
     },
@@ -38,31 +38,31 @@ export const WEEKLY_ROTATION_DATA = {
       "dishes": [
         [
           "Aloo Methi",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Aloo-Methi.webp"
+          "/products/Aloo-Methi.webp"
         ],
         [
           "Punjabi Kadhi Pakora",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Punjabi-kadhai-pakora-1.webp"
+          "/products/Punjabi-kadhai-pakora-1.webp"
         ],
         [
           "Veg Korma",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Veg-Korma.webp"
+          "/products/Veg-Korma.webp"
         ],
         [
           "Bhindi Masala",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Bhindi-masala-1.webp"
+          "/products/Bhindi-masala-1.webp"
         ],
         [
           "Paneer Tikka Masala",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Paneer-Tikka-Masala.webp"
+          "/products/Paneer-Tikka-Masala.webp"
         ],
         [
           "Palak Paneer",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Palak-Paneer.webp"
+          "/products/Palak-Paneer.webp"
         ],
         [
           "Veg Korma",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Veg-Korma.webp"
+          "/products/Veg-Korma.webp"
         ]
       ]
     },
@@ -71,31 +71,31 @@ export const WEEKLY_ROTATION_DATA = {
       "dishes": [
         [
           "Paneer Vindaloo",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Paneer-Vindaloo.webp"
+          "/products/Paneer-Vindaloo.webp"
         ],
         [
           "Baingan Bharta",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Baingan-Bharta.webp"
+          "/products/Baingan-Bharta.webp"
         ],
         [
           "Veg Coconut Korma",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Veg-Coconut-Korma.webp"
+          "/products/Veg-Coconut-Korma.webp"
         ],
         [
           "Palak Paneer",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Palak-Paneer.webp"
+          "/products/Palak-Paneer.webp"
         ],
         [
           "Veg Tikka Masala",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Veg-Tikka-Masala.webp"
+          "/products/Veg-Tikka-Masala.webp"
         ],
         [
           "Veg Korma",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Veg-Korma.webp"
+          "/products/Veg-Korma.webp"
         ],
         [
           "Channa Masala",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Channa-Masala.webp"
+          "/products/Channa-Masala.webp"
         ]
       ]
     },
@@ -104,31 +104,31 @@ export const WEEKLY_ROTATION_DATA = {
       "dishes": [
         [
           "Veg Korma",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Veg-Korma.webp"
+          "/products/Veg-Korma.webp"
         ],
         [
           "Palak Paneer",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Palak-Paneer.webp"
+          "/products/Palak-Paneer.webp"
         ],
         [
           "Bhindi Masala",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Bhindi-masala-1.webp"
+          "/products/Bhindi-masala-1.webp"
         ],
         [
           "Shahi Paneer",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/shahi-paneer-2.webp"
+          "/products/shahi-paneer-2.webp"
         ],
         [
           "Aloo Methi",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Aloo-Methi.webp"
+          "/products/Aloo-Methi.webp"
         ],
         [
           "Baingan Bharta",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/Baingan-Bharta.webp"
+          "/products/Baingan-Bharta.webp"
         ],
         [
           "Malai Kofta",
-          "https://tiffinwales.com/wp-content/uploads/2026/06/malai-kofta-2.webp"
+          "/products/malai-kofta-2.webp"
         ]
       ]
     }
