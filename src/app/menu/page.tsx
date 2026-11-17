@@ -8,6 +8,8 @@ export const metadata = {
   description: 'Order authentic Butter Chicken, Dal Makhani, Shahi Paneer, Tandoori Naan, Rotis, Crispy Samosas, and Mango Lassi in Cambridge & Boston.',
 };
 
+export const revalidate = 60; // Auto-sync menu catalog in background every 60 seconds
+
 export default async function MenuPage() {
   const products = await getProducts();
 

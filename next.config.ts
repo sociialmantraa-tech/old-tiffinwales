@@ -1,10 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
   trailingSlash: true,
   images: {
-    unoptimized: true,
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 86400, // Cache optimized remote images for 24h on Vercel Edge
     remotePatterns: [
       {
         protocol: "https",

@@ -7,6 +7,8 @@ export const metadata = {
   description: 'Explore authentic Indian tiffin meal plans (2, 3, 4, 5, 7 Days), curries, breads and desserts for delivery and pickup across Cambridge & Boston.',
 };
 
+export const revalidate = 60; // Auto-sync with WordPress in background every 60 seconds
+
 export default async function TiffinPage() {
   const products = await getProducts();
 

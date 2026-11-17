@@ -7,6 +7,9 @@ interface ProductPageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const revalidate = 60; // Auto-sync product details in background every 60 seconds
+export const dynamicParams = true; // Allow newly created products in WordPress to render dynamically
+
 export async function generateStaticParams() {
   const products = await getProducts();
   return products.map((p) => ({
