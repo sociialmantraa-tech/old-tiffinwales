@@ -75,7 +75,7 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
     { id: 'meal-plans', label: '🍱 Meal Plans (2–7 Days)' },
     { id: 'veg', label: '🥗 Veg' },
     { id: 'non-veg', label: '🍗 Non-Veg' },
-    { id: 'breads', label: '🫓 Breads' },
+    { id: 'breads', label: '🍞 Breads' },
     { id: 'extras', label: '🥤 Beverages & Snacks' },
   ];
 
@@ -98,7 +98,8 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
       // Category Match
       let catMatch = true;
       if (selectedCategory === 'meal-plans') {
-        catMatch = p.isMealPlan || p.slug.includes('days-meal') || p.slug.includes('tiffin') || p.slug === 'non-veg';
+        // Only 2 to 7 Days Meal Plans, excluding single-day tiffins
+        catMatch = p.slug.includes('days-meal');
       } else if (selectedCategory === 'veg') {
         catMatch = p.isVeg;
       } else if (selectedCategory === 'non-veg') {
