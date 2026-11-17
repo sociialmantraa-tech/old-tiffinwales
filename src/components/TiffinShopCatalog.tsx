@@ -234,8 +234,6 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
                 product.slug === 'non-veg' ||
                 (product.variations && product.variations.length > 0);
 
-              const isFlagship = product.slug === '5-days-meal';
-
               return (
                 <div key={product.id} className={styles.wooSingleItemWrapper}>
                   <div className={styles.productItem}>
@@ -250,21 +248,6 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
                           className={styles.wpPostImage}
                         />
                       </Link>
-
-                      {/* Floating Badges */}
-                      <div className={styles.badgeWrap}>
-                        {isFlagship ? (
-                          <span className={styles.flagshipBadge}>⭐ Flagship</span>
-                        ) : product.slug.includes('days-meal') ? (
-                          <span className={styles.planBadge}>2–7 Days Pack</span>
-                        ) : product.slug === 'veg-non-veg-tiffin' ? (
-                          <span className={styles.mixBadge}>Veg &amp; Non-Veg Mix</span>
-                        ) : product.isVeg ? (
-                          <span className={styles.vegBadge}>Veg</span>
-                        ) : (
-                          <span className={styles.nonVegBadge}>Non-Veg</span>
-                        )}
-                      </div>
                     </div>
 
                     {/* Product Info */}

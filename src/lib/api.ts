@@ -97,14 +97,26 @@ export async function getProducts(): Promise<Product[]> {
         const rawPrice = p.prices?.price ? parseFloat(p.prices.price) / 100 : 14.99;
         const regularPrice = p.prices?.regular_price ? parseFloat(p.prices.regular_price) / 100 : rawPrice;
         const cats = (p.categories || []).map((c: any) => (c.name || '').replace(/&amp;/g, '&'));
-        const isMealPlan = p.slug.includes('days-meal') || p.slug.includes('tiffin') || p.slug === 'non-veg';
-        const isVeg = p.slug.includes('veg-tiffin') || cats.includes('Veg') || (
-          !cats.includes('Non-Veg') && 
-          !p.name.toLowerCase().includes('chicken') && 
-          !p.name.toLowerCase().includes('lamb') && 
-          !p.name.toLowerCase().includes('goat') && 
-          !p.name.toLowerCase().includes('shrimp')
-        );
+        const nameLower = (p.name || '').toLowerCase();
+        const slugLower = (p.slug || '').toLowerCase();
+
+        const isExplicitNonVeg =
+          slugLower === 'non-veg' ||
+          slugLower.includes('non-veg') ||
+          cats.includes('Non-Veg') ||
+          nameLower.includes('chicken') ||
+          nameLower.includes('lamb') ||
+          nameLower.includes('goat') ||
+          nameLower.includes('shrimp') ||
+          nameLower.includes('meat') ||
+          nameLower.includes('non-veg');
+
+        const isMealPlan = slugLower.includes('days-meal') || slugLower.includes('tiffin') || slugLower === 'non-veg';
+        const isVeg = !isExplicitNonVeg;
+
+        if (slugLower === 'non-veg' && !cats.includes('Non-Veg')) {
+          cats.push('Non-Veg');
+        }
 
         return {
           id: p.id,

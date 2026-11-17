@@ -2230,7 +2230,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
       "Tiffin"
     ],
     "isMealPlan": true,
-    "isVeg": true,
+    "isVeg": false,
     "attributes": [
       {
         "id": 2,
@@ -2444,10 +2444,11 @@ export const FALLBACK_PRODUCTS: Product[] = [
     ],
     "primaryImage": "/products/Non-Veg-01.webp",
     "categories": [
-      "Tiffin"
+      "Tiffin",
+      "Non-Veg"
     ],
     "isMealPlan": true,
-    "isVeg": true,
+    "isVeg": false,
     "attributes": [
       {
         "id": 2,
