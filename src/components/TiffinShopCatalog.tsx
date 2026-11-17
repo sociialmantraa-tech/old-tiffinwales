@@ -264,13 +264,11 @@ export const TiffinShopCatalog: React.FC<TiffinShopCatalogProps> = ({ initialPro
                     {/* Image Box */}
                     <div className={styles.productImg}>
                       <Link href={`/product/${product.slug}`} className={styles.imgLink}>
-                        <Image
+                        <img
                           src={product.primaryImage || '/products/5-day-meal-1.webp'}
                           alt={cleanText(product.name)}
-                          fill
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                          priority={index < 4}
                           loading={index < 4 ? 'eager' : 'lazy'}
+                          decoding="async"
                           className={styles.wpPostImage}
                         />
                       </Link>

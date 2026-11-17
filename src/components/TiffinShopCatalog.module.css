@@ -239,6 +239,8 @@
 
 .imgLink {
   display: block;
+  width: 100%;
+  height: 100%;
   text-decoration: none;
   position: relative;
 }
@@ -247,12 +249,18 @@
   position: relative;
   width: 100%;
   height: 250px;
-  background: #fdfdfd;
+  background: #fdfaf6;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .wpPostImage {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.5s ease;
 }
 
