@@ -74,7 +74,13 @@ export default function CheckoutPage() {
     }
   }, [formData.deliveryMode, formData.paymentMethod]);
 
-  const deliveryInfo = calculateDeliveryFee(cart, formData.deliveryMode);
+  const deliveryInfo = calculateDeliveryFee(cart, formData.deliveryMode, {
+    address: formData.address,
+    apartment: formData.apartment,
+    city: formData.city,
+    state: formData.state,
+    zipCode: formData.zipCode
+  });
   const deliveryFee = deliveryInfo.deliveryFee;
   const estimatedTax = cartTotal * 0.0625;
   const grandTotal = cartTotal + deliveryFee + estimatedTax;
@@ -347,6 +353,23 @@ export default function CheckoutPage() {
                       />
                     </div>
                   </div>
+
+                  {/* Real-time Distance & Delivery Rate calculation */}
+                  <div className={styles.distanceBadge}>
+                    <div className={styles.distanceBadgeHeader}>
+                      <div className={styles.distanceBadgeHeaderLeft}>
+                        <MapPin size={16} className={styles.pinIcon} />
+                        <span>{deliveryInfo.matchedArea}</span>
+                      </div>
+                      <span className={styles.distanceBadgeMiles}>
+                        📍 {deliveryInfo.distanceMiles} mi from kitchen
+                      </span>
+                    </div>
+                    <div className={styles.distanceBadgeRate}>
+                      <span>{deliveryInfo.zoneName}</span>
+                      <strong>${deliveryInfo.dailyRate.toFixed(2)} / delivery</strong>
+                    </div>
+                  </div>
                 </div>
               )}
 
@@ -508,7 +531,9 @@ export default function CheckoutPage() {
                     <span>Delivery Fee</span>
                     {formData.deliveryMode === 'delivery' && deliveryInfo.totalDeliveryDays > 0 && (
                       <span style={{ fontSize: '0.72rem', color: 'var(--tw-orange)', fontWeight: 600 }}>
-                        {deliveryInfo.totalDeliveryDays > 1 ? `${deliveryInfo.totalDeliveryDays} Deliveries × $8.00/day` : '1 Scheduled Delivery'}
+                        {deliveryInfo.totalDeliveryDays > 1
+                          ? `${deliveryInfo.totalDeliveryDays} Deliveries × $${deliveryInfo.dailyRate.toFixed(2)}/day (${deliveryInfo.distanceMiles} mi)`
+                          : `1 Scheduled Delivery ($${deliveryInfo.dailyRate.toFixed(2)} • ${deliveryInfo.distanceMiles} mi)`}
                       </span>
                     )}
                   </div>
